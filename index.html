@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Mis 15 Años | Leonela Luciana</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
@@ -11,139 +11,180 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <style>
-        body { font-family: 'Playfair Display', serif; }
-        .font-script { font-family: 'Great Vibes', cursive; }
+        /* ESTILOS CLAVE PARA EVITAR SCROLL HORIZONTAL */
+        html, body {
+            overflow-x: hidden; /* Bloquea el desplazamiento lateral */
+            width: 100%;
+            position: relative;
+            font-family: 'Playfair Display', serif;
+        }
         
+        .font-script { font-family: 'Great Vibes', cursive; }
         html { scroll-behavior: smooth; }
 
-        /* Fondo de la sección principal */
+        /* FOTO DE FONDO (PORTADA) */
         .hero-bg {
-            /* CAMBIAR: Pon aquí la foto de sesión de Leonela */
-            background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1566737236500-c8ac43014a67?q=80&w=1920&auto=format&fit=crop');
+            /* REEMPLAZA ESTE LINK POR LA FOTO REAL DE LEONELA */
+            background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1566737236500-c8ac43014a67?q=80&w=1920&auto=format&fit=crop');
             background-size: cover;
             background-position: center;
-            background-attachment: fixed;
+            background-attachment: fixed; /* Efecto fijo elegante */
         }
     </style>
 </head>
-<body class="bg-stone-50 text-stone-800 antialiased overflow-x-hidden">
+<body class="bg-stone-50 text-stone-800 antialiased selection:bg-pink-200 selection:text-pink-900">
 
-    <section class="h-screen hero-bg flex flex-col justify-center items-center text-center text-white px-4 relative">
-        <div data-aos="fade-down" data-aos-duration="1500">
-            <p class="text-xl md:text-3xl mb-4 tracking-widest uppercase font-light">Festejamos los 15 de</p>
+    <section class="h-screen hero-bg flex flex-col justify-center items-center text-center text-white px-4 relative w-full">
+        <div data-aos="fade-down" data-aos-duration="1500" class="w-full">
+            <p class="text-lg md:text-3xl mb-4 tracking-[0.2em] uppercase font-light text-pink-100">Festejamos los 15 de</p>
             
-            <h1 class="font-script text-6xl md:text-8xl mb-2 text-pink-200">Leonela Luciana</h1>
-            <h2 class="text-2xl md:text-4xl mb-6 tracking-wider uppercase font-light">Molina Romani</h2>
+            <h1 class="font-script text-6xl md:text-9xl mb-2 text-white drop-shadow-lg leading-tight">
+                Leonela<br class="md:hidden"> Luciana
+            </h1>
             
-            <p class="text-lg md:text-xl border-t border-b border-pink-200 py-3 inline-block">
-                18 de Agosto, 2026 </p>
+            <h2 class="text-xl md:text-4xl mb-8 tracking-widest uppercase font-light mt-4">Molina Romani</h2>
+            
+            <div class="inline-block border-y border-pink-200 py-3 px-8 backdrop-blur-sm bg-white/10 rounded-full">
+                <p class="text-lg md:text-2xl">18 de Agosto, 2026</p>
+            </div>
         </div>
         
-        <div class="absolute bottom-10 animate-bounce">
-            <i class="fa-solid fa-chevron-down text-2xl text-pink-200"></i>
+        <div class="absolute bottom-8 animate-bounce">
+            <i class="fa-solid fa-chevron-down text-3xl text-white opacity-80"></i>
         </div>
     </section>
 
-    <section class="py-20 px-4 bg-white">
+    <section class="py-16 px-4 bg-white w-full overflow-hidden">
         <div class="max-w-4xl mx-auto text-center" data-aos="zoom-in">
-            <h2 class="text-3xl md:text-4xl mb-10 font-bold text-stone-600">Faltan</h2>
+            <h2 class="text-3xl md:text-5xl mb-12 font-script text-pink-500">Falta muy poco...</h2>
             
-            <div class="grid grid-cols-4 gap-4 text-stone-700">
-                <div class="flex flex-col items-center">
-                    <span id="dias" class="text-4xl md:text-6xl font-bold text-pink-500">00</span>
-                    <span class="text-sm uppercase tracking-wide">Días</span>
+            <div class="grid grid-cols-4 gap-2 md:gap-8 text-stone-700 max-w-lg mx-auto">
+                <div class="flex flex-col items-center p-3 bg-pink-50 rounded-lg shadow-sm">
+                    <span id="dias" class="text-3xl md:text-5xl font-bold text-stone-800">00</span>
+                    <span class="text-xs md:text-sm uppercase tracking-wider mt-1 text-stone-500">Días</span>
                 </div>
-                <div class="flex flex-col items-center">
-                    <span id="horas" class="text-4xl md:text-6xl font-bold text-pink-500">00</span>
-                    <span class="text-sm uppercase tracking-wide">Hs</span>
+                <div class="flex flex-col items-center p-3 bg-pink-50 rounded-lg shadow-sm">
+                    <span id="horas" class="text-3xl md:text-5xl font-bold text-stone-800">00</span>
+                    <span class="text-xs md:text-sm uppercase tracking-wider mt-1 text-stone-500">Hs</span>
                 </div>
-                <div class="flex flex-col items-center">
-                    <span id="minutos" class="text-4xl md:text-6xl font-bold text-pink-500">00</span>
-                    <span class="text-sm uppercase tracking-wide">Min</span>
+                <div class="flex flex-col items-center p-3 bg-pink-50 rounded-lg shadow-sm">
+                    <span id="minutos" class="text-3xl md:text-5xl font-bold text-stone-800">00</span>
+                    <span class="text-xs md:text-sm uppercase tracking-wider mt-1 text-stone-500">Min</span>
                 </div>
-                <div class="flex flex-col items-center">
-                    <span id="segundos" class="text-4xl md:text-6xl font-bold text-pink-500">00</span>
-                    <span class="text-sm uppercase tracking-wide">Seg</span>
+                <div class="flex flex-col items-center p-3 bg-pink-50 rounded-lg shadow-sm">
+                    <span id="segundos" class="text-3xl md:text-5xl font-bold text-stone-800">00</span>
+                    <span class="text-xs md:text-sm uppercase tracking-wider mt-1 text-stone-500">Seg</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="py-20 px-4 bg-stone-100">
-        <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-10">
+    <section class="py-20 px-4 bg-stone-50 w-full overflow-hidden">
+        <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16">
             
-            <div class="bg-white p-10 rounded-lg shadow-lg text-center" data-aos="fade-right">
-                <div class="text-5xl text-pink-400 mb-4"><i class="fa-solid fa-church"></i></div>
-                <h3 class="font-script text-4xl mb-2">Misa</h3> <p class="text-xl font-bold mb-2">21:00 hs</p>
-                <p class="text-gray-600 mb-6">Catedral Principal</p>
-                <a href="URL_MAPS_IGLESIA" target="_blank" class="inline-block bg-stone-800 text-white px-6 py-2 rounded-full hover:bg-pink-500 transition duration-300">
-                    Ver Ubicación
+            <div class="bg-white p-8 md:p-10 rounded-2xl shadow-xl text-center transform hover:-translate-y-1 transition duration-300" 
+                 data-aos="fade-up" data-aos-delay="100">
+                <div class="w-16 h-16 bg-pink-100 rounded-full flex items-center justify-center mx-auto mb-6 text-pink-500 text-2xl">
+                    <i class="fa-solid fa-church"></i>
+                </div>
+                <h3 class="font-script text-4xl mb-2 text-stone-800">Ceremonia Religiosa</h3>
+                <p class="text-xl font-bold text-pink-500 mb-2">21:00 hs</p>
+                <p class="text-gray-600 mb-8">Catedral Principal<br>Av. Principal #123</p>
+                <a href="URL_MAPS_IGLESIA" target="_blank" 
+                   class="inline-block border-2 border-stone-800 text-stone-800 px-8 py-2 rounded-full hover:bg-stone-800 hover:text-white transition duration-300 text-sm tracking-widest uppercase font-bold">
+                    Ver Mapa
                 </a>
             </div>
 
-            <div class="bg-white p-10 rounded-lg shadow-lg text-center" data-aos="fade-left">
-                <div class="text-5xl text-pink-400 mb-4"><i class="fa-solid fa-music"></i></div> <h3 class="font-script text-4xl mb-2">Fiesta</h3>
-                <p class="text-xl font-bold mb-2">22:30 hs</p>
-                <p class="text-gray-600 mb-6">Salón "Los Olivos"</p>
-                <a href="URL_MAPS_SALON" target="_blank" class="inline-block bg-stone-800 text-white px-6 py-2 rounded-full hover:bg-pink-500 transition duration-300">
-                    Ver Ubicación
+            <div class="bg-white p-8 md:p-10 rounded-2xl shadow-xl text-center transform hover:-translate-y-1 transition duration-300" 
+                 data-aos="fade-up" data-aos-delay="300">
+                <div class="w-16 h-16 bg-pink-100 rounded-full flex items-center justify-center mx-auto mb-6 text-pink-500 text-2xl">
+                    <i class="fa-solid fa-champagne-glasses"></i>
+                </div>
+                <h3 class="font-script text-4xl mb-2 text-stone-800">Recepción</h3>
+                <p class="text-xl font-bold text-pink-500 mb-2">22:30 hs</p>
+                <p class="text-gray-600 mb-8">Salón "Los Olivos"<br>Calle Las Flores #45</p>
+                <a href="URL_MAPS_SALON" target="_blank" 
+                   class="inline-block border-2 border-stone-800 text-stone-800 px-8 py-2 rounded-full hover:bg-stone-800 hover:text-white transition duration-300 text-sm tracking-widest uppercase font-bold">
+                    Ver Mapa
                 </a>
             </div>
 
         </div>
     </section>
 
-    <section class="py-20 px-4 text-center">
-        <div class="max-w-3xl mx-auto" data-aos="fade-up">
-            <div class="mb-12">
-                <i class="fa-solid fa-vest text-4xl text-stone-400 mb-4"></i>
-                <h3 class="text-2xl font-bold mb-2">Dress Code</h3>
-                <p class="text-gray-600">Elegante</p>
+    <section class="py-20 px-4 text-center w-full bg-white">
+        <div class="max-w-2xl mx-auto space-y-16">
+            
+            <div data-aos="fade-up">
+                <i class="fa-solid fa-vest-patches text-4xl text-stone-300 mb-4"></i>
+                <h3 class="text-2xl font-bold mb-2 uppercase tracking-widest">Dress Code</h3>
+                <p class="text-stone-600 font-serif italic text-xl">Elegante</p>
             </div>
             
-            <div class="p-8 border-2 border-pink-200 rounded-xl inline-block">
-                <i class="fa-solid fa-gift text-4xl text-stone-400 mb-4"></i>
-                <h3 class="text-2xl font-bold mb-2">Regalos</h3>
-                <p class="text-gray-600">Tu presencia es mi mejor regalo.</p>
-                <p class="text-sm text-gray-500 mt-2">Pero si deseas hacerme un presente, habrá un cofre en el salón.</p>
+            <div class="bg-stone-50 p-8 rounded-xl border border-stone-100" data-aos="fade-up">
+                <i class="fa-solid fa-gift text-4xl text-pink-300 mb-4"></i>
+                <h3 class="text-2xl font-bold mb-4 uppercase tracking-widest">Regalos</h3>
+                <p class="text-stone-600 leading-relaxed">
+                    El regalo más importante es tu presencia.<br>
+                    Pero si deseas hacerme un presente, podrás depositarlo en el cofre de la entrada.
+                </p>
             </div>
+
         </div>
     </section>
 
-    <section class="py-20 px-4 bg-stone-800 text-white text-center">
-        <div data-aos="zoom-in">
-            <h2 class="font-script text-5xl mb-6">Confirmación de Asistencia</h2>
-            <p class="text-lg mb-8 max-w-lg mx-auto">Por favor confirmar antes del 1 de Agosto. ¡Espero contar contigo!</p>
+    <section class="py-24 px-4 bg-stone-900 text-white text-center w-full relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')]"></div>
+        
+        <div class="relative z-10 max-w-lg mx-auto" data-aos="zoom-in">
+            <h2 class="font-script text-5xl md:text-6xl mb-6 text-pink-200">Confirmación</h2>
+            <p class="text-lg mb-10 text-stone-300">
+                Por favor confirma tu asistencia antes del 1 de Agosto.
+            </p>
             
-            <a href="https://wa.me/591XXXXXXXX?text=Hola,%20confirmo%20mi%20asistencia%20a%20los%2015%20de%20Leonela!" 
+            <a href="https://wa.me/591XXXXXXXX?text=Hola%20Leonela,%20¡confirmo%20mi%20asistencia%20a%20tus%2015!" 
                target="_blank"
-               class="inline-flex items-center gap-2 bg-green-500 text-white px-8 py-4 rounded-full text-lg font-bold hover:bg-green-600 transition transform hover:scale-105 shadow-lg">
+               class="inline-flex items-center gap-3 bg-green-600 hover:bg-green-500 text-white px-8 py-4 rounded-full text-lg font-bold transition transform hover:scale-105 shadow-lg hover:shadow-green-500/30">
                 <i class="fa-brands fa-whatsapp text-2xl"></i>
-                Confirmar por WhatsApp
+                <span>Confirmar Asistencia</span>
             </a>
         </div>
     </section>
 
-    <footer class="py-6 text-center text-gray-400 text-sm bg-stone-900">
-        <p>Mis 15 Años - Leonela Luciana</p>
+    <footer class="py-8 text-center bg-black text-stone-500 text-xs w-full">
+        <p class="mb-2">MIS 15 AÑOS</p>
+        <p class="font-script text-xl text-stone-400">Leonela Luciana</p>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init();
+        // Inicializar animaciones
+        AOS.init({
+            once: true, // La animación solo ocurre una vez al bajar
+            offset: 50,  // Dispara la animación un poco antes de aparecer
+            duration: 1000,
+        });
 
-        // --- CONFIGURACIÓN DE LA FECHA ---
-        // Cambia aquí la fecha real de los 15 de Leonela
-        // Formato: Año, Mes (0=Enero, 7=Agosto), Día, Hora, Minuto
+        // --- CONFIGURACIÓN FECHA ---
+        // Año, Mes (Enero=0, Agosto=7), Día, Hora (24h), Minuto
         const fechaFiesta = new Date(2026, 7, 18, 21, 0, 0).getTime();
 
         const intervalo = setInterval(function() {
             const ahora = new Date().getTime();
             const distancia = fechaFiesta - ahora;
+
+            if (distancia < 0) {
+                clearInterval(intervalo);
+                document.getElementById("dias").innerText = "0";
+                document.getElementById("horas").innerText = "0";
+                document.getElementById("minutos").innerText = "0";
+                document.getElementById("segundos").innerText = "0";
+                return;
+            }
 
             const dias = Math.floor(distancia / (1000 * 60 * 60 * 24));
             const horas = Math.floor((distancia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
@@ -155,10 +196,6 @@
             document.getElementById("minutos").innerText = minutos < 10 ? '0' + minutos : minutos;
             document.getElementById("segundos").innerText = segundos < 10 ? '0' + segundos : segundos;
 
-            if (distancia < 0) {
-                clearInterval(intervalo);
-                document.getElementById("reloj").innerHTML = "<h2 class='text-4xl font-bold text-pink-500'>¡Llegó el gran día!</h2>";
-            }
         }, 1000);
     </script>
 </body>
