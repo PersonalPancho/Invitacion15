@@ -6,14 +6,12 @@
     <title>Mis 15 Años | Leonela Luciana</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
-    
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cinzel:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <style>
         html, body {
@@ -23,23 +21,52 @@
             font-family: 'Playfair Display', serif;
         }
         .font-script { font-family: 'Great Vibes', cursive; }
+        .font-title { font-family: 'Cinzel', serif; }
         html { scroll-behavior: smooth; }
 
         .hero-bg {
-            background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1566737236500-c8ac43014a67?q=80&w=1920&auto=format&fit=crop');
+            background-image: linear-gradient(rgba(10, 40, 20, 0.5), rgba(10, 40, 20, 0.5)), url('https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?q=80&w=1527&auto=format&fit=crop');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
         }
-        
-        .chat-bubble {
-            position: relative;
-            max-width: 80%;
-            border-radius: 1rem;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+
+        .text-gold { color: #C59D5F; }
+        .text-emerald-dark { color: #1a472a; }
+        .bg-cream { background-color: #f9f9f4; }
+        .border-gold { border-color: #C59D5F; }
+        .bg-gold { background-color: #C59D5F; }
+        .bg-emerald { background-color: #1a472a; }
+
+        /* Efecto Luciérnagas */
+        .firefly {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background-color: #ffeb3b;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #ffeb3b, 0 0 20px #ffeb3b;
+            animation: fly 10s infinite linear;
+            opacity: 0;
+            z-index: 10;
         }
-        
-        /* Loader para el botón de enviar */
+        @keyframes fly {
+            0% { transform: translate(0, 0); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translate(100px, -200px); opacity: 0; }
+        }
+
+        /* Animación Flor Loto */
+        .lotus-glow {
+            filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.3));
+            animation: glow-pulse 4s infinite alternate ease-in-out;
+        }
+        @keyframes glow-pulse {
+            from { filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.2)); transform: scale(1); }
+            to { filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.5)); transform: scale(1.02); }
+        }
+
         .spinner {
             display: none;
             border: 3px solid rgba(255,255,255,0.3);
@@ -50,258 +77,382 @@
             animation: spin 1s linear infinite;
         }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        
+        .pulse-shadow {
+            box-shadow: 0 0 0 0 rgba(197, 157, 95, 0.7);
+            animation: pulse-gold 2s infinite;
+        }
+        @keyframes pulse-gold {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(197, 157, 95, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(197, 157, 95, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(197, 157, 95, 0); }
+        }
+        
+        .ray-tail-glow {
+            position: absolute; bottom: 15%; left: 50%; transform: translateX(-50%);
+            width: 20px; height: 20px; background-color: #ffd700; border-radius: 50%;
+            filter: blur(8px); box-shadow: 0 0 20px #ffeb3b, 0 0 40px #ffeb3b;
+            opacity: 0.8; animation: ray-pulse 2s infinite alternate; z-index: -1;
+        }
+        @keyframes ray-pulse {
+            0% { opacity: 0.5; transform: translateX(-50%) scale(1); }
+            100% { opacity: 1; transform: translateX(-50%) scale(1.5); }
+        }
+        .dragonfly { animation: dragonfly-float 8s infinite ease-in-out; }
+        @keyframes dragonfly-float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(0, -40px) rotate(-5deg); }
+        }
+        .vine-decoration { transform-origin: top center; animation: vine-sway 6s infinite ease-in-out; }
+        @keyframes vine-sway { 0%, 100% { transform: rotate(0deg); } 50% { transform: rotate(2deg); } }
     </style>
 </head>
-<body class="bg-stone-50 text-stone-800 antialiased">
+<body class="bg-cream text-emerald-dark antialiased overflow-x-hidden">
 
-    <section class="h-screen hero-bg flex flex-col justify-center items-center text-center text-white px-4 relative w-full">
-        <div data-aos="fade-down" data-aos-duration="1500" class="w-full max-w-4xl">
-            <p class="text-lg md:text-2xl mb-2 tracking-[0.2em] uppercase font-light text-pink-100">Festejamos los 15 de</p>
-            <h1 class="font-script text-5xl md:text-8xl mb-6 text-white drop-shadow-lg leading-tight py-4">
-                Leonela Luciana<br>Molina Romani
+    <div class="fixed top-20 right-4 z-50 pointer-events-none dragonfly w-24 md:w-32 lg:w-40">
+        <div class="relative w-full">
+            <img src="assets/raylibelula.png" alt="Ray" class="w-full h-auto drop-shadow-lg filter brightness-110">
+            <div class="ray-tail-glow"></div>
+        </div>
+    </div>
+
+    <div class="fixed top-0 left-0 z-30 pointer-events-none vine-decoration w-32 md:w-56 h-auto">
+        <svg viewBox="0 0 200 600" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto drop-shadow-md">
+            <path d="M 0 0 Q 30 150, 10 300 T 20 600" stroke="#2d5016" stroke-width="4" fill="none"/>
+            <path d="M 10 0 Q 50 100, 40 250" stroke="#407a52" stroke-width="3" fill="none"/>
+            <g fill="#2d5016" opacity="0.9">
+                <ellipse cx="20" cy="50" rx="15" ry="8" transform="rotate(20 20 50)"/>
+                <ellipse cx="10" cy="120" rx="18" ry="9" transform="rotate(-15 10 120)"/>
+            </g>
+            <g fill="#52b788" opacity="0.8">
+                <ellipse cx="35" cy="80" rx="12" ry="6" transform="rotate(45 35 80)"/>
+                <ellipse cx="40" cy="150" rx="10" ry="5" transform="rotate(-10 40 150)"/>
+            </g>
+        </svg>
+    </div>
+
+    <audio id="bg-music">
+        <source src="assets/Esto se pondrá bueno.mp3" type="audio/mpeg">
+    </audio>
+
+    <section class="h-screen hero-bg flex flex-col justify-center items-center text-center text-white px-4 relative w-full overflow-hidden">
+        <div class="firefly" style="top: 80%; left: 20%; animation-duration: 8s;"></div>
+        <div class="firefly" style="top: 60%; left: 80%; animation-duration: 12s;"></div>
+        
+        <div class="absolute bottom-20 right-4 md:right-20 z-10 w-32 md:w-48 opacity-90 transform rotate-[-15deg]">
+             <svg class="w-full h-full lotus-glow" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                <defs><radialGradient id="petalGradient1"><stop offset="0%" style="stop-color:#f0e6d2;stop-opacity:1" /><stop offset="50%" style="stop-color:#e8d4b8;stop-opacity:1" /><stop offset="100%" style="stop-color:#d4b896;stop-opacity:1" /></radialGradient></defs>
+                <ellipse cx="100" cy="100" rx="80" ry="30" fill="url(#petalGradient1)" opacity="0.8" transform="rotate(0 100 100)"/>
+                <ellipse cx="100" cy="100" rx="80" ry="30" fill="url(#petalGradient1)" opacity="0.8" transform="rotate(45 100 100)"/>
+                <ellipse cx="100" cy="100" rx="80" ry="30" fill="url(#petalGradient1)" opacity="0.8" transform="rotate(90 100 100)"/>
+                <ellipse cx="100" cy="100" rx="80" ry="30" fill="url(#petalGradient1)" opacity="0.8" transform="rotate(135 100 100)"/>
+                <circle cx="100" cy="100" r="25" fill="#ffd700" class="animate-pulse" opacity="0.8"/>
+            </svg>
+        </div>
+
+        <div data-aos="fade-down" data-aos-duration="1500" class="w-full max-w-4xl relative z-10">
+            <div class="mb-4 text-gold opacity-80"><i class="fa-solid fa-crown text-3xl"></i></div>
+            <p class="text-lg md:text-2xl mb-2 tracking-[0.2em] uppercase font-light text-green-100 font-title">Mis 15 Años</p>
+            <h1 class="font-script text-6xl md:text-9xl mb-6 text-white drop-shadow-lg leading-tight py-4" style="text-shadow: 0 0 20px #C59D5F;">
+                Leonela Luciana<br><span class="text-4xl md:text-6xl text-gold">Molina Romani</span>
             </h1>
-            <div class="inline-block border-y border-pink-200 py-3 px-8 backdrop-blur-sm bg-white/10 rounded-full mt-4">
-                <p class="text-lg md:text-2xl">7 de Febrero, 2026</p>
+            <div class="inline-block border-y-2 border-gold py-3 px-12 backdrop-blur-sm bg-black/20 rounded-full mt-4 relative">
+                <p class="text-lg md:text-2xl font-bold">7 de Febrero, 2026</p>
             </div>
         </div>
-        <div class="absolute bottom-8 animate-bounce">
-            <i class="fa-solid fa-chevron-down text-3xl text-pink-200 opacity-80"></i>
+        <div class="absolute bottom-8 animate-bounce z-10">
+            <i class="fa-solid fa-chevron-down text-3xl text-gold opacity-80"></i>
         </div>
     </section>
 
-    <section class="py-16 px-4 bg-white w-full overflow-hidden">
-        <div class="max-w-4xl mx-auto text-center" data-aos="zoom-in">
-            <h2 class="text-3xl md:text-5xl mb-12 font-script text-pink-500">Falta muy poco...</h2>
-            <div class="grid grid-cols-4 gap-2 md:gap-8 text-stone-700 max-w-lg mx-auto">
-                <div class="flex flex-col items-center p-3 bg-pink-50 rounded-lg shadow-sm"><span id="dias" class="text-3xl md:text-5xl font-bold text-stone-800">00</span><span class="text-xs md:text-sm uppercase tracking-wider mt-1 text-stone-500">Días</span></div>
-                <div class="flex flex-col items-center p-3 bg-pink-50 rounded-lg shadow-sm"><span id="horas" class="text-3xl md:text-5xl font-bold text-stone-800">00</span><span class="text-xs md:text-sm uppercase tracking-wider mt-1 text-stone-500">Hs</span></div>
-                <div class="flex flex-col items-center p-3 bg-pink-50 rounded-lg shadow-sm"><span id="minutos" class="text-3xl md:text-5xl font-bold text-stone-800">00</span><span class="text-xs md:text-sm uppercase tracking-wider mt-1 text-stone-500">Min</span></div>
-                <div class="flex flex-col items-center p-3 bg-pink-50 rounded-lg shadow-sm"><span id="segundos" class="text-3xl md:text-5xl font-bold text-stone-800">00</span><span class="text-xs md:text-sm uppercase tracking-wider mt-1 text-stone-500">Seg</span></div>
-            </div>
+    <section class="py-16 px-4 bg-cream w-full overflow-hidden relative">
+        <div class="absolute top-0 left-[-20px] md:left-10 z-10 w-28 md:w-40 opacity-80">
+            <svg class="w-full h-full lotus-glow" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                <use href="#lotusDef" /> 
+                <ellipse cx="100" cy="100" rx="80" ry="30" fill="#f0e6d2" opacity="0.8" transform="rotate(0 100 100)"/>
+                <ellipse cx="100" cy="100" rx="80" ry="30" fill="#f0e6d2" opacity="0.8" transform="rotate(90 100 100)"/>
+                <circle cx="100" cy="100" r="20" fill="#ffd700" class="animate-pulse"/>
+            </svg>
         </div>
-    </section>
 
-    <section class="py-20 px-4 bg-stone-50 w-full">
-        <div class="max-w-5xl mx-auto text-center mb-10" data-aos="fade-up">
-            <i class="fa-solid fa-camera-retro text-4xl text-pink-300 mb-4"></i>
-            <h2 class="font-script text-5xl mb-4 text-stone-800">Mi Sesión de Fotos</h2>
-            <p class="text-stone-500">Momentos inolvidables</p>
-        </div>
-        <div class="max-w-6xl mx-auto columns-2 md:columns-3 gap-4 space-y-4 px-2" data-aos="fade-up">
-            <div class="break-inside-avoid rounded-lg overflow-hidden shadow-lg group relative"><img src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?q=80&w=600&auto=format&fit=crop" class="w-full"></div>
-            <div class="break-inside-avoid rounded-lg overflow-hidden shadow-lg group relative"><img src="https://images.unsplash.com/photo-1544819667-977671c03665?q=80&w=600&auto=format&fit=crop" class="w-full"></div>
-            <div class="break-inside-avoid rounded-lg overflow-hidden shadow-lg group relative"><img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=600&auto=format&fit=crop" class="w-full"></div>
-            <div class="break-inside-avoid rounded-lg overflow-hidden shadow-lg group relative"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=600&auto=format&fit=crop" class="w-full"></div>
-            <div class="break-inside-avoid rounded-lg overflow-hidden shadow-lg group relative"><img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=600&auto=format&fit=crop" class="w-full"></div>
-        </div>
-    </section>
-
-    <section class="py-20 px-4 bg-white w-full">
-        <div class="max-w-3xl mx-auto">
-            <div class="bg-stone-50 p-8 md:p-14 rounded-2xl shadow-xl text-center border border-stone-200" data-aos="fade-up">
-                <div class="w-20 h-20 bg-pink-100 rounded-full flex items-center justify-center mx-auto mb-6 text-pink-500 text-3xl">
-                    <i class="fa-solid fa-champagne-glasses"></i>
-                </div>
-                <h3 class="font-script text-5xl mb-4 text-stone-800">La Fiesta</h3>
-                <div class="my-6 space-y-2">
-                    <p class="text-2xl font-bold text-pink-500">21:00 hs</p>
-                    <p class="text-lg text-gray-600 font-serif">Paralela Demetrio Canelas<br>Calle San Ramón</p>
-                </div>
-                <a href="https://www.google.com/maps/search/?api=1&query=Calle+San+Ramon+paralela+Demetrio+Canelas" target="_blank" class="inline-block mt-4 border-2 border-stone-800 text-stone-800 px-10 py-3 rounded-full hover:bg-stone-800 hover:text-white transition duration-300 text-sm tracking-widest uppercase font-bold shadow-md">Ver Ubicación</a>
+        <div class="max-w-4xl mx-auto text-center relative z-10 p-6 md:p-10" data-aos="zoom-in">
+            <div class="absolute inset-0 border border-gold/40 m-4 rounded-lg pointer-events-none"></div>
+            <h2 class="text-3xl md:text-5xl mb-12 font-script text-emerald-dark pt-4">Falta muy poco...</h2>
+            <div class="grid grid-cols-4 gap-2 md:gap-8 text-emerald-dark max-w-lg mx-auto pb-4">
+                <div class="flex flex-col items-center p-3 border border-green-200 bg-white rounded-lg shadow-sm"><span id="dias" class="text-3xl md:text-5xl font-bold text-gold">00</span><span class="text-xs md:text-sm uppercase tracking-wider mt-1">Días</span></div>
+                <div class="flex flex-col items-center p-3 border border-green-200 bg-white rounded-lg shadow-sm"><span id="horas" class="text-3xl md:text-5xl font-bold text-gold">00</span><span class="text-xs md:text-sm uppercase tracking-wider mt-1">Hs</span></div>
+                <div class="flex flex-col items-center p-3 border border-green-200 bg-white rounded-lg shadow-sm"><span id="minutos" class="text-3xl md:text-5xl font-bold text-gold">00</span><span class="text-xs md:text-sm uppercase tracking-wider mt-1">Min</span></div>
+                <div class="flex flex-col items-center p-3 border border-green-200 bg-white rounded-lg shadow-sm"><span id="segundos" class="text-3xl md:text-5xl font-bold text-gold">00</span><span class="text-xs md:text-sm uppercase tracking-wider mt-1">Seg</span></div>
             </div>
         </div>
     </section>
 
-    <section class="py-20 px-4 bg-pink-50 w-full relative">
-        <div class="max-w-md mx-auto relative z-10" data-aos="fade-up">
-            <div class="text-center mb-8">
-                <h3 class="font-script text-4xl mb-2">Muro de Recuerdos</h3>
-                <p class="text-sm text-stone-500">¡Sube tu foto y comparte el momento!</p>
+    <div class="w-full bg-cream flex justify-center pt-4 pb-10 relative z-20">
+        <button id="music-btn" onclick="toggleMusic()" class="flex items-center gap-3 bg-emerald border-2 border-gold text-white px-8 py-3 rounded-full shadow-lg hover:bg-green-800 transition duration-300 pulse-shadow">
+            <i id="music-icon" class="fa-solid fa-music text-gold text-xl"></i>
+            <span id="music-text" class="font-bold tracking-widest text-sm uppercase">Dale Play a la Magia</span>
+        </button>
+    </div>
+
+    <section class="pb-20 pt-10 px-4 bg-white w-full relative">
+        <div class="max-w-3xl mx-auto text-center relative z-10 p-8" data-aos="fade-up">
+            <div class="mb-4"><i class="fa-brands fa-pagelines text-5xl text-green-300"></i></div>
+            <h2 class="font-script text-5xl md:text-6xl text-emerald-dark mb-8">Con la bendición de</h2>
+            <div class="space-y-4 border-l-2 border-r-2 border-gold px-4 py-8 rounded-full bg-cream/50">
+                <p class="text-2xl md:text-3xl text-stone-600 font-title">Willy Molina</p>
+                <div class="text-gold text-xl"><i class="fa-solid fa-heart"></i></div>
+                <p class="text-2xl md:text-3xl text-stone-600 font-title">Rosmery Romani</p>
             </div>
-            <div class="bg-white rounded-2xl shadow-xl overflow-hidden flex flex-col h-[500px]">
-                <div id="chat-feed" class="flex-1 overflow-y-auto p-4 space-y-4 bg-stone-100">
-                    <div class="flex items-end justify-start">
-                        <div class="w-8 h-8 rounded-full bg-pink-200 flex items-center justify-center text-xs mr-2 overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1566737236500-c8ac43014a67?q=80&w=100&auto=format&fit=crop" alt="L">
-                        </div>
-                        <div class="chat-bubble bg-white p-3 rounded-bl-none text-sm text-stone-700">
-                            <p class="font-bold text-pink-500 text-xs mb-1">Leonela</p>
-                            <p>¡Hola a todos! Suban aquí sus fotos de la fiesta 📸✨</p>
-                        </div>
+            <p class="mt-8 text-emerald-dark italic text-lg px-4">"Gracias por darme la vida y acompañarme en cada paso de este hermoso camino."</p>
+        </div>
+    </section>
+
+    <section class="py-20 px-4 bg-cream w-full relative overflow-hidden">
+        <div class="max-w-4xl mx-auto text-center mb-10 relative z-10" data-aos="fade-up">
+            <i class="fa-solid fa-wand-magic-sparkles text-4xl text-gold mb-4"></i>
+            <h2 class="font-script text-5xl mb-4 text-emerald-dark">Un Recuerdo Mágico</h2>
+            <div class="mt-12 flex justify-center">
+                <div class="relative max-w-sm md:max-w-md">
+                    <div class="p-2 bg-white shadow-2xl border-4 border-gold transform rotate-2 hover:rotate-0 transition duration-700 relative z-10">
+                        <img src="https://images.unsplash.com/photo-1544819667-977671c03665?q=80&w=600&auto=format&fit=crop" alt="Leonela" class="w-full h-auto object-cover filter brightness-105">
                     </div>
                 </div>
-                <div class="p-3 bg-white border-t border-gray-100 flex items-center gap-2">
-                    <label for="photo-input" class="cursor-pointer text-stone-400 hover:text-pink-500 p-2 transition"><i class="fa-solid fa-paperclip text-xl"></i></label>
-                    <input type="file" id="photo-input" accept="image/*" class="hidden">
-                    <input type="text" id="name-input" placeholder="Tu nombre..." class="flex-1 bg-stone-100 rounded-full px-4 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-pink-300">
-                    <button onclick="uploadPhoto()" class="bg-pink-500 text-white rounded-full w-10 h-10 flex items-center justify-center hover:bg-pink-600 transition shadow-md"><i class="fa-solid fa-paper-plane text-sm"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 px-4 bg-emerald w-full relative text-white overflow-hidden">
+        <div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/diamond-upholstery.png')]"></div>
+        <div class="max-w-xl mx-auto text-center relative z-10" data-aos="fade-up">
+            <h2 class="font-script text-6xl md:text-7xl text-gold mb-12 drop-shadow-md">Recepción</h2>
+            <div class="relative bg-black/30 backdrop-blur-md p-10 rounded-sm border border-gold/40">
+                <div class="mb-8 group relative z-10">
+                    <i class="fa-regular fa-calendar text-4xl text-gold mb-4 group-hover:scale-110 transition duration-300"></i>
+                    <p class="text-xl font-bold tracking-widest uppercase mb-1">SÁBADO</p>
+                    <p class="text-lg text-gray-200 uppercase font-serif tracking-wide">7 DE FEBRERO DEL 2026</p>
+                </div>
+                <div class="w-16 h-px bg-gold/50 mx-auto mb-8"></div>
+                <div class="mb-8 group relative z-10">
+                    <i class="fa-regular fa-clock text-4xl text-gold mb-4 group-hover:scale-110 transition duration-300"></i>
+                    <p class="text-xl font-bold tracking-widest uppercase">18:00 P.M.</p>
+                </div>
+                <div class="w-16 h-px bg-gold/50 mx-auto mb-8"></div>
+                <div class="mb-8 group relative z-10">
+                    <i class="fa-solid fa-location-dot text-4xl text-gold mb-4 group-hover:scale-110 transition duration-300"></i>
+                    <p class="text-xl font-bold tracking-wide uppercase mb-1">CALLE SAN RAMÓN #66</p>
+                    <p class="text-gray-300 font-serif">Paralela Demetrio Canelas</p>
+                </div>
+                <a href="https://maps.app.goo.gl/xxxxxxxxx" target="_blank" class="inline-block px-10 py-3 border border-gold text-gold font-bold uppercase tracking-[0.2em] hover:bg-gold hover:text-white transition duration-300 text-sm rounded-sm relative z-10">Ir al mapa</a>
+            </div>
+            <div class="w-full h-72 md:h-80 rounded-xl overflow-hidden shadow-2xl border-4 border-gold mt-10">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3764.343564523153!2d-65.25477779999999!3d-19.0241389!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTnCsDAxJzI2LjkiUyA2NcKwMTUnMTcuMiJX!5e0!3m2!1ses-419!2sbo!4v1700000000000!5m2!1ses-419!2sbo" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 px-4 bg-cream w-full relative overflow-hidden">
+        <div class="max-w-lg mx-auto text-center relative z-10" data-aos="fade-up">
+            <h2 class="font-script text-5xl mb-8 text-emerald-dark">Compartamos Recuerdos</h2>
+            <div class="bg-white border-2 border-green-100 p-8 rounded-2xl shadow-lg relative overflow-hidden group hover:border-gold transition duration-500">
+                <i class="fa-solid fa-camera text-4xl text-green-600 mb-4"></i>
+                <p class="text-xl font-serif text-stone-600 mb-2">¡Únete al grupo de la fiesta!</p>
+                <p class="text-sm text-stone-400 mb-6">Sube aquí tus fotos y videos.</p>
+                <a href="https://chat.whatsapp.com/TU_LINK_DEL_GRUPO_AQUI" target="_blank" class="inline-flex items-center gap-3 bg-emerald hover:bg-green-800 text-white px-8 py-4 rounded-full text-lg font-bold transition transform hover:scale-105 shadow-xl w-full justify-center md:w-auto">
+                    <i class="fa-brands fa-whatsapp text-2xl"></i><span>Unirme al Grupo</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 px-4 text-center w-full bg-white relative">
+        <div class="absolute top-10 right-10 z-10 w-24 md:w-36 opacity-60">
+             <svg class="w-full h-full lotus-glow" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                <ellipse cx="100" cy="100" rx="80" ry="30" fill="#f0e6d2" opacity="0.8"/>
+                <ellipse cx="100" cy="100" rx="80" ry="30" fill="#f0e6d2" opacity="0.8" transform="rotate(45 100 100)"/>
+                <ellipse cx="100" cy="100" rx="80" ry="30" fill="#f0e6d2" opacity="0.8" transform="rotate(90 100 100)"/>
+                <ellipse cx="100" cy="100" rx="80" ry="30" fill="#f0e6d2" opacity="0.8" transform="rotate(135 100 100)"/>
+                <circle cx="100" cy="100" r="20" fill="#ffd700" class="animate-pulse"/>
+            </svg>
+        </div>
+        <div class="max-w-2xl mx-auto relative z-10" data-aos="fade-up">
+            <div class="flex justify-center items-center mb-6">
+                <div class="bg-cream p-6 rounded-full border border-gold shadow-md">
+                    <i class="fa-solid fa-user-tie text-6xl text-emerald-dark"></i>
+                </div>
+            </div>
+            <h3 class="text-2xl font-bold mb-3 uppercase tracking-widest text-emerald-dark">Dress Code</h3>
+            <p class="text-stone-600 font-serif italic text-2xl">Semiformal</p>
+        </div>
+    </section>
+
+    <section class="py-20 px-4 bg-cream w-full border-t border-green-100 relative overflow-hidden">
+        <div class="max-w-md mx-auto text-center relative z-10" data-aos="fade-up">
+            <h2 class="font-script text-5xl mb-10 text-gold">Regalos</h2>
+            <div class="mb-8">
+                <i class="fa-solid fa-gift text-5xl text-emerald-dark mb-4"></i>
+                <h3 class="font-script text-4xl mb-2 text-emerald-dark">Lluvia de sobres</h3>
+                <div class="flex justify-center mb-4"><i class="fa-regular fa-envelope text-4xl text-gold"></i></div>
+                <p class="text-stone-600 italic px-4">"La lluvia de sobres, es la tradición de regalar dinero en efectivo en un sobre el día del evento"</p>
+            </div>
+            <div class="w-16 h-px bg-gold/30 mx-auto mb-10"></div>
+            <div class="mb-8">
+                <h3 class="font-script text-4xl mb-4 text-emerald-dark">Transferencia</h3>
+                <div class="flex justify-center mb-4"><i class="fa-solid fa-building-columns text-4xl text-gold"></i></div>
+                <p class="text-stone-600 italic px-4 mb-6">Si así lo prefieres puedes realizar una transferencia.</p>
+                <div class="bg-white p-4 rounded-xl inline-block shadow-sm border border-gold">
+                    <img src="assets/qr pago.jpeg" alt="Código QR Pago" class="w-48 h-auto mx-auto rounded-lg">
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="py-20 px-4 text-center w-full bg-white">
-        <div class="max-w-2xl mx-auto space-y-16">
-            <div data-aos="fade-up">
-                <div class="flex justify-center items-center gap-6 mb-6">
-                    <div class="flex flex-col items-center gap-2"><i class="fa-solid fa-user-tie text-5xl text-stone-700"></i></div>
-                    <span class="text-stone-300 text-3xl">/</span>
-                    <div class="flex flex-col items-center gap-2"><i class="fa-solid fa-shoe-heels text-5xl text-stone-700"></i></div>
-                </div>
-                <h3 class="text-2xl font-bold mb-2 uppercase tracking-widest">Dress Code</h3>
-                <p class="text-stone-600 font-serif italic text-xl">Elegante</p>
-            </div>
+    <section class="py-20 px-4 bg-white relative">
+        <div class="max-w-lg mx-auto bg-cream border-2 border-gold rounded-xl shadow-2xl p-8 md:p-12 relative z-10" data-aos="zoom-in">
+            <div class="text-center mb-6"><i class="fa-solid fa-crown text-3xl text-gold"></i></div>
+            <h2 class="font-script text-5xl mb-6 text-center text-emerald-dark">Confirmación</h2>
+            <p class="text-center text-stone-500 mb-8">Por favor confirma tu asistencia.</p>
             
-            <div class="bg-stone-50 p-8 rounded-xl border border-stone-100" data-aos="fade-up">
-                <i class="fa-solid fa-gift text-4xl text-pink-300 mb-4"></i>
-                <h3 class="text-2xl font-bold mb-4 uppercase tracking-widest">Regalos</h3>
-                <p class="text-stone-600 leading-relaxed">El regalo más importante es tu presencia.<br>Pero si deseas hacerme un presente, podrás depositarlo en el cofre de la entrada.</p>
-            </div>
-        </div>
-    </section>
+            <form name="submit-to-google-sheet" id="rsvpForm" class="space-y-8 relative z-10">
+                <input type="hidden" name="tipo" value="asistencia">
 
-    <section class="py-20 px-4 bg-stone-100 relative">
-        <div class="max-w-lg mx-auto bg-white rounded-xl shadow-2xl p-8 md:p-12 relative z-10" data-aos="zoom-in">
-            <h2 class="font-script text-5xl mb-6 text-center text-pink-500">Confirmación</h2>
-            <p class="text-center text-stone-500 mb-8">Por favor completa el formulario para confirmar tu asistencia.</p>
-
-            <form name="submit-to-google-sheet" id="rsvpForm" class="space-y-6">
                 <div>
-                    <label class="block text-sm font-bold text-stone-700 mb-2">Nombre Completo</label>
-                    <input type="text" name="nombre" required placeholder="Ej: Juan Pérez" 
-                           class="w-full px-4 py-3 rounded-lg bg-stone-50 border border-stone-200 focus:border-pink-500 focus:outline-none transition">
+                    <label class="block text-sm font-bold text-emerald-dark mb-2">Nombre y Apellido</label>
+                    <input type="text" name="nombre" required placeholder="Tu nombre..." class="w-full px-4 py-3 rounded-lg bg-white border border-green-200 focus:border-gold focus:outline-none transition text-stone-700">
                 </div>
-
                 <div>
-                    <label class="block text-sm font-bold text-stone-700 mb-2">¿Asistirás?</label>
+                    <label class="block text-sm font-bold text-emerald-dark mb-2">¿Asistirás?</label>
                     <div class="flex gap-4">
-                        <label class="flex-1 cursor-pointer">
+                        <label class="flex-1 cursor-pointer group">
                             <input type="radio" name="asistencia" value="Si" class="peer hidden" checked>
-                            <div class="text-center py-3 border-2 border-stone-200 rounded-lg peer-checked:border-pink-500 peer-checked:bg-pink-50 peer-checked:text-pink-600 transition">
-                                <i class="fa-solid fa-check mr-1"></i> Sí, asistiré
+                            <div class="text-center py-4 border-2 border-green-200 rounded-lg peer-checked:border-gold peer-checked:bg-green-50 peer-checked:text-emerald-dark transition">
+                                <div class="text-xl mb-1"><i class="fa-solid fa-check"></i></div><span class="font-bold text-sm">SÍ, asistiré</span>
                             </div>
                         </label>
-                        <label class="flex-1 cursor-pointer">
+                        <label class="flex-1 cursor-pointer group">
                             <input type="radio" name="asistencia" value="No" class="peer hidden">
-                            <div class="text-center py-3 border-2 border-stone-200 rounded-lg peer-checked:border-stone-500 peer-checked:bg-stone-100 peer-checked:text-stone-600 transition">
-                                <i class="fa-solid fa-xmark mr-1"></i> No podré
+                            <div class="text-center py-4 border-2 border-green-200 rounded-lg peer-checked:border-stone-500 peer-checked:bg-stone-100 peer-checked:text-stone-600 transition">
+                                <div class="text-xl mb-1"><i class="fa-solid fa-xmark"></i></div><span class="font-bold text-sm">NO podré</span>
                             </div>
                         </label>
                     </div>
                 </div>
-
-                <div>
-                    <label class="block text-sm font-bold text-stone-700 mb-2">Mensaje / Alergias</label>
-                    <textarea name="mensaje" rows="3" placeholder="Mensaje opcional para la quinceañera..." 
-                              class="w-full px-4 py-3 rounded-lg bg-stone-50 border border-stone-200 focus:border-pink-500 focus:outline-none transition"></textarea>
-                </div>
-
-                <button type="submit" class="w-full bg-stone-800 text-white py-4 rounded-lg font-bold text-lg hover:bg-stone-900 transition shadow-lg flex justify-center items-center gap-2">
-                    <span class="spinner" id="loadingSpinner"></span>
-                    <span id="btnText">Enviar Confirmación</span>
+                <button type="submit" class="w-full bg-emerald text-white py-4 rounded-lg font-bold text-lg hover:bg-green-900 transition shadow-lg flex justify-center items-center gap-2 transform active:scale-95 duration-200">
+                    <span class="spinner" id="loadingSpinner"></span><span id="btnText">Registrar Asistencia</span>
                 </button>
             </form>
         </div>
     </section>
 
-    <section class="py-10 bg-stone-900 text-center">
-        <p class="text-stone-400 mb-4">¿Tienes alguna duda o consulta?</p>
-        <a href="https://wa.me/591XXXXXXXX?text=Hola,%20tengo%20una%20consulta%20sobre%20los%2015%20de%20Leonela." 
-           target="_blank" 
-           class="inline-flex items-center gap-2 text-white border border-stone-600 px-6 py-2 rounded-full hover:bg-white hover:text-stone-900 transition text-sm">
-            <i class="fa-brands fa-whatsapp text-lg"></i>
-            Contactar por WhatsApp
+    <section class="py-20 px-4 bg-cream w-full border-t border-gold/30 relative overflow-hidden">
+        <div class="max-w-md mx-auto text-center relative z-10" data-aos="fade-up">
+            <h2 class="font-script text-6xl mb-6 text-emerald-dark">Playlist</h2>
+            <div class="mb-6"><i class="fa-solid fa-music text-6xl text-gold animate-bounce"></i></div>
+            <p class="text-xl text-stone-600 font-serif mb-8 px-4 leading-relaxed">
+                ¿Qué canción me recomiendas para bailar?
+            </p>
+            
+            <form name="submit-song-to-google-sheet" id="songForm" class="bg-white p-8 rounded-xl border-2 border-green-100 shadow-md relative">
+                <input type="hidden" name="tipo" value="cancion">
+
+                <i class="fa-solid fa-star absolute -top-3 -right-3 text-gold text-2xl animate-pulse"></i>
+                <div class="mb-6">
+                    <input type="text" name="cancion" required placeholder="Nombre de la canción..." 
+                           class="w-full px-4 py-3 rounded-lg bg-stone-50 border border-stone-300 focus:border-gold focus:outline-none transition text-center">
+                </div>
+                <button type="submit" class="w-full bg-emerald text-white px-10 py-4 rounded-full text-lg font-bold tracking-wider hover:bg-gold transition-all duration-300 shadow-md flex justify-center items-center gap-2">
+                    <i class="fa-solid fa-paper-plane"></i>
+                    <span id="btnSongText">SUGERIR CANCIÓN</span>
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <section class="py-10 bg-black text-center border-t-4 border-gold relative">
+        <p class="text-stone-500 mb-4 text-sm">¿Tienes alguna duda?</p>
+        <a href="https://wa.me/591XXXXXXXX?text=Hola,%20tengo%20una%20consulta%20sobre%20los%2015%20de%20Leonela." target="_blank" class="inline-flex items-center gap-2 text-white border border-stone-700 px-6 py-2 rounded-full hover:bg-white hover:text-black transition text-sm">
+            <i class="fa-brands fa-whatsapp text-lg"></i> WhatsApp
         </a>
     </section>
 
-    <footer class="py-8 text-center bg-black text-stone-500 text-xs w-full">
-        <p class="mb-2">MIS 15 AÑOS</p>
-        <p class="font-script text-xl text-stone-400">Leonela Luciana</p>
+    <footer class="py-8 text-center bg-black text-stone-600 text-xs w-full border-t border-stone-900">
+        <p class="mb-2 uppercase tracking-widest text-gold">Mis 15 Años</p>
+        <p class="font-script text-2xl text-stone-500">Leonela Luciana</p>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init({ once: true, offset: 50, duration: 1000 });
 
-        // --- CONTADOR ---
-        const fechaFiesta = new Date(2026, 1, 7, 21, 0, 0).getTime();
-        const intervalo = setInterval(function() {
-            const ahora = new Date().getTime();
-            const distancia = fechaFiesta - ahora;
-            if (distancia < 0) {
-                clearInterval(intervalo);
-                document.getElementById("dias").innerText = "0";
-                return;
+        // AUDIO
+        const audio = document.getElementById('bg-music');
+        const musicBtn = document.getElementById('music-btn');
+        const musicIcon = document.getElementById('music-icon');
+        const musicText = document.getElementById('music-text');
+        const START_TIME = 50; 
+        audio.currentTime = START_TIME; 
+
+        function fadeIn() {
+            audio.volume = 0; audio.play(); let vol = 0;
+            const interval = setInterval(() => { if (vol < 1.0) { vol += 0.1; audio.volume = Math.min(vol, 1.0); } else { clearInterval(interval); } }, 200);
+        }
+        function fadeOutAndReset() {
+            let vol = audio.volume;
+            const interval = setInterval(() => {
+                if (vol > 0.1) { vol -= 0.1; audio.volume = vol; } else {
+                    clearInterval(interval); audio.pause(); audio.currentTime = START_TIME; fadeIn();
+                }
+            }, 200);
+        }
+        audio.addEventListener('timeupdate', () => {
+            if (audio.duration > 0 && audio.currentTime > audio.duration - 2) { if (audio.volume > 0.2) fadeOutAndReset(); }
+        });
+        function toggleMusic() {
+            if (audio.paused) {
+                fadeIn(); musicIcon.classList.replace('fa-music', 'fa-pause'); musicText.innerText = "Pausar Música"; musicBtn.classList.remove('pulse-shadow');
+            } else {
+                audio.pause(); musicIcon.classList.replace('fa-pause', 'fa-music'); musicText.innerText = "Dale Play a la Magia"; musicBtn.classList.add('pulse-shadow');
             }
+        }
+
+        // FECHA
+        const fechaFiesta = new Date(2026, 1, 7, 18, 0, 0).getTime();
+        setInterval(function() {
+            const ahora = new Date().getTime(); const distancia = fechaFiesta - ahora;
+            if (distancia < 0) { document.getElementById("dias").innerText = "0"; return; }
             document.getElementById("dias").innerText = Math.floor(distancia / (1000 * 60 * 60 * 24));
             document.getElementById("horas").innerText = Math.floor((distancia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             document.getElementById("minutos").innerText = Math.floor((distancia % (1000 * 60 * 60)) / (1000 * 60));
             document.getElementById("segundos").innerText = Math.floor((distancia % (1000 * 60)) / 1000);
         }, 1000);
 
-        // --- LÓGICA DE ENVÍO FORMULARIO A GOOGLE SHEETS ---
-        
-        // 1. REEMPLAZA ESTA URL CON LA QUE COPIASTE DEL PASO 1 (GOOGLE SCRIPT)
-        const scriptURL = 'PEGAR_AQUI_TU_URL_DE_GOOGLE_APPS_SCRIPT'; 
-        
-        const form = document.forms['submit-to-google-sheet'];
+        // FORMULARIOS (GOOGLE SHEETS)
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbyE27BoQdWa2515GJ9NwhxjL9XKq6wSZ9Hfylf3CIwZPH0F5_RkRntm72U9XsvSlB6n/exec';
+
+        // 1. Asistencia
+        const formRsvp = document.getElementById('rsvpForm');
         const btnText = document.getElementById('btnText');
         const spinner = document.getElementById('loadingSpinner');
-
-        form.addEventListener('submit', e => {
-            e.preventDefault();
-            
-            // UI Loading
-            btnText.innerText = "Enviando...";
-            spinner.style.display = "block";
-            
-            fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-            .then(response => {
-                // UI Success
-                Swal.fire({
-                    title: '¡Confirmado!',
-                    text: 'Gracias por confirmar tu asistencia.',
-                    icon: 'success',
-                    confirmButtonColor: '#ec4899'
-                });
-                form.reset();
-                btnText.innerText = "Enviar Confirmación";
-                spinner.style.display = "none";
-            })
-            .catch(error => {
-                // UI Error
-                Swal.fire({
-                    title: 'Error',
-                    text: 'Hubo un problema al enviar. Intenta de nuevo.',
-                    icon: 'error',
-                    confirmButtonColor: '#333'
-                });
-                btnText.innerText = "Enviar Confirmación";
-                spinner.style.display = "none";
-                console.error('Error!', error.message);
+        if(formRsvp){
+            formRsvp.addEventListener('submit', e => {
+                e.preventDefault();
+                btnText.innerText = "Enviando..."; spinner.style.display = "inline-block";
+                fetch(scriptURL, { method: 'POST', body: new FormData(formRsvp)})
+                .then(response => { Swal.fire({ title: '¡Confirmado!', text: 'Gracias por confirmar.', icon: 'success', confirmButtonColor: '#C59D5F' }); formRsvp.reset(); btnText.innerText = "Registrar Asistencia"; spinner.style.display = "none"; })
+                .catch(error => { Swal.fire({ title: 'Error', text: 'Intenta de nuevo.', icon: 'error', confirmButtonColor: '#333' }); btnText.innerText = "Registrar Asistencia"; spinner.style.display = "none"; });
             });
-        });
+        }
 
-        // --- CHAT DEMO ---
-        function uploadPhoto() {
-            // ... (Mismo código del chat anterior) ...
-            const fileInput = document.getElementById('photo-input');
-            const nameInput = document.getElementById('name-input');
-            const chatFeed = document.getElementById('chat-feed');
-            if (fileInput.files && fileInput.files[0]) {
-                const reader = new FileReader();
-                const nombre = nameInput.value || "Invitado";
-                reader.onload = function(e) {
-                    const messageDiv = document.createElement('div');
-                    messageDiv.className = "flex items-end justify-end mb-4 opacity-0 transition-opacity duration-500";
-                    messageDiv.innerHTML = `<div class="chat-bubble bg-pink-100 p-2 rounded-br-none max-w-[80%] shadow-md"><p class="text-xs font-bold text-pink-600 mb-1 text-right">${nombre}</p><img src="${e.target.result}" class="rounded-lg w-full mb-1"><p class="text-[10px] text-stone-400 text-right">Justo ahora</p></div><div class="w-8 h-8 rounded-full bg-stone-300 flex items-center justify-center text-xs ml-2 overflow-hidden flex-shrink-0"><i class="fa-solid fa-user text-white"></i></div>`;
-                    chatFeed.appendChild(messageDiv);
-                    setTimeout(() => { messageDiv.classList.remove('opacity-0'); }, 50);
-                    chatFeed.scrollTop = chatFeed.scrollHeight;
-                    fileInput.value = ""; nameInput.value = "";
-                }
-                reader.readAsDataURL(fileInput.files[0]);
-            }
+        // 2. Canciones
+        const formSong = document.getElementById('songForm');
+        const btnSongText = document.getElementById('btnSongText');
+        if(formSong){
+            formSong.addEventListener('submit', e => {
+                e.preventDefault();
+                const originalText = btnSongText.innerText; btnSongText.innerText = "ENVIANDO...";
+                fetch(scriptURL, { method: 'POST', body: new FormData(formSong)})
+                .then(response => { Swal.fire({ title: '¡Gracias!', text: 'Sugerencia enviada.', icon: 'success', confirmButtonColor: '#C59D5F' }); formSong.reset(); btnSongText.innerText = originalText; })
+                .catch(error => { Swal.fire({ title: 'Error', text: 'Intenta de nuevo.', icon: 'error', confirmButtonColor: '#333' }); btnSongText.innerText = originalText; });
+            });
         }
     </script>
 </body>
