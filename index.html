@@ -8,12 +8,13 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cinzel:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <style>
+        /* ESTILOS BASE */
         html, body {
             overflow-x: hidden;
             width: 100%;
@@ -24,13 +25,15 @@
         .font-title { font-family: 'Cinzel', serif; }
         html { scroll-behavior: smooth; }
 
+        /* FOTO DE FONDO (Bosque/Pantano Mágico) */
         .hero-bg {
-            background-image: linear-gradient(rgba(10, 40, 20, 0.5), rgba(10, 40, 20, 0.5)), url('https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?q=80&w=1527&auto=format&fit=crop');
+            background-image: linear-gradient(rgba(10, 40, 20, 0.4), rgba(10, 40, 20, 0.4)), url('https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?q=80&w=1527&auto=format&fit=crop');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
         }
 
+        /* COLORES TEMÁTICOS */
         .text-gold { color: #C59D5F; }
         .text-emerald-dark { color: #1a472a; }
         .bg-cream { background-color: #f9f9f4; }
@@ -38,7 +41,7 @@
         .bg-gold { background-color: #C59D5F; }
         .bg-emerald { background-color: #1a472a; }
 
-        /* Efecto Luciérnagas */
+        /* ANIMACIÓN LUCIÉRNAGAS DE FONDO */
         .firefly {
             position: absolute;
             width: 6px;
@@ -57,16 +60,67 @@
             100% { transform: translate(100px, -200px); opacity: 0; }
         }
 
-        /* Animación Flor Loto */
-        .lotus-glow {
-            filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.3));
-            animation: glow-pulse 4s infinite alternate ease-in-out;
+        /* ANIMACIÓN LOUIS (COCODRILO) */
+        .jazz-sway {
+            transform-origin: bottom center;
+            animation: sway 3s infinite ease-in-out alternate;
         }
-        @keyframes glow-pulse {
-            from { filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.2)); transform: scale(1); }
-            to { filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.5)); transform: scale(1.02); }
+        @keyframes sway {
+            0% { transform: rotate(-2deg) translateY(0); }
+            100% { transform: rotate(2deg) translateY(-5px); }
         }
 
+        /* RAY (LUCIÉRNAGA GRANDE) FLOTANDO */
+        .dragonfly {
+            animation: dragonfly-float 6s infinite ease-in-out;
+        }
+        @keyframes dragonfly-float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(0, -20px) rotate(-5deg); }
+        }
+
+        /* LUZ TRASERA DE RAY */
+        .ray-tail-glow {
+            position: absolute;
+            bottom: 20%; 
+            left: 60%; /* Ajustado para coincidir con la colita de la imagen */
+            width: 30px;
+            height: 30px;
+            background-color: #ffd700;
+            border-radius: 50%;
+            filter: blur(15px);
+            box-shadow: 0 0 30px #ffeb3b, 0 0 60px #ffeb3b;
+            opacity: 0.8;
+            animation: ray-pulse 1.5s infinite alternate;
+            z-index: -1;
+        }
+        @keyframes ray-pulse {
+            0% { opacity: 0.6; transform: scale(1); }
+            100% { opacity: 1; transform: scale(1.3); }
+        }
+
+        /* EFECTO FLOR ILUMINADA */
+        .lotus-glow {
+            filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.6));
+            animation: glow-pulse 3s infinite alternate;
+        }
+        @keyframes glow-pulse {
+            from { filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.4)); transform: scale(1); }
+            to { filter: drop-shadow(0 0 25px rgba(255, 215, 0, 0.9)); transform: scale(1.05); }
+        }
+
+        /* BOTÓN DE AUDIO */
+        .pulse-shadow {
+            box-shadow: 0 0 0 0 rgba(197, 157, 95, 0.7);
+            animation: pulse-gold 2s infinite;
+        }
+        @keyframes pulse-gold {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(197, 157, 95, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(197, 157, 95, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(197, 157, 95, 0); }
+        }
+
+        /* LOADER */
         .spinner {
             display: none;
             border: 3px solid rgba(255,255,255,0.3);
@@ -77,69 +131,26 @@
             animation: spin 1s linear infinite;
         }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-        
-        .pulse-shadow {
-            box-shadow: 0 0 0 0 rgba(197, 157, 95, 0.7);
-            animation: pulse-gold 2s infinite;
-        }
-        @keyframes pulse-gold {
-            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(197, 157, 95, 0.7); }
-            70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(197, 157, 95, 0); }
-            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(197, 157, 95, 0); }
-        }
-        
-        .ray-tail-glow {
-            position: absolute; bottom: 15%; left: 50%; transform: translateX(-50%);
-            width: 20px; height: 20px; background-color: #ffd700; border-radius: 50%;
-            filter: blur(8px); box-shadow: 0 0 20px #ffeb3b, 0 0 40px #ffeb3b;
-            opacity: 0.8; animation: ray-pulse 2s infinite alternate; z-index: -1;
-        }
-        @keyframes ray-pulse {
-            0% { opacity: 0.5; transform: translateX(-50%) scale(1); }
-            100% { opacity: 1; transform: translateX(-50%) scale(1.5); }
-        }
-        .dragonfly { animation: dragonfly-float 8s infinite ease-in-out; }
-        @keyframes dragonfly-float {
-            0%, 100% { transform: translate(0, 0) rotate(0deg); }
-            50% { transform: translate(0, -40px) rotate(-5deg); }
-        }
-        .vine-decoration { transform-origin: top center; animation: vine-sway 6s infinite ease-in-out; }
-        @keyframes vine-sway { 0%, 100% { transform: rotate(0deg); } 50% { transform: rotate(2deg); } }
     </style>
 </head>
 <body class="bg-cream text-emerald-dark antialiased overflow-x-hidden">
 
-    <div class="fixed top-20 right-4 z-50 pointer-events-none dragonfly w-24 md:w-32 lg:w-40">
+    <div class="fixed top-10 right-4 z-50 pointer-events-none dragonfly w-32 md:w-40">
         <div class="relative w-full">
-            <img src="assets/raylibelula.png" alt="Ray" class="w-full h-auto drop-shadow-lg filter brightness-110">
+            <img src="assets/raylibelula.png" alt="Ray" class="w-full h-auto drop-shadow-lg brightness-110">
             <div class="ray-tail-glow"></div>
         </div>
     </div>
 
-    <div class="fixed top-0 left-0 z-30 pointer-events-none vine-decoration w-32 md:w-56 h-auto">
-        <svg viewBox="0 0 200 600" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto drop-shadow-md">
-            <path d="M 0 0 Q 30 150, 10 300 T 20 600" stroke="#2d5016" stroke-width="4" fill="none"/>
-            <path d="M 10 0 Q 50 100, 40 250" stroke="#407a52" stroke-width="3" fill="none"/>
-            <g fill="#2d5016" opacity="0.9">
-                <ellipse cx="20" cy="50" rx="15" ry="8" transform="rotate(20 20 50)"/>
-                <ellipse cx="10" cy="120" rx="18" ry="9" transform="rotate(-15 10 120)"/>
-            </g>
-            <g fill="#52b788" opacity="0.8">
-                <ellipse cx="35" cy="80" rx="12" ry="6" transform="rotate(45 35 80)"/>
-                <ellipse cx="40" cy="150" rx="10" ry="5" transform="rotate(-10 40 150)"/>
-            </g>
-        </svg>
-    </div>
-
     <audio id="bg-music">
-        <source src="assets/Esto se pondrá bueno.mp3" type="audio/mpeg">
+        <source src="assets/conosco ese cuento disney.mp3" type="audio/mpeg">
     </audio>
 
     <section class="h-screen hero-bg flex flex-col justify-center items-center text-center text-white px-4 relative w-full overflow-hidden">
         <div class="firefly" style="top: 80%; left: 20%; animation-duration: 8s;"></div>
         <div class="firefly" style="top: 60%; left: 80%; animation-duration: 12s;"></div>
         
-        <div class="absolute bottom-20 right-4 md:right-20 z-10 w-32 md:w-48 opacity-90 transform rotate-[-15deg]">
+        <div class="absolute top-10 left-[-20px] w-32 opacity-80 transform rotate-45 pointer-events-none">
              <svg class="w-full h-full lotus-glow" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
                 <defs><radialGradient id="petalGradient1"><stop offset="0%" style="stop-color:#f0e6d2;stop-opacity:1" /><stop offset="50%" style="stop-color:#e8d4b8;stop-opacity:1" /><stop offset="100%" style="stop-color:#d4b896;stop-opacity:1" /></radialGradient></defs>
                 <ellipse cx="100" cy="100" rx="80" ry="30" fill="url(#petalGradient1)" opacity="0.8" transform="rotate(0 100 100)"/>
@@ -150,34 +161,29 @@
             </svg>
         </div>
 
+        <div class="absolute bottom-[-10px] right-[-30px] md:right-0 z-20 w-56 md:w-72 pointer-events-none jazz-sway">
+            <img src="assets/cocodrilo.png" alt="Louis" class="w-full h-auto drop-shadow-2xl">
+        </div>
+
         <div data-aos="fade-down" data-aos-duration="1500" class="w-full max-w-4xl relative z-10">
-            <div class="mb-4 text-gold opacity-80"><i class="fa-solid fa-crown text-3xl"></i></div>
+            <div class="mb-4 text-gold opacity-90"><i class="fa-solid fa-crown text-4xl animate-pulse"></i></div>
             <p class="text-lg md:text-2xl mb-2 tracking-[0.2em] uppercase font-light text-green-100 font-title">Mis 15 Años</p>
             <h1 class="font-script text-6xl md:text-9xl mb-6 text-white drop-shadow-lg leading-tight py-4" style="text-shadow: 0 0 20px #C59D5F;">
                 Leonela Luciana<br><span class="text-4xl md:text-6xl text-gold">Molina Romani</span>
             </h1>
-            <div class="inline-block border-y-2 border-gold py-3 px-12 backdrop-blur-sm bg-black/20 rounded-full mt-4 relative">
+            <div class="inline-block border-y-2 border-gold py-3 px-12 backdrop-blur-sm bg-black/30 rounded-full mt-4 relative">
                 <p class="text-lg md:text-2xl font-bold">7 de Febrero, 2026</p>
             </div>
         </div>
-        <div class="absolute bottom-8 animate-bounce z-10">
+        
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce z-10">
             <i class="fa-solid fa-chevron-down text-3xl text-gold opacity-80"></i>
         </div>
     </section>
 
     <section class="py-16 px-4 bg-cream w-full overflow-hidden relative">
-        <div class="absolute top-0 left-[-20px] md:left-10 z-10 w-28 md:w-40 opacity-80">
-            <svg class="w-full h-full lotus-glow" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                <use href="#lotusDef" /> 
-                <ellipse cx="100" cy="100" rx="80" ry="30" fill="#f0e6d2" opacity="0.8" transform="rotate(0 100 100)"/>
-                <ellipse cx="100" cy="100" rx="80" ry="30" fill="#f0e6d2" opacity="0.8" transform="rotate(90 100 100)"/>
-                <circle cx="100" cy="100" r="20" fill="#ffd700" class="animate-pulse"/>
-            </svg>
-        </div>
-
-        <div class="max-w-4xl mx-auto text-center relative z-10 p-6 md:p-10" data-aos="zoom-in">
-            <div class="absolute inset-0 border border-gold/40 m-4 rounded-lg pointer-events-none"></div>
-            <h2 class="text-3xl md:text-5xl mb-12 font-script text-emerald-dark pt-4">Falta muy poco...</h2>
+        <div class="max-w-4xl mx-auto text-center relative z-10 p-6" data-aos="zoom-in">
+            <h2 class="text-3xl md:text-5xl mb-12 font-script text-emerald-dark">Falta muy poco...</h2>
             <div class="grid grid-cols-4 gap-2 md:gap-8 text-emerald-dark max-w-lg mx-auto pb-4">
                 <div class="flex flex-col items-center p-3 border border-green-200 bg-white rounded-lg shadow-sm"><span id="dias" class="text-3xl md:text-5xl font-bold text-gold">00</span><span class="text-xs md:text-sm uppercase tracking-wider mt-1">Días</span></div>
                 <div class="flex flex-col items-center p-3 border border-green-200 bg-white rounded-lg shadow-sm"><span id="horas" class="text-3xl md:text-5xl font-bold text-gold">00</span><span class="text-xs md:text-sm uppercase tracking-wider mt-1">Hs</span></div>
@@ -223,8 +229,10 @@
 
     <section class="py-24 px-4 bg-emerald w-full relative text-white overflow-hidden">
         <div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/diamond-upholstery.png')]"></div>
+        
         <div class="max-w-xl mx-auto text-center relative z-10" data-aos="fade-up">
             <h2 class="font-script text-6xl md:text-7xl text-gold mb-12 drop-shadow-md">Recepción</h2>
+            
             <div class="relative bg-black/30 backdrop-blur-md p-10 rounded-sm border border-gold/40">
                 <div class="mb-8 group relative z-10">
                     <i class="fa-regular fa-calendar text-4xl text-gold mb-4 group-hover:scale-110 transition duration-300"></i>
@@ -239,11 +247,13 @@
                 <div class="w-16 h-px bg-gold/50 mx-auto mb-8"></div>
                 <div class="mb-8 group relative z-10">
                     <i class="fa-solid fa-location-dot text-4xl text-gold mb-4 group-hover:scale-110 transition duration-300"></i>
+                    <h3 class="text-3xl font-script text-gold mb-2">Salón Killkiña</h3>
                     <p class="text-xl font-bold tracking-wide uppercase mb-1">CALLE SAN RAMÓN #66</p>
                     <p class="text-gray-300 font-serif">Paralela Demetrio Canelas</p>
                 </div>
                 <a href="https://maps.app.goo.gl/xxxxxxxxx" target="_blank" class="inline-block px-10 py-3 border border-gold text-gold font-bold uppercase tracking-[0.2em] hover:bg-gold hover:text-white transition duration-300 text-sm rounded-sm relative z-10">Ir al mapa</a>
             </div>
+
             <div class="w-full h-72 md:h-80 rounded-xl overflow-hidden shadow-2xl border-4 border-gold mt-10">
                 <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3764.343564523153!2d-65.25477779999999!3d-19.0241389!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTnCsDAxJzI2LjkiUyA2NcKwMTUnMTcuMiJX!5e0!3m2!1ses-419!2sbo!4v1700000000000!5m2!1ses-419!2sbo" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
@@ -265,15 +275,6 @@
     </section>
 
     <section class="py-20 px-4 text-center w-full bg-white relative">
-        <div class="absolute top-10 right-10 z-10 w-24 md:w-36 opacity-60">
-             <svg class="w-full h-full lotus-glow" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                <ellipse cx="100" cy="100" rx="80" ry="30" fill="#f0e6d2" opacity="0.8"/>
-                <ellipse cx="100" cy="100" rx="80" ry="30" fill="#f0e6d2" opacity="0.8" transform="rotate(45 100 100)"/>
-                <ellipse cx="100" cy="100" rx="80" ry="30" fill="#f0e6d2" opacity="0.8" transform="rotate(90 100 100)"/>
-                <ellipse cx="100" cy="100" rx="80" ry="30" fill="#f0e6d2" opacity="0.8" transform="rotate(135 100 100)"/>
-                <circle cx="100" cy="100" r="20" fill="#ffd700" class="animate-pulse"/>
-            </svg>
-        </div>
         <div class="max-w-2xl mx-auto relative z-10" data-aos="fade-up">
             <div class="flex justify-center items-center mb-6">
                 <div class="bg-cream p-6 rounded-full border border-gold shadow-md">
@@ -287,18 +288,25 @@
 
     <section class="py-20 px-4 bg-cream w-full border-t border-green-100 relative overflow-hidden">
         <div class="max-w-md mx-auto text-center relative z-10" data-aos="fade-up">
-            <h2 class="font-script text-5xl mb-10 text-gold">Regalos</h2>
+            <h2 class="font-script text-5xl mb-10 text-gold">Sugerencia de Regalos</h2>
+            
             <div class="mb-8">
                 <i class="fa-solid fa-gift text-5xl text-emerald-dark mb-4"></i>
                 <h3 class="font-script text-4xl mb-2 text-emerald-dark">Lluvia de sobres</h3>
                 <div class="flex justify-center mb-4"><i class="fa-regular fa-envelope text-4xl text-gold"></i></div>
-                <p class="text-stone-600 italic px-4">"La lluvia de sobres, es la tradición de regalar dinero en efectivo en un sobre el día del evento"</p>
+                <p class="text-stone-600 italic px-4">
+                    "La lluvia de sobres, es la tradición de regalar dinero en efectivo en un sobre el día del evento"
+                </p>
             </div>
+            
             <div class="w-16 h-px bg-gold/30 mx-auto mb-10"></div>
+            
             <div class="mb-8">
                 <h3 class="font-script text-4xl mb-4 text-emerald-dark">Transferencia</h3>
                 <div class="flex justify-center mb-4"><i class="fa-solid fa-building-columns text-4xl text-gold"></i></div>
-                <p class="text-stone-600 italic px-4 mb-6">Si así lo prefieres puedes realizar una transferencia.</p>
+                <p class="text-stone-600 italic px-4 mb-6">
+                    No es necesario estar cerca, para hacer sentir el amor y el cariño. Si así lo prefieres puedes realizar una transferencia.
+                </p>
                 <div class="bg-white p-4 rounded-xl inline-block shadow-sm border border-gold">
                     <img src="assets/qr pago.jpeg" alt="Código QR Pago" class="w-48 h-auto mx-auto rounded-lg">
                 </div>
@@ -313,8 +321,6 @@
             <p class="text-center text-stone-500 mb-8">Por favor confirma tu asistencia.</p>
             
             <form name="submit-to-google-sheet" id="rsvpForm" class="space-y-8 relative z-10">
-                <input type="hidden" name="tipo" value="asistencia">
-
                 <div>
                     <label class="block text-sm font-bold text-emerald-dark mb-2">Nombre y Apellido</label>
                     <input type="text" name="nombre" required placeholder="Tu nombre..." class="w-full px-4 py-3 rounded-lg bg-white border border-green-200 focus:border-gold focus:outline-none transition text-stone-700">
@@ -347,16 +353,16 @@
         <div class="max-w-md mx-auto text-center relative z-10" data-aos="fade-up">
             <h2 class="font-script text-6xl mb-6 text-emerald-dark">Playlist</h2>
             <div class="mb-6"><i class="fa-solid fa-music text-6xl text-gold animate-bounce"></i></div>
+            
             <p class="text-xl text-stone-600 font-serif mb-8 px-4 leading-relaxed">
-                ¿Qué canción me recomiendas para bailar?
+                ¿Qué canción no puede faltar en la fiesta?
             </p>
+            <p class="text-sm text-stone-500 mb-6">Ayúdame con la selección de canciones</p>
             
             <form name="submit-song-to-google-sheet" id="songForm" class="bg-white p-8 rounded-xl border-2 border-green-100 shadow-md relative">
-                <input type="hidden" name="tipo" value="cancion">
-
                 <i class="fa-solid fa-star absolute -top-3 -right-3 text-gold text-2xl animate-pulse"></i>
                 <div class="mb-6">
-                    <input type="text" name="cancion" required placeholder="Nombre de la canción..." 
+                    <input type="text" name="cancion" required placeholder="Nombre de la canción o link..." 
                            class="w-full px-4 py-3 rounded-lg bg-stone-50 border border-stone-300 focus:border-gold focus:outline-none transition text-center">
                 </div>
                 <button type="submit" class="w-full bg-emerald text-white px-10 py-4 rounded-full text-lg font-bold tracking-wider hover:bg-gold transition-all duration-300 shadow-md flex justify-center items-center gap-2">
@@ -383,12 +389,14 @@
     <script>
         AOS.init({ once: true, offset: 50, duration: 1000 });
 
-        // AUDIO
+        // AUDIO - Inicio desde 0
         const audio = document.getElementById('bg-music');
         const musicBtn = document.getElementById('music-btn');
         const musicIcon = document.getElementById('music-icon');
         const musicText = document.getElementById('music-text');
-        const START_TIME = 50; 
+        
+        // Cambio de inicio a 0
+        const START_TIME = 0; 
         audio.currentTime = START_TIME; 
 
         function fadeIn() {
@@ -425,7 +433,8 @@
             document.getElementById("segundos").innerText = Math.floor((distancia % (1000 * 60)) / 1000);
         }, 1000);
 
-        // FORMULARIOS (GOOGLE SHEETS)
+        // FORMULARIOS (GOOGLE SHEETS - Hoja 1)
+        // NOTA: Asegúrate de tener las columnas "Fecha", "Nombre", "Asistencia", "Cancion" en tu Hoja 1.
         const scriptURL = 'https://script.google.com/macros/s/AKfycbyE27BoQdWa2515GJ9NwhxjL9XKq6wSZ9Hfylf3CIwZPH0F5_RkRntm72U9XsvSlB6n/exec';
 
         // 1. Asistencia
@@ -442,7 +451,7 @@
             });
         }
 
-        // 2. Canciones
+        // 2. Canciones (Envia a la misma hoja buscando columna "Cancion")
         const formSong = document.getElementById('songForm');
         const btnSongText = document.getElementById('btnSongText');
         if(formSong){
