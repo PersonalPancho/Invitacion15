@@ -724,7 +724,7 @@
         <div class="relative z-10 max-w-4xl mx-auto px-4 flex flex-col items-center text-center gap-8">
             
             <div data-aos="fade-up">
-                <p class="uppercase tracking-[0.3em] text-gold text-xs mb-3 font-bold">Recuerdo de mis 15 Años</p>
+                <p class="uppercase tracking-[0.3em] text-gold text-xs mb-3 font-bold">Mis 15 Años</p>
                 <h2 class="font-script text-5xl md:text-6xl mb-2 drop-shadow-md">Leonela Luciana</h2>
                 <div class="w-24 h-1 bg-gold/50 mx-auto rounded-full mt-4"></div>
             </div>
@@ -836,34 +836,66 @@
             document.getElementById("segundos").innerText = Math.floor((distancia % (1000 * 60)) / 1000);
         }, 1000);
 
-        // FORMULARIOS (GOOGLE SHEETS - Hoja 1)
-        // NOTA: Asegúrate de tener las columnas "Fecha", "Nombre", "Asistencia", "Cancion" en tu Hoja 1.
+        /* --- ENVÍO DE FORMULARIOS A GOOGLE SHEETS --- */
         const scriptURL = 'https://script.google.com/macros/s/AKfycbyE27BoQdWa2515GJ9NwhxjL9XKq6wSZ9Hfylf3CIwZPH0F5_RkRntm72U9XsvSlB6n/exec';
 
-        // 1. Asistencia
+        // 1. FORMULARIO DE ASISTENCIA (Va a "Hoja 1" por defecto según tu script)
         const formRsvp = document.getElementById('rsvpForm');
         const btnText = document.getElementById('btnText');
         const spinner = document.getElementById('loadingSpinner');
+        
         if (formRsvp) {
             formRsvp.addEventListener('submit', e => {
                 e.preventDefault();
-                btnText.innerText = "Enviando..."; spinner.style.display = "inline-block";
-                fetch(scriptURL, { method: 'POST', body: new FormData(formRsvp) })
-                    .then(response => { Swal.fire({ title: '¡Confirmado!', text: 'Gracias por confirmar.', icon: 'success', confirmButtonColor: '#C59D5F' }); formRsvp.reset(); btnText.innerText = "Registrar Asistencia"; spinner.style.display = "none"; })
-                    .catch(error => { Swal.fire({ title: 'Error', text: 'Intenta de nuevo.', icon: 'error', confirmButtonColor: '#333' }); btnText.innerText = "Registrar Asistencia"; spinner.style.display = "none"; });
+                btnText.innerText = "Enviando..."; 
+                spinner.style.display = "inline-block";
+                
+                // Creamos los datos del formulario
+                const formData = new FormData(formRsvp);
+                // Opcional: Agregar tipo explícito aunque tu script usa else para esto
+                formData.append("tipo", "asistencia"); 
+
+                fetch(scriptURL, { method: 'POST', body: formData })
+                    .then(response => { 
+                        Swal.fire({ title: '¡Confirmado!', text: 'Gracias por confirmar.', icon: 'success', confirmButtonColor: '#C59D5F' }); 
+                        formRsvp.reset(); 
+                        btnText.innerText = "Registrar Asistencia"; 
+                        spinner.style.display = "none"; 
+                    })
+                    .catch(error => { 
+                        Swal.fire({ title: 'Error', text: 'Intenta de nuevo.', icon: 'error', confirmButtonColor: '#333' }); 
+                        btnText.innerText = "Registrar Asistencia"; 
+                        spinner.style.display = "none"; 
+                    });
             });
         }
 
-        // 2. Canciones (Envia a la misma hoja buscando columna "Cancion")
+        // 2. FORMULARIO DE CANCIONES (Va a "Canciones")
         const formSong = document.getElementById('songForm');
         const btnSongText = document.getElementById('btnSongText');
+        
         if (formSong) {
             formSong.addEventListener('submit', e => {
                 e.preventDefault();
-                const originalText = btnSongText.innerText; btnSongText.innerText = "ENVIANDO...";
-                fetch(scriptURL, { method: 'POST', body: new FormData(formSong) })
-                    .then(response => { Swal.fire({ title: '¡Gracias!', text: 'Sugerencia enviada.', icon: 'success', confirmButtonColor: '#C59D5F' }); formSong.reset(); btnSongText.innerText = originalText; })
-                    .catch(error => { Swal.fire({ title: 'Error', text: 'Intenta de nuevo.', icon: 'error', confirmButtonColor: '#333' }); btnSongText.innerText = originalText; });
+                const originalText = btnSongText.innerText; 
+                btnSongText.innerText = "ENVIANDO...";
+                
+                // AQUÍ ESTÁ LA CORRECCIÓN CLAVE:
+                const formData = new FormData(formSong);
+                // Agregamos el parámetro "tipo" con valor "cancion" para que tu Google Script
+                // entre en el bloque: if (e.parameter.tipo == "cancion")
+                formData.append("tipo", "cancion"); 
+
+                fetch(scriptURL, { method: 'POST', body: formData })
+                    .then(response => { 
+                        Swal.fire({ title: '¡Gracias!', text: 'Sugerencia enviada.', icon: 'success', confirmButtonColor: '#C59D5F' }); 
+                        formSong.reset(); 
+                        btnSongText.innerText = originalText; 
+                    })
+                    .catch(error => { 
+                        Swal.fire({ title: 'Error', text: 'Intenta de nuevo.', icon: 'error', confirmButtonColor: '#333' }); 
+                        btnSongText.innerText = originalText; 
+                    });
             });
         }
     </script>
