@@ -3,209 +3,183 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Mis 15 Años | Nombre Apellido</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>¡Cumpleaños de Matías Ezequiel! | Italian Brainrot Edition</title>
 
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'it-green': '#008C45',
+                        'it-red': '#CD212A',
+                        'it-gold': '#FBBF24',
+                        'it-dark': '#0B0F19',
+                        'it-card': '#161F30',
+                    },
+                    fontFamily: {
+                        'comic': ['"Fredoka"', 'sans-serif'],
+                        'shout': ['"Luckiest Guy"', 'cursive'],
+                        'body': ['"Outfit"', 'sans-serif'],
+                    }
+                }
+            }
+        }
     </script>
+
+    <!-- AOS Animations -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- FontAwesome 6 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
+    <!-- Google Fonts: Fredoka, Luckiest Guy, Outfit -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cinzel:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap"
-        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700;800&family=Luckiest+Guy&family=Outfit:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+
+    <!-- Canvas Confetti -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
     <style>
-        /* ESTILOS BASE */
         html,
         body {
             overflow-x: hidden;
             width: 100%;
-            position: relative;
-            font-family: 'Playfair Display', serif;
-        }
-
-        .font-script {
-            font-family: 'Great Vibes', cursive;
-        }
-
-        .font-title {
-            font-family: 'Cinzel', serif;
-        }
-
-        html {
+            background-color: #0B0F19;
+            color: #F8FAFC;
+            font-family: 'Outfit', sans-serif;
             scroll-behavior: smooth;
+            -webkit-tap-highlight-color: transparent;
         }
 
-        /* FOTO DE FONDO (Bosque/Pantano Mágico) */
+        .font-shout {
+            font-family: 'Luckiest Guy', cursive;
+            letter-spacing: 0.04em;
+        }
+
+        .font-comic {
+            font-family: 'Fredoka', sans-serif;
+        }
+
+        /* FONDO ILUSTRADO ITALIAN BRAINROT (PERSONAJES, SIN PIZZA, OPTIMIZADO PARA MÓVILES) */
         .hero-bg {
-            background-image: linear-gradient(rgba(10, 40, 20, 0.4), rgba(10, 40, 20, 0.4)), url('https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?q=80&w=1527&auto=format&fit=crop');
+            background-color: #0B0F19;
+            background-image: 
+                linear-gradient(180deg, rgba(11, 15, 25, 0.75) 0%, rgba(11, 15, 25, 0.94) 100%),
+                url('assets/italian-brainrot-characters-bg.jpg');
+            background-size: cover;
+            background-position: center top;
+        }
+
+        .splash-bg {
+            background-image: 
+                linear-gradient(180deg, rgba(11, 15, 25, 0.88) 0%, rgba(11, 15, 25, 0.98) 100%),
+                url('assets/italian-brainrot-characters-bg.jpg');
             background-size: cover;
             background-position: center;
-            background-attachment: fixed;
         }
 
-        /* COLORES TEMÁTICOS */
-        .text-gold {
-            color: #C59D5F;
+        /* TEXTO POP ART CON CONTORNO */
+        .text-pop {
+            text-shadow: 
+                2px 2px 0 #000,
+                -2px -2px 0 #000,
+                2px -2px 0 #000,
+                -2px 2px 0 #000,
+                0 4px 12px rgba(0, 0, 0, 0.8);
         }
 
-        .text-emerald-dark {
-            color: #1a472a;
+        .text-pop-green {
+            color: #10B981;
+            text-shadow: 
+                2px 2px 0 #000,
+                -2px -2px 0 #000,
+                2px -2px 0 #000,
+                -2px 2px 0 #000,
+                0 0 15px rgba(16, 185, 129, 0.5);
         }
 
-        .bg-cream {
-            background-color: #f9f9f4;
+        .text-pop-red {
+            color: #EF4444;
+            text-shadow: 
+                2px 2px 0 #000,
+                -2px -2px 0 #000,
+                2px -2px 0 #000,
+                -2px 2px 0 #000,
+                0 0 15px rgba(239, 68, 68, 0.5);
         }
 
-        .border-gold {
-            border-color: #C59D5F;
+        .text-pop-gold {
+            color: #FBBF24;
+            text-shadow: 
+                2px 2px 0 #000,
+                -2px -2px 0 #000,
+                2px -2px 0 #000,
+                -2px 2px 0 #000,
+                0 0 15px rgba(251, 191, 36, 0.5);
         }
 
-        .bg-gold {
-            background-color: #C59D5F;
+        /* SOMBRAS ESTILO CÓMIC */
+        .card-comic {
+            border: 3px solid #000000;
+            box-shadow: 5px 5px 0px #000000;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
 
-        .bg-emerald {
-            background-color: #1a472a;
+        .card-comic:active {
+            transform: scale(0.98);
         }
 
-        /* ANIMACIÓN LUCIÉRNAGAS DE FONDO */
-        .firefly {
-            position: absolute;
-            width: 6px;
-            height: 6px;
-            background-color: #ffeb3b;
-            border-radius: 50%;
-            box-shadow: 0 0 10px #ffeb3b, 0 0 20px #ffeb3b;
-            animation: fly 10s infinite linear;
-            opacity: 0;
-            z-index: 10;
+        .btn-comic {
+            border: 3px solid #000000;
+            box-shadow: 4px 4px 0px #000000;
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
         }
 
-        @keyframes fly {
+        .btn-comic:active {
+            box-shadow: 1px 1px 0px #000000;
+            transform: translate(2px, 2px);
+        }
+
+        /* ANIMACIÓN TUN TUN SAHUR */
+        .tuntun-floating {
+            animation: tuntun-bob 3.2s infinite ease-in-out;
+        }
+
+        @keyframes tuntun-bob {
             0% {
-                transform: translate(0, 0);
-                opacity: 0;
+                transform: translateY(0px) rotate(0deg);
             }
-
-            10% {
-                opacity: 1;
+            25% {
+                transform: translateY(-8px) rotate(-3deg);
             }
-
-            90% {
-                opacity: 1;
-            }
-
-            100% {
-                transform: translate(100px, -200px);
-                opacity: 0;
-            }
-        }
-
-        /* ANIMACIÓN LOUIS (COCODRILO) */
-        .jazz-sway {
-            transform-origin: bottom center;
-            animation: sway 3s infinite ease-in-out alternate;
-        }
-
-        @keyframes sway {
-            0% {
-                transform: rotate(-2deg) translateY(0);
-            }
-
-            100% {
-                transform: rotate(2deg) translateY(-5px);
-            }
-        }
-
-        /* RAY (LUCIÉRNAGA GRANDE) FLOTANDO */
-        .dragonfly {
-            animation: dragonfly-float 6s infinite ease-in-out;
-        }
-
-        @keyframes dragonfly-float {
-
-            0%,
-            100% {
-                transform: translate(0, 0) rotate(0deg);
-            }
-
             50% {
-                transform: translate(0, -20px) rotate(-5deg);
+                transform: translateY(0px) rotate(0deg);
             }
-        }
-
-        /* LUZ TRASERA DE RAY */
-        .ray-tail-glow {
-            position: absolute;
-            bottom: 20%;
-            left: 60%;
-            /* Ajustado para coincidir con la colita de la imagen */
-            width: 30px;
-            height: 30px;
-            background-color: #ffd700;
-            border-radius: 50%;
-            filter: blur(15px);
-            box-shadow: 0 0 30px #ffeb3b, 0 0 60px #ffeb3b;
-            opacity: 0.8;
-            animation: ray-pulse 1.5s infinite alternate;
-            z-index: -1;
-        }
-
-        @keyframes ray-pulse {
-            0% {
-                opacity: 0.6;
-                transform: scale(1);
+            75% {
+                transform: translateY(-6px) rotate(3deg);
             }
-
             100% {
-                opacity: 1;
-                transform: scale(1.3);
+                transform: translateY(0px) rotate(0deg);
             }
         }
 
-        /* EFECTO FLOR ILUMINADA */
-        .lotus-glow {
-            filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.6));
-            animation: glow-pulse 3s infinite alternate;
-        }
-
-        @keyframes glow-pulse {
-            from {
-                filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.4));
-                transform: scale(1);
+        /* PULSO DE AURA SIGMA */
+        @keyframes aura-pulse {
+            0%, 100% {
+                box-shadow: 0 0 15px rgba(251, 191, 36, 0.4), 0 0 30px rgba(16, 185, 129, 0.2);
             }
-
-            to {
-                filter: drop-shadow(0 0 25px rgba(255, 215, 0, 0.9));
-                transform: scale(1.05);
+            50% {
+                box-shadow: 0 0 25px rgba(251, 191, 36, 0.7), 0 0 45px rgba(239, 68, 68, 0.4);
             }
         }
 
-        /* BOTÓN DE AUDIO */
-        .pulse-shadow {
-            box-shadow: 0 0 0 0 rgba(197, 157, 95, 0.7);
-            animation: pulse-gold 2s infinite;
-        }
-
-        @keyframes pulse-gold {
-            0% {
-                transform: scale(0.95);
-                box-shadow: 0 0 0 0 rgba(197, 157, 95, 0.7);
-            }
-
-            70% {
-                transform: scale(1);
-                box-shadow: 0 0 0 10px rgba(197, 157, 95, 0);
-            }
-
-            100% {
-                transform: scale(0.95);
-                box-shadow: 0 0 0 0 rgba(197, 157, 95, 0);
-            }
+        .aura-glow {
+            animation: aura-pulse 3s infinite ease-in-out;
         }
 
         /* LOADER */
@@ -214,277 +188,468 @@
             border: 3px solid rgba(255, 255, 255, 0.3);
             border-radius: 50%;
             border-top: 3px solid white;
-            width: 20px;
-            height: 20px;
+            width: 18px;
+            height: 18px;
             animation: spin 1s linear infinite;
         }
 
         @keyframes spin {
-            0% {
-                transform: rotate(0deg);
-            }
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
 
-            100% {
-                transform: rotate(360deg);
-            }
+        /* BURBUJA DE DIÁLOGO ADAPTADA A MÓVILES */
+        .speech-bubble {
+            position: relative;
+            background: #ffffff;
+            border-radius: 12px;
+        }
+
+        .speech-bubble::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            right: 24px;
+            width: 0;
+            height: 0;
+            border-left: 8px solid transparent;
+            border-right: 8px solid transparent;
+            border-top: 8px solid #ffffff;
         }
     </style>
 </head>
 
-<body class="bg-cream text-emerald-dark antialiased overflow-x-hidden">
+<body class="bg-[#0B0F19] text-slate-100 antialiased overflow-x-hidden">
 
+    <!-- ========================================== -->
+    <!-- 1. PANTALLA DE BIENVENIDA / SPLASH SCREEN  -->
+    <!-- ========================================== -->
     <div id="welcome-screen"
-        class="fixed inset-0 z-[9999] flex flex-col justify-center items-center bg-emerald text-white text-center p-6">
+        class="fixed inset-0 z-[9999] flex flex-col justify-center items-center splash-bg text-white text-center p-5 border-b-8 border-red-600">
+        
+        <div data-aos="zoom-in" class="relative max-w-lg w-full z-10 px-2">
+            <!-- Badge Superior -->
+            <div class="inline-flex items-center gap-2 bg-emerald-500 text-black px-4 py-1.5 rounded-full font-shout text-xs sm:text-sm border-2 border-black shadow-[3px_3px_0px_#000] mb-3">
+                <i class="fa-solid fa-star text-amber-300"></i>
+                <span>EDICIÓN OFICIAL ITALIAN BRAINROT</span>
+                <i class="fa-solid fa-star text-amber-300"></i>
+            </div>
 
-        <div class="firefly" style="top: 20%; left: 15%;"></div>
-        <div class="firefly" style="top: 60%; left: 80%;"></div>
+            <!-- Personaje Tun Tun Sahur -->
+            <div class="flex justify-center my-3">
+                <img src="assets/go-removebg-preview.png" alt="Tun Tun Sahur" 
+                    class="w-32 sm:w-40 h-auto drop-shadow-[0_10px_20px_rgba(251,191,36,0.35)] tuntun-floating cursor-pointer"
+                    onclick="triggerTungSound()">
+            </div>
 
-        <div data-aos="zoom-in" class="relative max-w-xl">
-            <i class="fa-solid fa-crown text-gold text-6xl mb-6 animate-pulse"></i>
+            <!-- Diálogo sin emojis (render seguro en móviles) -->
+            <div class="bg-amber-300 text-black border-2 border-black font-shout px-4 py-1.5 rounded-lg inline-block shadow-[3px_3px_0px_#000] text-sm sm:text-base mb-3">
+                ¡TUNG TUNG TUNG SAHUR!
+            </div>
 
-            <h2 class="font-script text-6xl md:text-7xl mb-4 text-gold">
-                Nombre Nombre 2
-            </h2>
-
-            <p class="font-title tracking-[0.35em] mb-12 text-sm md:text-base">
-                BIENVENIDOS A MI CUENTO DE HADAS
+            <p class="font-comic font-bold tracking-wider text-emerald-400 text-xs sm:text-sm uppercase mb-1">
+                ¡ESTÁS INVITADO AL CUMPLEAÑOS DE!
             </p>
 
-            <button onclick="startMagic()"
-                class="bg-gold hover:bg-white text-emerald-dark font-bold py-4 px-14 rounded-full transition-all duration-500 transform hover:scale-110 shadow-[0_0_25px_rgba(197,157,95,0.8)] uppercase tracking-widest">
-                ✨ Ingresar a la Magia ✨
+            <h2 class="font-shout text-3xl sm:text-5xl text-white leading-tight mb-2 text-pop">
+                MATÍAS EZEQUIEL
+                <span class="block text-2xl sm:text-4xl text-pop-gold mt-1">CASTRO MOLINA</span>
+            </h2>
+
+            <p class="text-slate-300 font-comic text-xs sm:text-sm mb-6 max-w-xs sm:max-w-md mx-auto">
+                El evento más Sigma y con más Aura del año. ¡No te lo puedes perder!
+            </p>
+
+            <!-- Botón de Entrada (sin emojis) -->
+            <button onclick="startParty()"
+                class="w-full sm:w-auto bg-gradient-to-r from-emerald-500 via-amber-400 to-red-500 text-black font-shout py-3.5 px-8 sm:px-12 rounded-2xl text-base sm:text-lg btn-comic uppercase tracking-wider flex items-center justify-center gap-2 mx-auto shadow-lg">
+                <i class="fa-solid fa-play text-sm"></i>
+                <span>¡ENTRAR A LA FIESTA!</span>
             </button>
+            <p class="text-[11px] text-slate-400 mt-3 font-comic">Toca para abrir la invitación</p>
         </div>
     </div>
 
-    <div class="fixed top-10 right-4 z-50 pointer-events-none dragonfly w-24 md:w-32">
 
-        <div class="relative w-full">
-            <img src="assets/raylibelula.png" alt="Ray" class="w-full h-auto drop-shadow-lg brightness-110">
-            <div class="ray-tail-glow"></div>
+    <!-- ========================================== -->
+    <!-- 2. TUN TUN SAHUR FLOTANTE (OPTIMIZADO MÓVIL) -->
+    <!-- ========================================== -->
+    <div id="tuntun-companion" 
+        class="fixed bottom-4 right-3 sm:right-6 z-50 pointer-events-auto cursor-pointer select-none">
+        
+        <!-- Burbuja de diálogo sin emojis, ubicada de forma segura para no salirse de pantalla -->
+        <div id="tuntun-bubble" 
+            class="absolute -top-12 right-0 bg-white text-black font-shout text-xs px-3 py-1.5 border-2 border-black shadow-[3px_3px_0px_#000] speech-bubble opacity-95 transition duration-300 pointer-events-none whitespace-nowrap">
+            ¡TUNG TUNG TUNG!
+        </div>
+
+        <div class="relative w-20 sm:w-28 tuntun-floating transition duration-300 active:scale-95" 
+             onclick="tuntunClick()">
+            <img src="assets/go-removebg-preview.png" alt="Tun Tun Sahur" 
+                class="w-full h-auto drop-shadow-[0_8px_16px_rgba(0,0,0,0.8)]">
+            
+            <div class="absolute -bottom-1 left-1/2 -translate-x-1/2 bg-red-600 text-white font-shout text-[9px] px-2 py-0.5 rounded-full border border-black shadow-[2px_2px_0px_#000] whitespace-nowrap">
+                Sahur
+            </div>
         </div>
     </div>
 
-    <audio id="bg-music">
+
+    <!-- ========================================== -->
+    <!-- AUDIO BACKGROUND (DESACTIVADO POR DEFECTO) -->
+    <!-- ========================================== -->
+    <audio id="bg-music" preload="auto">
+        <source src="assets/Esto se pondrá bueno.mp3" type="audio/mpeg">
         <source src="assets/conosco ese cuento disney.mp3" type="audio/mpeg">
     </audio>
 
-    <section
-        class="h-screen hero-bg flex flex-col justify-center items-center text-center text-white px-4 relative w-full overflow-hidden">
-        <div class="firefly" style="top: 80%; left: 20%; animation-duration: 8s;"></div>
-        <div class="firefly" style="top: 60%; left: 80%; animation-duration: 12s;"></div>
 
-        <div class="absolute top-10 left-[-20px] w-32 opacity-80 transform rotate-45 pointer-events-none">
-            <svg class="w-full h-full lotus-glow" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                    <radialGradient id="petalGradient1">
-                        <stop offset="0%" style="stop-color:#f0e6d2;stop-opacity:1" />
-                        <stop offset="50%" style="stop-color:#e8d4b8;stop-opacity:1" />
-                        <stop offset="100%" style="stop-color:#d4b896;stop-opacity:1" />
-                    </radialGradient>
-                </defs>
-                <ellipse cx="100" cy="100" rx="80" ry="30" fill="url(#petalGradient1)" opacity="0.8"
-                    transform="rotate(0 100 100)" />
-                <ellipse cx="100" cy="100" rx="80" ry="30" fill="url(#petalGradient1)" opacity="0.8"
-                    transform="rotate(45 100 100)" />
-                <ellipse cx="100" cy="100" rx="80" ry="30" fill="url(#petalGradient1)" opacity="0.8"
-                    transform="rotate(90 100 100)" />
-                <ellipse cx="100" cy="100" rx="80" ry="30" fill="url(#petalGradient1)" opacity="0.8"
-                    transform="rotate(135 100 100)" />
-                <circle cx="100" cy="100" r="25" fill="#ffd700" class="animate-pulse" opacity="0.8" />
-            </svg>
-        </div>
+    <!-- ========================================== -->
+    <!-- 3. HERO / PORTADA PRINCIPAL (BRAINROT THEMED) -->
+    <!-- ========================================== -->
+    <section class="min-h-screen hero-bg flex flex-col justify-center items-center text-center text-white px-4 relative w-full overflow-hidden pt-12 pb-16">
+        
+        <div data-aos="zoom-in" data-aos-duration="1000" class="w-full max-w-3xl relative z-10">
+            
+            <!-- Badge Temática Brainrot con Aura -->
+            <div class="inline-flex items-center gap-2 bg-gradient-to-r from-emerald-500 via-amber-400 to-red-500 p-[2px] rounded-full mb-4 shadow-xl">
+                <div class="bg-[#0B0F19] px-4 sm:px-6 py-1.5 rounded-full flex items-center gap-2">
+                    <i class="fa-solid fa-fire text-amber-400 text-sm"></i>
+                    <span class="font-shout text-xs sm:text-base tracking-wider text-amber-300">
+                        CUMPLEAÑOS ITALIAN BRAINROT
+                    </span>
+                    <i class="fa-solid fa-bolt text-emerald-400 text-sm"></i>
+                </div>
+            </div>
 
-        <div class="absolute bottom-[-10px] right-[-30px] md:right-0 z-20 w-40 md:w-56 pointer-events-none jazz-sway">
+            <!-- Subtítulo -->
+            <p class="font-comic font-bold text-sm sm:text-xl uppercase tracking-[0.2em] text-emerald-400 mb-2">
+                ¡FESTEJAMOS EL CUMPLEAÑOS DE!
+            </p>
 
-            <img src="assets/cocodrilo.png" alt="Louis" class="w-full h-auto drop-shadow-2xl">
-        </div>
-
-        <div data-aos="fade-down" data-aos-duration="1500" class="w-full max-w-4xl relative z-10">
-            <div class="mb-4 text-gold opacity-90"><i class="fa-solid fa-crown text-4xl animate-pulse"></i></div>
-            <p class="text-lg md:text-2xl mb-2 tracking-[0.2em] uppercase font-light text-green-100 font-title">Mis 15
-                Años</p>
-            <h1 class="font-script text-6xl md:text-9xl mb-6 text-white drop-shadow-lg leading-tight py-4"
-                style="text-shadow: 0 0 20px #C59D5F;">
-                Nombre1 Nombre2 <br><span class="text-4xl md:text-6xl text-gold">Apellido1 Apellido2</span>
+            <!-- Nombre Gigante -->
+            <h1 class="font-shout text-4xl sm:text-6xl md:text-8xl text-white leading-none mb-2 text-pop break-words">
+                MATÍAS EZEQUIEL
             </h1>
-            <div
-                class="inline-block border-y-2 border-gold py-3 px-12 backdrop-blur-sm bg-black/30 rounded-full mt-4 relative">
-                <p class="text-lg md:text-2xl font-bold">1 de Enero, 2026</p>
+            <p class="font-shout text-2xl sm:text-4xl md:text-5xl text-pop-gold mb-6 tracking-wide">
+                CASTRO MOLINA
+            </p>
+
+            <!-- Datos Clave en Píldoras -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 sm:gap-4 max-w-xl mx-auto mb-6">
+                <div class="bg-[#161F30]/90 backdrop-blur-md border-2 border-emerald-500 p-3 rounded-2xl card-comic flex items-center gap-3">
+                    <i class="fa-regular fa-calendar-days text-xl text-emerald-400 shrink-0"></i>
+                    <div class="text-left">
+                        <p class="text-[9px] text-slate-400 uppercase font-comic font-bold">Fecha</p>
+                        <p class="font-shout text-sm sm:text-base text-white">15 de Noviembre</p>
+                    </div>
+                </div>
+
+                <div class="bg-[#161F30]/90 backdrop-blur-md border-2 border-amber-400 p-3 rounded-2xl card-comic flex items-center gap-3">
+                    <i class="fa-regular fa-clock text-xl text-amber-400 shrink-0"></i>
+                    <div class="text-left">
+                        <p class="text-[9px] text-slate-400 uppercase font-comic font-bold">Hora</p>
+                        <p class="font-shout text-sm sm:text-base text-white">16:00 hrs</p>
+                    </div>
+                </div>
+
+                <div class="bg-[#161F30]/90 backdrop-blur-md border-2 border-red-500 p-3 rounded-2xl card-comic flex items-center gap-3">
+                    <i class="fa-solid fa-location-dot text-xl text-red-400 shrink-0"></i>
+                    <div class="text-left">
+                        <p class="text-[9px] text-slate-400 uppercase font-comic font-bold">Lugar</p>
+                        <p class="font-shout text-sm sm:text-base text-white">Aventura Club</p>
+                    </div>
+                </div>
             </div>
+
+            <!-- Botones de Acción Rápida -->
+            <div class="flex flex-col sm:flex-row justify-center gap-3 max-w-md mx-auto">
+                <a href="#ubicacion" 
+                    class="bg-emerald-500 hover:bg-emerald-400 text-black font-shout px-5 py-3 rounded-xl btn-comic flex items-center justify-center gap-2 text-sm">
+                    <i class="fa-solid fa-map-location-dot"></i>
+                    <span>¿CÓMO LLEGAR?</span>
+                </a>
+                <a href="#confirmacion" 
+                    class="bg-amber-400 hover:bg-amber-300 text-black font-shout px-5 py-3 rounded-xl btn-comic flex items-center justify-center gap-2 text-sm">
+                    <i class="fa-solid fa-check-to-slot"></i>
+                    <span>CONFIRMAR ASISTENCIA</span>
+                </a>
+            </div>
+
         </div>
 
-        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce z-10">
-            <i class="fa-solid fa-chevron-down text-3xl text-gold opacity-80"></i>
+        <!-- Indicador de Scroll -->
+        <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 animate-bounce z-10 text-center">
+            <i class="fa-solid fa-chevron-down text-xl text-amber-400"></i>
         </div>
     </section>
 
-    <section class="py-16 px-4 bg-cream w-full overflow-hidden relative">
-        <div class="max-w-4xl mx-auto text-center relative z-10 p-6" data-aos="zoom-in">
-            <h2 class="text-3xl md:text-5xl mb-12 font-script text-emerald-dark">Falta muy poco...</h2>
-            <div class="grid grid-cols-4 gap-2 md:gap-8 text-emerald-dark max-w-lg mx-auto pb-4">
-                <div class="flex flex-col items-center p-3 border border-green-200 bg-white rounded-lg shadow-sm"><span
-                        id="dias" class="text-3xl md:text-5xl font-bold text-gold">00</span><span
-                        class="text-xs md:text-sm uppercase tracking-wider mt-1">Días</span></div>
-                <div class="flex flex-col items-center p-3 border border-green-200 bg-white rounded-lg shadow-sm"><span
-                        id="horas" class="text-3xl md:text-5xl font-bold text-gold">00</span><span
-                        class="text-xs md:text-sm uppercase tracking-wider mt-1">Hs</span></div>
-                <div class="flex flex-col items-center p-3 border border-green-200 bg-white rounded-lg shadow-sm"><span
-                        id="minutos" class="text-3xl md:text-5xl font-bold text-gold">00</span><span
-                        class="text-xs md:text-sm uppercase tracking-wider mt-1">Min</span></div>
-                <div class="flex flex-col items-center p-3 border border-green-200 bg-white rounded-lg shadow-sm"><span
-                        id="segundos" class="text-3xl md:text-5xl font-bold text-gold">00</span><span
-                        class="text-xs md:text-sm uppercase tracking-wider mt-1">Seg</span></div>
-            </div>
-        </div>
-    </section>
 
-    <div class="w-full bg-cream flex justify-center pt-4 pb-10 relative z-20">
-        <button id="music-btn" onclick="toggleMusic()"
-            class="flex items-center gap-3 bg-emerald border-2 border-gold text-white px-8 py-3 rounded-full shadow-lg hover:bg-green-800 transition duration-300 pulse-shadow">
-            <i id="music-icon" class="fa-solid fa-music text-gold text-xl"></i>
-            <span id="music-text" class="font-bold tracking-widest text-sm uppercase">Dale Play a la Magia</span>
-        </button>
-    </div>
-
-
-    <section class="pb-20 pt-10 px-4 bg-white w-full relative">
-        <div class="max-w-4xl mx-auto text-center relative z-10 p-8" data-aos="fade-up">
-
-            <div class="mb-4">
-                <i class="fa-solid fa-dove text-5xl text-gold"></i>
+    <!-- ========================================== -->
+    <!-- 4. FOTO DEL CUMPLEAÑERO (MATÍAS EZEQUIEL)  -->
+    <!-- ========================================== -->
+    <section class="py-14 px-4 bg-[#111827] border-y-4 border-black relative">
+        <div class="max-w-md mx-auto text-center relative z-10" data-aos="zoom-in">
+            
+            <div class="inline-flex items-center gap-2 bg-amber-400 text-black px-4 py-1 rounded-full font-shout text-xs border-2 border-black shadow-[2px_2px_0px_#000] mb-3">
+                <i class="fa-solid fa-crown text-black"></i>
+                <span>EL CUMPLEAÑERO SIGMA</span>
             </div>
 
-            <h2 class="font-script text-5xl md:text-6xl text-emerald-dark mb-6">
-                Con la bendición de Dios
+            <h2 class="text-3xl sm:text-4xl font-shout text-white mb-2 text-pop">
+                MATÍAS EZEQUIEL
             </h2>
-
-            <p class="italic text-emerald-dark text-lg px-6 mb-12">
-                "Porque todo lo que soy y todo lo que tengo, proviene de Su amor infinito."
+            <p class="font-comic text-slate-300 text-xs sm:text-sm mb-6">
+                ¡Listo con toda el aura para celebrar su gran fiesta junto a ti!
             </p>
 
-            <div class="mb-4">
-                <i class="fa-brands fa-pagelines text-5xl text-green-300"></i>
+            <!-- Tarjeta con la foto proporcionada -->
+            <div class="bg-[#161F30] border-4 border-black p-3 rounded-3xl card-comic max-w-xs sm:max-w-sm mx-auto overflow-hidden aura-glow">
+                <div class="rounded-2xl overflow-hidden border-2 border-amber-400 bg-slate-900 shadow-inner">
+                    <img src="assets/Gemini_Generated_Image_rmyujbrmyujbrmyu.jpg" 
+                        alt="Matías Ezequiel Castro Molina" 
+                        class="w-full h-auto object-cover object-top max-h-[460px] transform hover:scale-102 transition duration-300">
+                </div>
+                <div class="pt-3 pb-1 flex justify-between items-center px-2">
+                    <span class="font-shout text-emerald-400 text-xs sm:text-sm">AURA +10,000</span>
+                    <span class="font-shout text-amber-300 text-xs sm:text-sm">¡100% SIGMA!</span>
+                </div>
             </div>
 
-            <h3 class="font-script text-4xl md:text-5xl text-emerald-dark mb-8">
-                Mis Padres
-            </h3>
+        </div>
+    </section>
 
-            <div
-                class="space-y-4 border-l-2 border-r-2 border-gold px-4 py-8 rounded-full bg-cream/50 mb-8 mx-auto max-w-2xl">
-                <p class="text-2xl md:text-3xl text-stone-600 font-title">
-                    Nombre Apellido
+
+    <!-- ========================================== -->
+    <!-- 5. NUEVA SECCIÓN: ITALIAN BRAINROT SQUAD   -->
+    <!-- ========================================== -->
+    <section class="py-16 px-4 bg-[#0B0F19] relative">
+        <div class="max-w-4xl mx-auto relative z-10" data-aos="fade-up">
+            
+            <div class="text-center mb-8">
+                <div class="inline-flex items-center gap-2 bg-red-600 text-white px-4 py-1 rounded-full font-shout text-xs border-2 border-black shadow-[2px_2px_0px_#000] mb-2">
+                    <i class="fa-solid fa-users"></i>
+                    <span>PERSONAJES CONFIRMADOS</span>
+                </div>
+                <h2 class="font-shout text-3xl sm:text-5xl text-white mb-2 text-pop">
+                    EL SQUAD BRAINROT
+                </h2>
+                <p class="font-comic text-slate-400 text-xs sm:text-sm">
+                    Los personajes más virales de Italian Brainrot invitados a la fiesta
                 </p>
+            </div>
 
-                <div class="text-gold text-xl">
-                    <i class="fa-solid fa-heart animate-pulse"></i>
+            <!-- Grid de Personajes Famosos -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
+                
+                <!-- 1. TUNG TUNG SAHUR -->
+                <div onclick="playCharacterSound('¡TUNG TUNG TUNG SAHUR!')" 
+                    class="bg-[#161F30] border-3 border-amber-400 rounded-2xl p-4 card-comic text-center cursor-pointer hover:border-emerald-400">
+                    <div class="w-14 h-14 mx-auto mb-2 bg-amber-400/20 rounded-2xl flex items-center justify-center border-2 border-amber-400">
+                        <i class="fa-solid fa-tree text-2xl text-amber-400"></i>
+                    </div>
+                    <span class="inline-block bg-amber-400/20 text-amber-300 font-shout text-[10px] px-2 py-0.5 rounded mb-1">EL LEÑO CON BATE</span>
+                    <h3 class="font-shout text-base sm:text-lg text-white mb-1">TUN TUN SAHUR</h3>
+                    <p class="font-comic text-slate-300 text-[11px] leading-tight">
+                        Guardián del beat legendario.
+                    </p>
+                    <span class="inline-block text-[9px] font-shout text-emerald-400 mt-2">Toca aquí</span>
                 </div>
 
-                <p class="text-2xl md:text-3xl text-stone-600 font-title">
-                    Nombre Apellido
-                </p>
+                <!-- 2. CAPPUCCINO ASSASSINO -->
+                <div onclick="playCharacterSound('¡CAPPUCCINO ASSASSINO!')"
+                    class="bg-[#161F30] border-3 border-red-500 rounded-2xl p-4 card-comic text-center cursor-pointer hover:border-amber-400">
+                    <div class="w-14 h-14 mx-auto mb-2 bg-red-500/20 rounded-2xl flex items-center justify-center border-2 border-red-500">
+                        <i class="fa-solid fa-mug-hot text-2xl text-red-400"></i>
+                    </div>
+                    <span class="inline-block bg-red-500/20 text-red-300 font-shout text-[10px] px-2 py-0.5 rounded mb-1">CON CAPA Y DAGA</span>
+                    <h3 class="font-shout text-base sm:text-lg text-white mb-1">CAPPUCCINO ASSASSINO</h3>
+                    <p class="font-comic text-slate-300 text-[11px] leading-tight">
+                        El espresso más sigiloso.
+                    </p>
+                    <span class="inline-block text-[9px] font-shout text-emerald-400 mt-2">Toca aquí</span>
+                </div>
+
+                <!-- 3. TRALLALLERO TRALLALLA -->
+                <div onclick="playCharacterSound('¡TRALLALLERO TRALLALLA!')"
+                    class="bg-[#161F30] border-3 border-emerald-500 rounded-2xl p-4 card-comic text-center cursor-pointer hover:border-red-400">
+                    <div class="w-14 h-14 mx-auto mb-2 bg-emerald-500/20 rounded-2xl flex items-center justify-center border-2 border-emerald-500">
+                        <i class="fa-solid fa-water text-2xl text-emerald-400"></i>
+                    </div>
+                    <span class="inline-block bg-emerald-500/20 text-emerald-300 font-shout text-[10px] px-2 py-0.5 rounded mb-1">CANTANTE OFICIAL</span>
+                    <h3 class="font-shout text-base sm:text-lg text-white mb-1">TRALLALLERO TRALLALLÀ</h3>
+                    <p class="font-comic text-slate-300 text-[11px] leading-tight">
+                        Pone a bailar a todos los panas.
+                    </p>
+                    <span class="inline-block text-[9px] font-shout text-emerald-400 mt-2">Toca aquí</span>
+                </div>
+
+                <!-- 4. STATUA ROMANA SIGMA -->
+                <div onclick="playCharacterSound('¡AURA SIGMA +10000!')"
+                    class="bg-[#161F30] border-3 border-purple-500 rounded-2xl p-4 card-comic text-center cursor-pointer hover:border-amber-400">
+                    <div class="w-14 h-14 mx-auto mb-2 bg-purple-500/20 rounded-2xl flex items-center justify-center border-2 border-purple-500">
+                        <i class="fa-solid fa-glasses text-2xl text-purple-400"></i>
+                    </div>
+                    <span class="inline-block bg-purple-500/20 text-purple-300 font-shout text-[10px] px-2 py-0.5 rounded mb-1">+10,000 DE AURA</span>
+                    <h3 class="font-shout text-base sm:text-lg text-white mb-1">STATUA SIGMA</h3>
+                    <p class="font-comic text-slate-300 text-[11px] leading-tight">
+                        El busto romano con gafas oscuras.
+                    </p>
+                    <span class="inline-block text-[9px] font-shout text-emerald-400 mt-2">Toca aquí</span>
+                </div>
+
             </div>
 
-            <p class="mt-4 text-emerald-dark italic text-lg px-4 mb-16">
-                "Gracias por guiarme siempre por el camino correcto y enseñarme con amor cada paso de mi vida."
+        </div>
+    </section>
+
+
+    <!-- ========================================== -->
+    <!-- 6. CUENTA REGRESIVA BRAINROT               -->
+    <!-- ========================================== -->
+    <section class="py-14 px-4 bg-[#111827] border-y-4 border-black relative overflow-hidden">
+        
+        <div class="max-w-3xl mx-auto text-center relative z-10" data-aos="zoom-in">
+            
+            <div class="inline-flex items-center gap-2 bg-red-600 text-white px-4 py-1 rounded-full font-shout text-xs border-2 border-black shadow-[2px_2px_0px_#000] mb-3">
+                <i class="fa-solid fa-hourglass-half"></i>
+                <span>TIEMPO RESTANTE</span>
+            </div>
+
+            <h2 class="text-2xl sm:text-4xl font-shout text-white mb-2 text-pop">
+                LA FIESTA COMIENZA EN:
+            </h2>
+            <p class="font-comic text-slate-400 text-xs sm:text-sm mb-6">
+                15 de Noviembre del 2026 • 16:00 hrs
             </p>
 
-            <div class="w-24 h-1 bg-gold mx-auto mb-12 rounded-full opacity-50"></div>
+            <!-- Cards del Contador (Optimizado para 4 columnas móviles) -->
+            <div class="grid grid-cols-4 gap-2 sm:gap-4 max-w-lg mx-auto">
+                
+                <div class="bg-[#161F30] border-2 border-emerald-500 py-3 px-1 rounded-2xl card-comic flex flex-col items-center">
+                    <span id="dias" class="font-shout text-2xl sm:text-4xl text-pop-green leading-none">00</span>
+                    <span class="font-comic font-bold text-[10px] sm:text-xs text-slate-300 uppercase mt-1.5">Días</span>
+                </div>
 
-            <div class="mb-4">
-                <i class="fa-solid fa-wand-magic-sparkles text-4xl text-green-300"></i>
+                <div class="bg-[#161F30] border-2 border-white py-3 px-1 rounded-2xl card-comic flex flex-col items-center">
+                    <span id="horas" class="font-shout text-2xl sm:text-4xl text-white leading-none text-pop">00</span>
+                    <span class="font-comic font-bold text-[10px] sm:text-xs text-slate-300 uppercase mt-1.5">Horas</span>
+                </div>
+
+                <div class="bg-[#161F30] border-2 border-amber-400 py-3 px-1 rounded-2xl card-comic flex flex-col items-center">
+                    <span id="minutos" class="font-shout text-2xl sm:text-4xl text-pop-gold leading-none">00</span>
+                    <span class="font-comic font-bold text-[10px] sm:text-xs text-slate-300 uppercase mt-1.5">Min</span>
+                </div>
+
+                <div class="bg-[#161F30] border-2 border-red-500 py-3 px-1 rounded-2xl card-comic flex flex-col items-center">
+                    <span id="segundos" class="font-shout text-2xl sm:text-4xl text-pop-red leading-none">00</span>
+                    <span class="font-comic font-bold text-[10px] sm:text-xs text-slate-300 uppercase mt-1.5">Seg</span>
+                </div>
+
             </div>
 
-            <h3 class="font-script text-4xl md:text-5xl text-emerald-dark mb-10">
-                Mis Padrinos
-            </h3>
+            <!-- Botón de Música Manual (Opcional, desactivada por defecto) -->
+            <div class="mt-6 flex justify-center">
+                <button id="music-btn" onclick="toggleMusic()"
+                    class="inline-flex items-center gap-2 bg-[#161F30] hover:bg-slate-800 text-white border-2 border-amber-400 px-5 py-2.5 rounded-full font-comic font-bold text-xs sm:text-sm btn-comic transition duration-200">
+                    <i id="music-icon" class="fa-solid fa-play text-amber-400"></i>
+                    <span id="music-text">Música de Fiesta (Opcional)</span>
+                </button>
+            </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-4 justify-center items-start">
+        </div>
+    </section>
 
-                <!-- 15 AÑOS -->
-                <div class="flex flex-col items-center group">
-                    <div
-                        class="w-14 h-14 rounded-full bg-cream border border-gold flex items-center justify-center mb-3 shadow-md group-hover:scale-110 transition duration-300">
-                        <i class="fa-solid fa-crown text-emerald-dark text-xl"></i>
-                    </div>
 
-                    <h4
-                        class="text-gold font-bold uppercase tracking-widest text-base md:text-lg mb-4 border-b border-gold/30 pb-1">
-                        De 15 Años
-                    </h4>
-
-                    <p class="font-title text-xl text-stone-600 leading-tight">
-                        Nombre Apellido
-                    </p>
-
-                    <span class="text-gold text-2xl md:text-3xl my-2 font-script">
-                        &
-                    </span>
-
-                    <p class="font-title text-xl text-stone-600 leading-tight">
-                        Nombre Apellido
-                    </p>
-
+    <!-- ========================================== -->
+    <!-- 7. UBICACIÓN & DETALLES (AVENTURA CLUB)    -->
+    <!-- ========================================== -->
+    <section id="ubicacion" class="py-16 px-4 bg-[#0B0F19] w-full relative">
+        <div class="max-w-4xl mx-auto relative z-10" data-aos="fade-up">
+            
+            <div class="text-center mb-8">
+                <div class="inline-flex items-center gap-2 bg-emerald-500 text-black px-4 py-1 rounded-full font-shout text-xs border-2 border-black shadow-[2px_2px_0px_#000] mb-2">
+                    <i class="fa-solid fa-map-pin"></i>
+                    <span>¿DÓNDE Y CUÁNDO?</span>
                 </div>
+                <h2 class="font-shout text-3xl sm:text-5xl text-white mb-2 text-pop">
+                    UBICACIÓN
+                </h2>
+                <p class="font-comic text-slate-400 text-xs sm:text-sm">
+                    Aventura Club Península • Iquique
+                </p>
+            </div>
 
-                <!-- BAUTIZO -->
-                <div class="flex flex-col items-center group mt-4 md:mt-0">
-                    <div
-                        class="w-14 h-14 rounded-full bg-cream border border-gold flex items-center justify-center mb-3 shadow-md group-hover:scale-110 transition duration-300">
-                        <i class="fa-solid fa-hands-praying text-emerald-dark text-xl"></i>
+            <!-- Tarjeta Central de Ubicación -->
+            <div class="bg-[#161F30] border-4 border-black rounded-3xl p-5 sm:p-8 card-comic relative overflow-hidden">
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+                    
+                    <!-- Información Izquierda -->
+                    <div class="space-y-4">
+                        
+                        <!-- Salón / Local -->
+                        <div class="flex items-start gap-3">
+                            <div class="w-12 h-12 rounded-xl bg-emerald-500/20 border-2 border-emerald-500 flex items-center justify-center shrink-0 text-emerald-400 text-xl">
+                                <i class="fa-solid fa-gamepad"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-comic font-bold text-[10px] uppercase text-emerald-400 tracking-wider">Lugar</h4>
+                                <h3 class="font-shout text-xl sm:text-2xl text-white">Aventura Club Península</h3>
+                                <p class="text-slate-300 font-comic text-xs">Juegos y diversión asegurada</p>
+                            </div>
+                        </div>
+
+                        <!-- Dirección Exacta -->
+                        <div class="flex items-start gap-3">
+                            <div class="w-12 h-12 rounded-xl bg-red-500/20 border-2 border-red-500 flex items-center justify-center shrink-0 text-red-400 text-xl">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-comic font-bold text-[10px] uppercase text-red-400 tracking-wider">Dirección</h4>
+                                <p class="font-shout text-lg sm:text-xl text-white">Capitán Roberto Pérez 751</p>
+                                <p class="text-slate-300 font-comic text-xs">Iquique, Tarapacá</p>
+                            </div>
+                        </div>
+
+                        <!-- Fecha y Horario -->
+                        <div class="flex items-start gap-3">
+                            <div class="w-12 h-12 rounded-xl bg-amber-500/20 border-2 border-amber-500 flex items-center justify-center shrink-0 text-amber-400 text-xl">
+                                <i class="fa-regular fa-clock"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-comic font-bold text-[10px] uppercase text-amber-400 tracking-wider">Horario</h4>
+                                <p class="font-shout text-lg sm:text-xl text-white">16:00 hrs</p>
+                                <p class="text-slate-300 font-comic text-xs">Domingo 15 de Noviembre</p>
+                            </div>
+                        </div>
+
+                        <!-- Botón Google Maps -->
+                        <div class="pt-2">
+                            <a href="https://maps.app.goo.gl/Kq3esPzDzFJMsXPYA?g_st=aw" 
+                                target="_blank"
+                                class="inline-flex items-center justify-center gap-2 w-full bg-red-600 hover:bg-red-500 text-white font-shout py-3.5 px-4 rounded-xl text-base btn-comic">
+                                <i class="fa-solid fa-location-arrow"></i>
+                                <span>ABRIR EN GOOGLE MAPS</span>
+                            </a>
+                        </div>
+
                     </div>
 
-                    <h4
-                        class="text-gold font-bold uppercase tracking-widest text-base md:text-lg mb-4 border-b border-gold/30 pb-1">
-                        Bautizo y Recuerdos
-                    </h4>
-
-                    <p class="font-title text-xl text-stone-600 leading-tight">
-                        Nombre Apellido
-                    </p>
-                </div>
-
-                <!-- ANILLO  -->
-                <div class="flex flex-col items-center group mt-4 md:mt-0">
-                    <div
-                        class="w-14 h-14 rounded-full bg-cream border border-gold flex items-center justify-center mb-3 shadow-md group-hover:scale-110 transition duration-300">
-                        <i class="fa-solid fa-ring text-emerald-dark text-xl"></i>
+                    <!-- Mapa Embebido -->
+                    <div class="w-full h-64 sm:h-72 rounded-2xl overflow-hidden border-3 border-black shadow-inner">
+                        <iframe 
+                            src="https://maps.google.com/maps?q=Capitán+Roberto+Pérez+751,+Iquique,+Tarapacá&t=&z=16&ie=UTF8&iwloc=&output=embed"
+                            width="100%" 
+                            height="100%" 
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade"
+                            class="w-full h-full">
+                        </iframe>
                     </div>
 
-                    <h4
-                        class="text-gold font-bold uppercase tracking-widest text-base md:text-lg mb-4 border-b border-gold/30 pb-1">
-                        Anillo
-                    </h4>
-
-                    <p class="font-title text-xl text-stone-600 leading-tight">
-                        Nombre Apellido
-                    </p>
-
-                    <span class="text-gold text-2xl md:text-3xl my-2 font-script">
-                        &
-                    </span>
-
-                    <p class="font-title text-xl text-stone-600 leading-tight">
-                        Nombre Apellido
-                    </p>
-
-                </div>
-
-                <div class="flex flex-col items-center group mt-4 md:mt-0">
-                    <div
-                        class="w-14 h-14 rounded-full bg-cream border border-gold flex items-center justify-center mb-3 shadow-md group-hover:scale-110 transition duration-300">
-                        <i class="fa-solid fa-gift text-emerald-dark text-xl"></i>
-                    </div>
-
-                    <h4
-                        class="text-gold font-bold uppercase tracking-widest text-base md:text-lg mb-4 border-b border-gold/30 pb-1">
-                        Sorpresa
-                    </h4>
-
-                    <p class="font-title text-xl text-stone-600 leading-tight">
-                        Nombre Apellido
-                    </p>
                 </div>
 
             </div>
@@ -492,290 +657,216 @@
     </section>
 
 
+    <!-- ========================================== -->
+    <!-- 8. ITINERARIO (CON SNACKS Y LORE BRAINROT) -->
+    <!-- ========================================== -->
+    <section class="py-16 px-4 bg-[#111827] border-y-4 border-black relative">
+        <div class="max-w-4xl mx-auto relative z-10" data-aos="fade-up">
+            
+            <div class="text-center mb-8">
+                <div class="inline-flex items-center gap-2 bg-amber-400 text-black px-4 py-1 rounded-full font-shout text-xs border-2 border-black shadow-[2px_2px_0px_#000] mb-2">
+                    <i class="fa-solid fa-list-check"></i>
+                    <span>CRONOGRAMA</span>
+                </div>
+                <h2 class="font-shout text-3xl sm:text-5xl text-white mb-2 text-pop">
+                    ACTIVIDADES
+                </h2>
+                <p class="font-comic text-slate-400 text-xs sm:text-sm">
+                    Todo lo que haremos en el cumpleaños
+                </p>
+            </div>
 
-
-    <section class="py-20 px-4 bg-cream w-full relative overflow-hidden">
-        <div class="max-w-5xl mx-auto text-center relative z-10" data-aos="fade-up">
-            <i class="fa-solid fa-wand-magic-sparkles text-4xl text-gold mb-4"></i>
-            <h2 class="font-script text-5xl md:text-6xl mb-12 text-emerald-dark">Mis Momentos Mágicos</h2>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
-
-                <div class="order-2 md:order-1" data-aos="fade-right">
-                    <div
-                        class="p-2 bg-white shadow-2xl border-2 border-gold rounded-lg transform -rotate-2 hover:rotate-0 transition duration-500">
-                        <img src="assets/67d872458b2801e5dec6405d.jpeg" alt="Leonela 1"
-                            class="w-full h-[400px] object-cover rounded-sm shadow-inner">
+            <!-- Timeline Cards -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
+                
+                <!-- 16:00 -->
+                <div class="bg-[#161F30] border-2 border-emerald-500 rounded-2xl p-4 card-comic flex flex-col justify-between" data-aos="zoom-in" data-aos-delay="100">
+                    <div>
+                        <div class="w-10 h-10 bg-emerald-500 text-black rounded-xl flex items-center justify-center text-lg mb-3 border-2 border-black shadow-[2px_2px_0px_#000]">
+                            <i class="fa-solid fa-door-open"></i>
+                        </div>
+                        <span class="inline-block bg-emerald-500/20 text-emerald-300 font-shout text-[11px] px-2 py-0.5 rounded mb-1">16:00 HRS</span>
+                        <h3 class="font-shout text-lg text-white mb-1">LLEGADA DEL SQUAD</h3>
+                        <p class="font-comic text-slate-300 text-xs leading-relaxed">
+                            Bienvenida de todos los panas con +10,000 de aura.
+                        </p>
                     </div>
                 </div>
 
-                <!-- <div class="order-1 md:order-2" data-aos="zoom-in">
-                    <div
-                        class="p-3 bg-white shadow-2xl border-4 border-gold rounded-xl transform scale-110 z-20 relative hover:scale-115 transition duration-500">
-                        <img src="assets/leo2.jpg" alt="Leonela 2"
-                            class="w-full h-auto aspect-square object-cover rounded-md">
-                        <div class="absolute -top-6 left-1/2 -translate-x-1/2 text-gold text-4xl drop-shadow-lg">
-                            <i class="fa-solid fa-crown"></i>
+                <!-- 17:00 (SÓLO SNACKS según lo solicitado) -->
+                <div class="bg-[#161F30] border-2 border-amber-400 rounded-2xl p-4 card-comic flex flex-col justify-between" data-aos="zoom-in" data-aos-delay="200">
+                    <div>
+                        <div class="w-10 h-10 bg-amber-400 text-black rounded-xl flex items-center justify-center text-lg mb-3 border-2 border-black shadow-[2px_2px_0px_#000]">
+                            <i class="fa-solid fa-utensils"></i>
+                        </div>
+                        <span class="inline-block bg-amber-400/20 text-amber-300 font-shout text-[11px] px-2 py-0.5 rounded mb-1">17:00 HRS</span>
+                        <h3 class="font-shout text-lg text-white mb-1">HORA DE SNACKS</h3>
+                        <p class="font-comic text-slate-300 text-xs leading-relaxed">
+                            Recarga de energía con ricos snacks y bebidas.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 18:00 -->
+                <div class="bg-[#161F30] border-2 border-red-500 rounded-2xl p-4 card-comic flex flex-col justify-between" data-aos="zoom-in" data-aos-delay="300">
+                    <div>
+                        <div class="w-10 h-10 bg-red-500 text-white rounded-xl flex items-center justify-center text-lg mb-3 border-2 border-black shadow-[2px_2px_0px_#000]">
+                            <i class="fa-solid fa-gamepad"></i>
+                        </div>
+                        <span class="inline-block bg-red-500/20 text-red-300 font-shout text-[11px] px-2 py-0.5 rounded mb-1">18:00 HRS</span>
+                        <h3 class="font-shout text-lg text-white mb-1">AVENTURA EXTREMA</h3>
+                        <p class="font-comic text-slate-300 text-xs leading-relaxed">
+                            Juegos y dinámicas en Aventura Club Península.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 19:30 -->
+                <div class="bg-[#161F30] border-2 border-purple-500 rounded-2xl p-4 card-comic flex flex-col justify-between" data-aos="zoom-in" data-aos-delay="400">
+                    <div>
+                        <div class="w-10 h-10 bg-purple-500 text-white rounded-xl flex items-center justify-center text-lg mb-3 border-2 border-black shadow-[2px_2px_0px_#000]">
+                            <i class="fa-solid fa-cake-candles"></i>
+                        </div>
+                        <span class="inline-block bg-purple-500/20 text-purple-300 font-shout text-[11px] px-2 py-0.5 rounded mb-1">19:30 HRS</span>
+                        <h3 class="font-shout text-lg text-white mb-1">TORTA & TRALLALLÀ</h3>
+                        <p class="font-comic text-slate-300 text-xs leading-relaxed">
+                            Cantarle el feliz cumpleaños a Matías Ezequiel.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- ========================================== -->
+    <!-- 9. DRESS CODE (SIN SECCIÓN DE REGALOS)     -->
+    <!-- ========================================== -->
+    <section class="py-12 px-4 bg-[#0B0F19] relative">
+        <div class="max-w-md mx-auto relative z-10" data-aos="fade-up">
+            
+            <div class="bg-[#161F30] border-4 border-black rounded-3xl p-6 card-comic text-center">
+                <div class="w-14 h-14 mx-auto rounded-2xl bg-amber-400 text-black flex items-center justify-center text-2xl mb-3 border-2 border-black shadow-[3px_3px_0px_#000]">
+                    <i class="fa-solid fa-person-running"></i>
+                </div>
+                <span class="inline-block bg-amber-400/20 text-amber-300 font-shout text-xs px-3 py-0.5 rounded-full mb-2">CÓDIGO DE VESTIMENTA</span>
+                <h3 class="font-shout text-2xl text-white mb-2">CASUAL & FULL AURA</h3>
+                <p class="font-comic text-slate-300 text-xs sm:text-sm leading-relaxed mb-3">
+                    Ven con ropa y zapatillas cómodas para correr, jugar y disfrutar al máximo en el club sin perder el aura.
+                </p>
+                <div class="bg-[#0B0F19] p-2.5 rounded-xl border border-slate-700 text-xs font-comic text-emerald-400">
+                    <i class="fa-solid fa-check mr-1"></i> ¡Zapatillas listas para la aventura!
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- ========================================== -->
+    <!-- 10. CONFIRMACIÓN DE ASISTENCIA (RSVP)      -->
+    <!-- ========================================== -->
+    <section id="confirmacion" class="py-16 px-4 bg-[#111827] border-y-4 border-black relative">
+        <div class="max-w-md mx-auto relative z-10" data-aos="zoom-in">
+            
+            <div class="text-center mb-6">
+                <div class="inline-flex items-center gap-2 bg-emerald-500 text-black px-4 py-1 rounded-full font-shout text-xs border-2 border-black shadow-[2px_2px_0px_#000] mb-2">
+                    <i class="fa-solid fa-clipboard-check"></i>
+                    <span>CONFIRMACIÓN</span>
+                </div>
+                <!-- TÍTULO SIN EMOJIS (SOLO TEXTO SEGURO) -->
+                <h2 class="font-shout text-3xl sm:text-4xl text-white mb-1 text-pop">
+                    ¿NOS ACOMPAÑAS?
+                </h2>
+                <p class="font-comic text-slate-400 text-xs sm:text-sm">
+                    Por favor confirma tu asistencia antes del evento.
+                </p>
+            </div>
+
+            <!-- Formulario RSVP Conectado a Google Sheets -->
+            <div class="bg-[#161F30] border-4 border-black rounded-3xl p-5 sm:p-7 card-comic">
+                <form name="submit-to-google-sheet" id="rsvpForm" class="space-y-4">
+                    <div>
+                        <label class="block font-shout text-white text-xs sm:text-sm uppercase mb-1.5">Nombre y Apellido</label>
+                        <input type="text" name="nombre" required placeholder="Tu nombre..."
+                            class="w-full px-4 py-3 rounded-xl bg-[#0B0F19] border-2 border-slate-700 focus:border-amber-400 focus:outline-none transition font-comic text-white text-base placeholder-slate-500">
+                    </div>
+
+                    <div>
+                        <label class="block font-shout text-white text-xs sm:text-sm uppercase mb-1.5">¿Asistirás a la fiesta?</label>
+                        <div class="grid grid-cols-2 gap-3">
+                            <label class="cursor-pointer group">
+                                <input type="radio" name="asistencia" value="Si" class="peer hidden" checked>
+                                <div class="text-center py-3 px-2 border-2 border-slate-700 rounded-xl peer-checked:border-emerald-500 peer-checked:bg-emerald-500/20 peer-checked:text-emerald-300 transition card-comic">
+                                    <div class="text-lg mb-0.5 text-emerald-400"><i class="fa-solid fa-check"></i></div>
+                                    <span class="font-shout text-xs sm:text-sm">SÍ, iré</span>
+                                </div>
+                            </label>
+
+                            <label class="cursor-pointer group">
+                                <input type="radio" name="asistencia" value="No" class="peer hidden">
+                                <div class="text-center py-3 px-2 border-2 border-slate-700 rounded-xl peer-checked:border-red-500 peer-checked:bg-red-500/20 peer-checked:text-red-300 transition card-comic">
+                                    <div class="text-lg mb-0.5 text-red-400"><i class="fa-solid fa-xmark"></i></div>
+                                    <span class="font-shout text-xs sm:text-sm">No podré</span>
+                                </div>
+                            </label>
                         </div>
                     </div>
-                </div> -->
 
-                <!-- <div class="order-3 md:order-3" data-aos="fade-left">
-                    <div
-                        class="p-2 bg-white shadow-2xl border-2 border-gold rounded-lg transform rotate-2 hover:rotate-0 transition duration-500">
-                        <img src="assets/leo5.jpeg" alt="Leonela 3"
-                            class="w-full h-[400px] object-cover rounded-sm shadow-inner">
-                    </div>
-                </div> -->
-
+                    <button type="submit"
+                        class="w-full bg-emerald-500 hover:bg-emerald-400 text-black font-shout py-3.5 rounded-xl text-base btn-comic flex justify-center items-center gap-2 mt-2">
+                        <span class="spinner" id="loadingSpinner"></span>
+                        <span id="btnText">REGISTRAR ASISTENCIA</span>
+                    </button>
+                </form>
             </div>
+
         </div>
     </section>
 
-    <section class="py-24 px-4 bg-emerald w-full relative text-white overflow-hidden">
-        <div
-            class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/diamond-upholstery.png')]">
-        </div>
 
-        <div class="max-w-xl mx-auto text-center relative z-10" data-aos="fade-up">
-            <h2 class="font-script text-6xl md:text-7xl text-gold mb-12 drop-shadow-md">Recepción</h2>
-
-            <div class="relative bg-black/30 backdrop-blur-md p-10 rounded-sm border border-gold/40">
-                <div class="mb-8 group relative z-10">
-                    <i
-                        class="fa-regular fa-calendar text-4xl text-gold mb-4 group-hover:scale-110 transition duration-300"></i>
-                    <p class="text-xl font-bold tracking-widest uppercase mb-1">SÁBADO</p>
-                    <p class="text-lg text-gray-200 uppercase font-serif tracking-wide">1 DE ENERO DEL 2026</p>
-                </div>
-                <div class="w-16 h-px bg-gold/50 mx-auto mb-8"></div>
-                <div class="mb-8 group relative z-10">
-                    <i
-                        class="fa-regular fa-clock text-4xl text-gold mb-4 group-hover:scale-110 transition duration-300"></i>
-                    <p class="text-xl font-bold tracking-widest uppercase">17:30 P.M.</p>
-                </div>
-                <div class="w-16 h-px bg-gold/50 mx-auto mb-8"></div>
-                <div class="mb-8 group relative z-10">
-                    <i
-                        class="fa-solid fa-location-dot text-4xl text-gold mb-4 group-hover:scale-110 transition duration-300"></i>
-                    <h3 class="text-3xl font-script text-gold mb-2">Salón Prueba</h3>
-                    <p class="text-xl font-bold tracking-wide uppercase mb-1">CALLE Prueba #11</p>
-                    <p class="text-gray-300 font-serif">Cerca de la Plaza</p>
-                </div>
-                <a href="https://www.google.com/maps?q=-19.0479117,-65.2645802" target="_blank"
-    class="inline-block px-10 py-3 border border-gold text-gold font-bold uppercase tracking-[0.2em] hover:bg-gold hover:text-white transition duration-300 text-sm rounded-sm relative z-10">
-    Ir al mapa
-</a>
-            </div>
-
-            <div class="w-full h-72 md:h-80 rounded-xl overflow-hidden shadow-2xl border-4 border-gold mt-10">
-    <iframe
-        src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3764.343564523153!2d-65.2645802!3d-19.0479117!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTnCsDAxJzI2LjkiUyA2NcKwMTUnMTcuMiJX!5e0!3m2!1ses-419!2sbo!4v1700000000000!5m2!1ses-419!2sbo"
-        width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"></iframe>
-</div>
+    <!-- ========================================== -->
+    <!-- 11. WHATSAPP & CONTACTO                    -->
+    <!-- ========================================== -->
+    <section class="py-10 bg-[#0B0F19] text-center relative">
+        <div class="max-w-md mx-auto px-4">
+            <p class="font-comic text-slate-300 mb-3 text-xs sm:text-sm">¿Tienes alguna duda sobre la fiesta?</p>
+            <a href="https://wa.me/59163764025?text=Hola,%20tengo%20una%20consulta%20sobre%20el%20cumplea%C3%B1os%20de%20Matias%20Ezequiel."
+                target="_blank"
+                class="inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-black font-shout px-6 py-3 rounded-xl btn-comic text-sm">
+                <i class="fa-brands fa-whatsapp text-lg"></i>
+                <span>ESCRIBIR POR WHATSAPP</span>
+            </a>
         </div>
     </section>
 
-    <section class="py-20 px-4 bg-cream w-full relative overflow-hidden">
-        <div class="max-w-lg mx-auto text-center relative z-10" data-aos="fade-up">
-            <h2 class="font-script text-5xl mb-8 text-emerald-dark">Compartamos Recuerdos</h2>
-            <div class="mb-14">
-                <i class="fa-solid fa-heart text-4xl text-gold mb-4 animate-pulse"></i>
 
-                <p class="text-lg md:text-xl text-stone-600 font-serif italic px-6 leading-relaxed">
-                    He aprendido que estar con quienes yo quiero es suficiente para ser feliz.
-                    <br>
-                    Por eso deseo compartir contigo algo que solo se vive una vez.
-                </p>
-
-                <div class="w-20 h-px bg-gold/40 mx-auto mt-6 rounded-full"></div>
-            </div>
-
-            <!-- <div
-                class="bg-white border-2 border-green-100 p-8 rounded-2xl shadow-lg relative overflow-hidden group hover:border-gold transition duration-500">
-                <i class="fa-solid fa-camera text-4xl text-green-600 mb-4"></i>
-                <p class="text-xl font-serif text-stone-600 mb-2">¡Únete al grupo de la fiesta!</p>
-                <p class="text-sm text-stone-400 mb-6">Sube aquí tus fotos y videos.</p>
-                <a href="https://chat.whatsapp.com/TU_LINK_DEL_GRUPO_AQUI" target="_blank"
-                    class="inline-flex items-center gap-3 bg-emerald hover:bg-green-800 text-white px-8 py-4 rounded-full text-lg font-bold transition transform hover:scale-105 shadow-xl w-full justify-center md:w-auto">
-                    <i class="fa-brands fa-whatsapp text-2xl"></i><span>Unirme al Grupo</span>
+    <!-- ========================================== -->
+    <!-- 12. FOOTER SUTIL Y COMPACTO                -->
+    <!-- ========================================== -->
+    <footer class="py-6 bg-[#080B12] text-center border-t border-slate-800 text-xs text-slate-400 font-comic">
+        <div class="max-w-md mx-auto px-4 flex flex-col items-center gap-1">
+            <p class="text-slate-400 text-[11px] sm:text-xs">
+                Desarrollado con cariño por 
+                <a href="https://wa.me/59163764025" target="_blank" class="text-amber-400 hover:underline font-bold">
+                    Franz Molina
                 </a>
-            </div> -->
-        </div>
-    </section>
-
-    <section class="py-20 px-4 text-center w-full bg-white relative">
-        <div class="max-w-2xl mx-auto relative z-10" data-aos="fade-up">
-            <div class="flex justify-center items-center mb-6">
-                <div class="bg-cream p-6 rounded-full border border-gold shadow-md">
-                    <i class="fa-solid fa-user-tie text-6xl text-emerald-dark"></i>
-                </div>
-            </div>
-            <h3 class="text-2xl font-bold mb-3 uppercase tracking-widest text-emerald-dark">Dress Code</h3>
-            <p class="text-stone-600 font-serif italic text-2xl">Semiformal</p>
-        </div>
-    </section>
-
-    <section class="py-20 px-4 bg-cream w-full border-t border-green-100 relative overflow-hidden">
-        <div class="max-w-md mx-auto text-center relative z-10" data-aos="fade-up">
-            <h2 class="font-script text-5xl mb-10 text-gold">Sugerencia de Regalos</h2>
-
-            <div class="mb-12">
-                <i class="fa-solid fa-heart text-4xl text-gold mb-4 animate-pulse"></i>
-
-                <p class="text-lg text-stone-600 font-serif italic px-6 leading-relaxed">
-                    El regalo más importante es tu presencia y compartir conmigo este día tan especial.
-                </p>
-
-                <div class="w-20 h-px bg-gold/40 mx-auto mt-6 rounded-full"></div>
-            </div>
-
-
-            <div class="mb-8">
-                <i class="fa-solid fa-gift text-5xl text-emerald-dark mb-4"></i>
-                <h3 class="font-script text-4xl mb-2 text-emerald-dark">Lluvia de sobres</h3>
-                <div class="flex justify-center mb-4"><i class="fa-regular fa-envelope text-4xl text-gold"></i></div>
-                <p class="text-stone-600 italic px-4">
-                    "La lluvia de sobres, es la tradición de regalar dinero en efectivo en un sobre el día del evento"
-                </p>
-            </div>
-
-            <div class="w-16 h-px bg-gold/30 mx-auto mb-10"></div>
-
-            <div class="mb-8">
-                <h3 class="font-script text-4xl mb-4 text-emerald-dark">Transferencia</h3>
-                <div class="flex justify-center mb-4"><i class="fa-solid fa-building-columns text-4xl text-gold"></i>
-                </div>
-                <p class="text-stone-600 italic px-4 mb-6">
-                    No es necesario estar cerca, para hacer sentir el amor y el cariño. Si así lo prefieres puedes
-                    realizar una transferencia.
-                </p>
-                <div class="bg-white p-4 rounded-xl inline-block shadow-sm border border-gold">
-                    <img src="assets/qr pago.jpeg" alt="Código QR Pago" class="w-48 h-auto mx-auto rounded-lg">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-20 px-4 bg-white relative">
-        <div class="max-w-lg mx-auto bg-cream border-2 border-gold rounded-xl shadow-2xl p-8 md:p-12 relative z-10"
-            data-aos="zoom-in">
-            <div class="text-center mb-6"><i class="fa-solid fa-crown text-3xl text-gold"></i></div>
-            <h2 class="font-script text-5xl mb-6 text-center text-emerald-dark">Confirmación</h2>
-            <p class="text-center text-stone-500 mb-8">Por favor confirma tu asistencia.</p>
-
-            <form name="submit-to-google-sheet" id="rsvpForm" class="space-y-8 relative z-10">
-                <div>
-                    <label class="block text-sm font-bold text-emerald-dark mb-2">Nombre y Apellido</label>
-                    <input type="text" name="nombre" required placeholder="Tu nombre..."
-                        class="w-full px-4 py-3 rounded-lg bg-white border border-green-200 focus:border-gold focus:outline-none transition text-stone-700">
-                </div>
-                <div>
-                    <label class="block text-sm font-bold text-emerald-dark mb-2">¿Asistirás?</label>
-                    <div class="flex gap-4">
-                        <label class="flex-1 cursor-pointer group">
-                            <input type="radio" name="asistencia" value="Si" class="peer hidden" checked>
-                            <div
-                                class="text-center py-4 border-2 border-green-200 rounded-lg peer-checked:border-gold peer-checked:bg-green-50 peer-checked:text-emerald-dark transition">
-                                <div class="text-xl mb-1"><i class="fa-solid fa-check"></i></div><span
-                                    class="font-bold text-sm">SÍ, asistiré</span>
-                            </div>
-                        </label>
-                        <label class="flex-1 cursor-pointer group">
-                            <input type="radio" name="asistencia" value="No" class="peer hidden">
-                            <div
-                                class="text-center py-4 border-2 border-green-200 rounded-lg peer-checked:border-stone-500 peer-checked:bg-stone-100 peer-checked:text-stone-600 transition">
-                                <div class="text-xl mb-1"><i class="fa-solid fa-xmark"></i></div><span
-                                    class="font-bold text-sm">NO podré</span>
-                            </div>
-                        </label>
-                    </div>
-                </div>
-                <button type="submit"
-                    class="w-full bg-emerald text-white py-4 rounded-lg font-bold text-lg hover:bg-green-900 transition shadow-lg flex justify-center items-center gap-2 transform active:scale-95 duration-200">
-                    <span class="spinner" id="loadingSpinner"></span><span id="btnText">Registrar Asistencia</span>
-                </button>
-            </form>
-        </div>
-    </section>
-
-    <section class="py-20 px-4 bg-cream w-full border-t border-gold/30 relative overflow-hidden">
-        <div class="max-w-md mx-auto text-center relative z-10" data-aos="fade-up">
-            <h2 class="font-script text-6xl mb-6 text-emerald-dark">Playlist</h2>
-            <div class="mb-6"><i class="fa-solid fa-music text-6xl text-gold animate-bounce"></i></div>
-
-            <p class="text-xl text-stone-600 font-serif mb-8 px-4 leading-relaxed">
-                ¿Qué canción no puede faltar en la fiesta?
             </p>
-            <p class="text-sm text-stone-500 mb-6">Ayúdame con la selección de canciones</p>
-
-            <form name="submit-song-to-google-sheet" id="songForm"
-                class="bg-white p-8 rounded-xl border-2 border-green-100 shadow-md relative">
-                <i class="fa-solid fa-star absolute -top-3 -right-3 text-gold text-2xl animate-pulse"></i>
-                <div class="mb-6">
-                    <input type="text" name="cancion" required placeholder="Nombre de la canción o link..."
-                        class="w-full px-4 py-3 rounded-lg bg-stone-50 border border-stone-300 focus:border-gold focus:outline-none transition text-center">
-                </div>
-                <button type="submit"
-                    class="w-full bg-emerald text-white px-10 py-4 rounded-full text-lg font-bold tracking-wider hover:bg-gold transition-all duration-300 shadow-md flex justify-center items-center gap-2">
-                    <i class="fa-solid fa-paper-plane"></i>
-                    <span id="btnSongText">SUGERIR CANCIÓN</span>
-                </button>
-            </form>
-        </div>
-    </section>
-
-    <section class="py-10 bg-black text-center border-t-4 border-gold relative">
-        <p class="text-stone-500 mb-4 text-sm">¿Tienes alguna duda?</p>
-        <a href="https://wa.me/59163764025?text=Hola,%20tengo%20una%20consulta%20sobre%20los%2015%20de%2Nombre."
-            target="_blank"
-            class="inline-flex items-center gap-2 text-white border border-stone-700 px-6 py-2 rounded-full hover:bg-white hover:text-black transition text-sm">
-            <i class="fa-brands fa-whatsapp text-lg"></i> WhatsApp
-        </a>
-    </section>
-
-    <footer class="py-16 bg-emerald text-white border-t-4 border-gold relative overflow-hidden">
-        <div
-            class="absolute inset-0 opacity-5 bg-[url('https://www.transparenttextures.com/patterns/diamond-upholstery.png')]">
-        </div>
-
-        <div class="relative z-10 max-w-4xl mx-auto px-4 flex flex-col items-center text-center gap-8">
-
-            <div data-aos="fade-up">
-                <p class="uppercase tracking-[0.3em] text-gold text-xs mb-3 font-bold">Desarrollado por</p>
-                <h2 class="font-script text-5xl md:text-6xl mb-2 drop-shadow-md">Franz Molina</h2>
-                <div class="w-24 h-1 bg-gold/50 mx-auto rounded-full mt-4"></div>
-            </div>
-
-            <div class="flex flex-col items-center gap-4 mt-4" data-aos="fade-up" data-aos-delay="100">
-                <p class="text-sm tracking-wide font-light">
-                    Desarrollado por <span class="font-bold text-gold text-base">Franz Molina</span>
-                </p>
-
-                <div class="flex flex-wrap justify-center gap-4">
-                    <a href="https://wa.me/59163764025" target="_blank"
-                        class="flex items-center gap-2 bg-white/10 border border-white/20 px-5 py-2 rounded-full hover:bg-white hover:text-emerald-dark transition-all duration-300 group shadow-md backdrop-blur-sm">
-                        <i class="fa-brands fa-whatsapp text-lg text-green-400 group-hover:text-green-600"></i>
-                        <span class="text-xs font-bold uppercase tracking-wider">WhatsApp</span>
-                    </a>
-
-                    <a href="mailto:molinafranz943@gmail.com"
-                        class="flex items-center gap-2 bg-white/10 border border-white/20 px-5 py-2 rounded-full hover:bg-white hover:text-emerald-dark transition-all duration-300 group shadow-md backdrop-blur-sm">
-                        <i class="fa-regular fa-envelope text-lg text-gold group-hover:text-yellow-600"></i>
-                        <span class="text-xs font-bold uppercase tracking-wider">Email</span>
-                    </a>
-                </div>
-            </div>
-
-            <div class="mt-8 opacity-60 text-[10px] uppercase tracking-widest">
-                <p>© 2026 Todos los derechos reservados</p>
-            </div>
+            <p class="text-[10px] text-slate-600">
+                © 2026 • Todos los derechos reservados
+            </p>
         </div>
     </footer>
 
+
+    <!-- ========================================== -->
+    <!-- SCRIPTS                                    -->
+    <!-- ========================================== -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({ once: true, offset: 50, duration: 1000 });
+        AOS.init({ once: true, offset: 40, duration: 700 });
 
         const audio = document.getElementById('bg-music');
         const welcomeScreen = document.getElementById('welcome-screen');
@@ -788,76 +879,128 @@
         // Bloqueamos scroll al inicio
         body.style.overflow = "hidden";
 
-        function startMagic() {
-            // Ir siempre al inicio
+        // Función de Entrada a la Fiesta (SIN música automática)
+        function startParty() {
             window.scrollTo({ top: 0, behavior: 'instant' });
 
-            // Música con fade in
-            audio.volume = 0;
-            audio.play();
+            // Disparar confeti
+            confetti({
+                particleCount: 80,
+                spread: 60,
+                origin: { y: 0.6 }
+            });
 
-            let vol = 0;
-            const fade = setInterval(() => {
-                if (vol < 0.9) {
-                    vol += 0.05;
-                    audio.volume = vol;
-                } else {
-                    clearInterval(fade);
-                }
-            }, 200);
-
-            actualizarInterfaz(true);
-
-            // Salida elegante del splash
+            // Salida del Splash Screen
             welcomeScreen.style.opacity = "0";
-            welcomeScreen.style.transition = "opacity 1.2s ease";
+            welcomeScreen.style.transition = "opacity 0.6s ease";
 
             setTimeout(() => {
                 welcomeScreen.style.display = "none";
                 body.style.overflow = "auto";
                 AOS.refresh();
-            }, 1200);
+            }, 600);
         }
 
-        function actualizarInterfaz(isPlaying) {
-            if (!musicIcon || !musicText) return;
-
-            if (isPlaying) {
-                musicIcon.classList.replace('fa-music', 'fa-pause');
-                musicText.innerText = "Pausar Música";
-                musicBtn.classList.remove('pulse-shadow');
-            } else {
-                musicIcon.classList.replace('fa-pause', 'fa-music');
-                musicText.innerText = "Dale Play a la Magia";
-                musicBtn.classList.add('pulse-shadow');
-            }
-        }
-
+        // Toggle manual de la música (inicia pausada)
         function toggleMusic() {
             if (audio.paused) {
                 audio.play();
-                actualizarInterfaz(true);
+                actualizarInterfazMusica(true);
             } else {
                 audio.pause();
-                actualizarInterfaz(false);
+                actualizarInterfazMusica(false);
             }
         }
 
-        // FECHA
-        const fechaFiesta = new Date(2026, 1, 7, 18, 0, 0).getTime();
-        setInterval(function () {
-            const ahora = new Date().getTime(); const distancia = fechaFiesta - ahora;
-            if (distancia < 0) { document.getElementById("dias").innerText = "0"; return; }
-            document.getElementById("dias").innerText = Math.floor(distancia / (1000 * 60 * 60 * 24));
-            document.getElementById("horas").innerText = Math.floor((distancia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            document.getElementById("minutos").innerText = Math.floor((distancia % (1000 * 60 * 60)) / (1000 * 60));
-            document.getElementById("segundos").innerText = Math.floor((distancia % (1000 * 60)) / 1000);
-        }, 1000);
+        function actualizarInterfazMusica(isPlaying) {
+            if (!musicIcon || !musicText) return;
+            if (isPlaying) {
+                musicIcon.classList.replace('fa-play', 'fa-pause');
+                musicText.innerText = "Pausar Música";
+                musicBtn.classList.add('border-emerald-400');
+            } else {
+                musicIcon.classList.replace('fa-pause', 'fa-play');
+                musicText.innerText = "Música de Fiesta (Opcional)";
+                musicBtn.classList.remove('border-emerald-400');
+            }
+        }
 
-        /* --- ENVÍO DE FORMULARIOS A GOOGLE SHEETS --- */
+        // FRASES DE ITALIAN BRAINROT FAMOSAS (SIN EMOJIS, 100% COMPATIBLE CON MÓVILES)
+        const bubblePhrases = [
+            "¡TUNG TUNG TUNG SAHUR!",
+            "¡CAPPUCCINO ASSASSINO!",
+            "¡TRALLALLERO TRALLALLA!",
+            "¡AURA SIGMA +10000!",
+            "¡BOMBASTIC SIDE EYE!",
+            "¡MAMMA MIA CHE BELLO!",
+            "¡VIVA MATIAS EZEQUIEL!"
+        ];
+        let phraseIndex = 0;
+
+        function tuntunClick() {
+            const bubble = document.getElementById('tuntun-bubble');
+            phraseIndex = (phraseIndex + 1) % bubblePhrases.length;
+            bubble.innerText = bubblePhrases[phraseIndex];
+            
+            confetti({
+                particleCount: 25,
+                spread: 45,
+                origin: { x: 0.85, y: 0.85 }
+            });
+        }
+
+        function triggerTungSound() {
+            confetti({
+                particleCount: 30,
+                spread: 45,
+                origin: { y: 0.5 }
+            });
+        }
+
+        // Interacción al tocar personajes del Squad
+        function playCharacterSound(phrase) {
+            const bubble = document.getElementById('tuntun-bubble');
+            if (bubble) {
+                bubble.innerText = phrase;
+            }
+            confetti({
+                particleCount: 30,
+                spread: 55,
+                origin: { y: 0.7 }
+            });
+        }
+
+        // CUENTA REGRESIVA: 15 de Noviembre del 2026, 16:00:00 hrs
+        const fechaFiesta = new Date(2026, 10, 15, 16, 0, 0).getTime();
+
+        function actualizarContador() {
+            const ahora = new Date().getTime();
+            const distancia = fechaFiesta - ahora;
+
+            if (distancia < 0) {
+                document.getElementById("dias").innerText = "00";
+                document.getElementById("horas").innerText = "00";
+                document.getElementById("minutos").innerText = "00";
+                document.getElementById("segundos").innerText = "00";
+                return;
+            }
+
+            const d = Math.floor(distancia / (1000 * 60 * 60 * 24));
+            const h = Math.floor((distancia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const m = Math.floor((distancia % (1000 * 60 * 60)) / (1000 * 60));
+            const s = Math.floor((distancia % (1000 * 60)) / 1000);
+
+            document.getElementById("dias").innerText = d < 10 ? "0" + d : d;
+            document.getElementById("horas").innerText = h < 10 ? "0" + h : h;
+            document.getElementById("minutos").innerText = m < 10 ? "0" + m : m;
+            document.getElementById("segundos").innerText = s < 10 ? "0" + s : s;
+        }
+
+        setInterval(actualizarContador, 1000);
+        actualizarContador();
+
+        // --- FORMULARIO DE ASISTENCIA (GOOGLE SHEETS) ---
         const scriptURL = 'https://script.google.com/macros/s/AKfycbyE27BoQdWa2515GJ9NwhxjL9XKq6wSZ9Hfylf3CIwZPH0F5_RkRntm72U9XsvSlB6n/exec';
-
-        // 1. FORMULARIO DE ASISTENCIA (Va a "Hoja 1" por defecto según tu script)
         const formRsvp = document.getElementById('rsvpForm');
         const btnText = document.getElementById('btnText');
         const spinner = document.getElementById('loadingSpinner');
@@ -865,54 +1008,33 @@
         if (formRsvp) {
             formRsvp.addEventListener('submit', e => {
                 e.preventDefault();
-                btnText.innerText = "Enviando...";
+                btnText.innerText = "Registrando...";
                 spinner.style.display = "inline-block";
 
-                // Creamos los datos del formulario
                 const formData = new FormData(formRsvp);
-                // Opcional: Agregar tipo explícito aunque tu script usa else para esto
                 formData.append("tipo", "asistencia");
 
                 fetch(scriptURL, { method: 'POST', body: formData })
                     .then(response => {
-                        Swal.fire({ title: '¡Confirmado!', text: 'Gracias por confirmar.', icon: 'success', confirmButtonColor: '#C59D5F' });
+                        Swal.fire({ 
+                            title: '¡Confirmado!', 
+                            text: '¡Tu asistencia ha sido registrada con éxito!', 
+                            icon: 'success', 
+                            confirmButtonColor: '#10B981' 
+                        });
                         formRsvp.reset();
-                        btnText.innerText = "Registrar Asistencia";
+                        btnText.innerText = "REGISTRAR ASISTENCIA";
                         spinner.style.display = "none";
                     })
                     .catch(error => {
-                        Swal.fire({ title: 'Error', text: 'Intenta de nuevo.', icon: 'error', confirmButtonColor: '#333' });
-                        btnText.innerText = "Registrar Asistencia";
+                        Swal.fire({ 
+                            title: 'Error', 
+                            text: 'Hubo un inconveniente, intenta de nuevo.', 
+                            icon: 'error', 
+                            confirmButtonColor: '#EF4444' 
+                        });
+                        btnText.innerText = "REGISTRAR ASISTENCIA";
                         spinner.style.display = "none";
-                    });
-            });
-        }
-
-        // 2. FORMULARIO DE CANCIONES (Va a "Canciones")
-        const formSong = document.getElementById('songForm');
-        const btnSongText = document.getElementById('btnSongText');
-
-        if (formSong) {
-            formSong.addEventListener('submit', e => {
-                e.preventDefault();
-                const originalText = btnSongText.innerText;
-                btnSongText.innerText = "ENVIANDO...";
-
-                // AQUÍ ESTÁ LA CORRECCIÓN CLAVE:
-                const formData = new FormData(formSong);
-                // Agregamos el parámetro "tipo" con valor "cancion" para que tu Google Script
-                // entre en el bloque: if (e.parameter.tipo == "cancion")
-                formData.append("tipo", "cancion");
-
-                fetch(scriptURL, { method: 'POST', body: formData })
-                    .then(response => {
-                        Swal.fire({ title: '¡Gracias!', text: 'Sugerencia enviada.', icon: 'success', confirmButtonColor: '#C59D5F' });
-                        formSong.reset();
-                        btnSongText.innerText = originalText;
-                    })
-                    .catch(error => {
-                        Swal.fire({ title: 'Error', text: 'Intenta de nuevo.', icon: 'error', confirmButtonColor: '#333' });
-                        btnSongText.innerText = originalText;
                     });
             });
         }
