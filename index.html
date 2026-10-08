@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-    <title>¡Cumpleaños de Matías Ezequiel! | Italian Brainrot Edition</title>
+    <title>¡Cumpleaños de Matías Ezequiel! | Italian Brainrot</title>
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -65,22 +65,15 @@
             font-family: 'Fredoka', sans-serif;
         }
 
-        /* FONDO ILUSTRADO ITALIAN BRAINROT (PERSONAJES, SIN PIZZA, OPTIMIZADO PARA MÓVILES) */
-        .hero-bg {
+        /* FONDO POP ART DE FIESTA BRAINROT (OPTIMIZADO PARA MÓVILES) */
+        .party-bg {
             background-color: #0B0F19;
             background-image: 
-                linear-gradient(180deg, rgba(11, 15, 25, 0.75) 0%, rgba(11, 15, 25, 0.94) 100%),
-                url('assets/italian-brainrot-characters-bg.jpg');
-            background-size: cover;
-            background-position: center top;
-        }
-
-        .splash-bg {
-            background-image: 
-                linear-gradient(180deg, rgba(11, 15, 25, 0.88) 0%, rgba(11, 15, 25, 0.98) 100%),
-                url('assets/italian-brainrot-characters-bg.jpg');
-            background-size: cover;
-            background-position: center;
+                radial-gradient(circle at 15% 15%, rgba(0, 140, 69, 0.22) 0%, transparent 40%),
+                radial-gradient(circle at 85% 85%, rgba(205, 33, 42, 0.22) 0%, transparent 40%),
+                radial-gradient(circle at 50% 50%, rgba(251, 191, 36, 0.12) 0%, transparent 50%),
+                radial-gradient(#1E293B 1px, transparent 1px);
+            background-size: 100% 100%, 100% 100%, 100% 100%, 24px 24px;
         }
 
         /* TEXTO POP ART CON CONTORNO */
@@ -151,35 +144,43 @@
         }
 
         @keyframes tuntun-bob {
-            0% {
+            0%, 100% {
                 transform: translateY(0px) rotate(0deg);
             }
             25% {
                 transform: translateY(-8px) rotate(-3deg);
             }
-            50% {
-                transform: translateY(0px) rotate(0deg);
-            }
             75% {
-                transform: translateY(-6px) rotate(3deg);
-            }
-            100% {
-                transform: translateY(0px) rotate(0deg);
+                transform: translateY(-5px) rotate(3deg);
             }
         }
 
-        /* PULSO DE AURA SIGMA */
-        @keyframes aura-pulse {
-            0%, 100% {
-                box-shadow: 0 0 15px rgba(251, 191, 36, 0.4), 0 0 30px rgba(16, 185, 129, 0.2);
-            }
-            50% {
-                box-shadow: 0 0 25px rgba(251, 191, 36, 0.7), 0 0 45px rgba(239, 68, 68, 0.4);
-            }
+        /* ANIMACIONES DE PERSONAJES BRAINROT */
+        .float-shark {
+            animation: shark-wobble 4s infinite ease-in-out;
         }
 
-        .aura-glow {
-            animation: aura-pulse 3s infinite ease-in-out;
+        @keyframes shark-wobble {
+            0%, 100% { transform: translateY(0) rotate(-2deg); }
+            50% { transform: translateY(-10px) rotate(3deg); }
+        }
+
+        .float-plane {
+            animation: plane-fly 4.5s infinite ease-in-out;
+        }
+
+        @keyframes plane-fly {
+            0%, 100% { transform: translateY(0) rotate(1deg); }
+            50% { transform: translateY(-12px) rotate(-2deg); }
+        }
+
+        .float-slow {
+            animation: slow-bob 5s infinite ease-in-out;
+        }
+
+        @keyframes slow-bob {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
         }
 
         /* LOADER */
@@ -198,7 +199,7 @@
             100% { transform: rotate(360deg); }
         }
 
-        /* BURBUJA DE DIÁLOGO ADAPTADA A MÓVILES */
+        /* BURBUJA DE DIÁLOGO */
         .speech-bubble {
             position: relative;
             background: #ffffff;
@@ -219,30 +220,46 @@
     </style>
 </head>
 
-<body class="bg-[#0B0F19] text-slate-100 antialiased overflow-x-hidden">
+<body class="party-bg text-slate-100 antialiased overflow-x-hidden">
 
     <!-- ========================================== -->
     <!-- 1. PANTALLA DE BIENVENIDA / SPLASH SCREEN  -->
     <!-- ========================================== -->
     <div id="welcome-screen"
-        class="fixed inset-0 z-[9999] flex flex-col justify-center items-center splash-bg text-white text-center p-5 border-b-8 border-red-600">
+        class="fixed inset-0 z-[9999] flex flex-col justify-center items-center bg-[#0B0F19] text-white text-center p-5 border-b-8 border-red-600">
         
+        <!-- Personajes flotantes alrededor de la pantalla de bienvenida -->
+        <div class="absolute inset-0 overflow-hidden pointer-events-none opacity-30 sm:opacity-40">
+            <!-- Trallallero Shark con Nikes a la izquierda -->
+            <img src="assets/Gemini_Generated_Image_exn3jqexn3jqexn3-removebg-preview.png" alt="Trallallero" 
+                class="absolute -top-4 -left-6 w-32 sm:w-44 float-shark">
+            <!-- Cappuccino Ninja a la derecha -->
+            <img src="assets/Gemini_Generated_Image_rqw0kyrqw0kyrqw0-removebg-preview.png" alt="Cappuccino Assassino" 
+                class="absolute -top-4 -right-4 w-28 sm:w-40 float-slow">
+            <!-- Vaca Saturno abajo -->
+            <img src="assets/Gemini_Generated_Image_9bgbg19bgbg19bgb-removebg-preview.png" alt="Vaca Saturno" 
+                class="absolute -bottom-6 -left-6 w-28 sm:w-40 float-slow">
+            <!-- Elefante Cactus abajo derecha -->
+            <img src="assets/Gemini_Generated_Image_g5vagvg5vagvg5va-removebg-preview.png" alt="Elefante Cactus" 
+                class="absolute -bottom-6 -right-6 w-28 sm:w-40 float-shark">
+        </div>
+
         <div data-aos="zoom-in" class="relative max-w-lg w-full z-10 px-2">
             <!-- Badge Superior -->
             <div class="inline-flex items-center gap-2 bg-emerald-500 text-black px-4 py-1.5 rounded-full font-shout text-xs sm:text-sm border-2 border-black shadow-[3px_3px_0px_#000] mb-3">
                 <i class="fa-solid fa-star text-amber-300"></i>
-                <span>EDICIÓN OFICIAL ITALIAN BRAINROT</span>
+                <span>CUMPLEAÑOS ITALIAN BRAINROT</span>
                 <i class="fa-solid fa-star text-amber-300"></i>
             </div>
 
-            <!-- Personaje Tun Tun Sahur -->
-            <div class="flex justify-center my-3">
+            <!-- Personaje Principal: Tun Tun Sahur -->
+            <div class="flex justify-center my-3 relative">
                 <img src="assets/go-removebg-preview.png" alt="Tun Tun Sahur" 
                     class="w-32 sm:w-40 h-auto drop-shadow-[0_10px_20px_rgba(251,191,36,0.35)] tuntun-floating cursor-pointer"
                     onclick="triggerTungSound()">
             </div>
 
-            <!-- Diálogo sin emojis (render seguro en móviles) -->
+            <!-- Diálogo sin emojis -->
             <div class="bg-amber-300 text-black border-2 border-black font-shout px-4 py-1.5 rounded-lg inline-block shadow-[3px_3px_0px_#000] text-sm sm:text-base mb-3">
                 ¡TUNG TUNG TUNG SAHUR!
             </div>
@@ -257,7 +274,7 @@
             </h2>
 
             <p class="text-slate-300 font-comic text-xs sm:text-sm mb-6 max-w-xs sm:max-w-md mx-auto">
-                El evento más Sigma y con más Aura del año. ¡No te lo puedes perder!
+                ¡Ven a celebrar y disfrutar de una tarde llena de juegos, amigos y diversión!
             </p>
 
             <!-- Botón de Entrada (sin emojis) -->
@@ -277,7 +294,7 @@
     <div id="tuntun-companion" 
         class="fixed bottom-4 right-3 sm:right-6 z-50 pointer-events-auto cursor-pointer select-none">
         
-        <!-- Burbuja de diálogo sin emojis, ubicada de forma segura para no salirse de pantalla -->
+        <!-- Burbuja de diálogo sin emojis -->
         <div id="tuntun-bubble" 
             class="absolute -top-12 right-0 bg-white text-black font-shout text-xs px-3 py-1.5 border-2 border-black shadow-[3px_3px_0px_#000] speech-bubble opacity-95 transition duration-300 pointer-events-none whitespace-nowrap">
             ¡TUNG TUNG TUNG!
@@ -305,20 +322,30 @@
 
 
     <!-- ========================================== -->
-    <!-- 3. HERO / PORTADA PRINCIPAL (BRAINROT THEMED) -->
+    <!-- 3. HERO / PORTADA PRINCIPAL                -->
     <!-- ========================================== -->
-    <section class="min-h-screen hero-bg flex flex-col justify-center items-center text-center text-white px-4 relative w-full overflow-hidden pt-12 pb-16">
+    <section class="min-h-screen flex flex-col justify-center items-center text-center text-white px-4 relative w-full overflow-hidden pt-12 pb-16">
         
+        <!-- Personajes Brainrot Decorativos en el Hero -->
+        <!-- Bombardiro Crocodilo volando en la esquina superior -->
+        <div class="absolute top-4 left-2 sm:left-10 w-24 sm:w-36 pointer-events-none float-plane opacity-90 z-0">
+            <img src="assets/Gemini_Generated_Image_epu0eoepu0eoepu0-removebg-preview.png" alt="Bombardiro Crocodilo" class="w-full h-auto drop-shadow-lg">
+        </div>
+        <!-- Trallallero Shark con Nikes en la esquina derecha -->
+        <div class="absolute top-6 right-2 sm:right-8 w-24 sm:w-36 pointer-events-none float-shark opacity-90 z-0">
+            <img src="assets/Gemini_Generated_Image_exn3jqexn3jqexn3-removebg-preview.png" alt="Trallallero Shark" class="w-full h-auto drop-shadow-lg">
+        </div>
+
         <div data-aos="zoom-in" data-aos-duration="1000" class="w-full max-w-3xl relative z-10">
             
-            <!-- Badge Temática Brainrot con Aura -->
+            <!-- Badge Temática -->
             <div class="inline-flex items-center gap-2 bg-gradient-to-r from-emerald-500 via-amber-400 to-red-500 p-[2px] rounded-full mb-4 shadow-xl">
                 <div class="bg-[#0B0F19] px-4 sm:px-6 py-1.5 rounded-full flex items-center gap-2">
-                    <i class="fa-solid fa-fire text-amber-400 text-sm"></i>
+                    <i class="fa-solid fa-gamepad text-emerald-400 text-sm"></i>
                     <span class="font-shout text-xs sm:text-base tracking-wider text-amber-300">
                         CUMPLEAÑOS ITALIAN BRAINROT
                     </span>
-                    <i class="fa-solid fa-bolt text-emerald-400 text-sm"></i>
+                    <i class="fa-solid fa-bolt text-red-400 text-sm"></i>
                 </div>
             </div>
 
@@ -386,33 +413,43 @@
 
 
     <!-- ========================================== -->
-    <!-- 4. FOTO DEL CUMPLEAÑERO (MATÍAS EZEQUIEL)  -->
+    <!-- 4. FOTO DEL CUMPLEAÑERO (LIMPIO DE AURA/SIGMA) -->
     <!-- ========================================== -->
-    <section class="py-14 px-4 bg-[#111827] border-y-4 border-black relative">
+    <section class="py-14 px-4 bg-[#111827] border-y-4 border-black relative overflow-hidden">
+        
+        <!-- Personajes Brainrot acompañando la foto -->
+        <!-- Chimpancé Banana a la izquierda -->
+        <div class="absolute -bottom-2 -left-3 sm:left-8 w-24 sm:w-36 pointer-events-none float-slow z-0 opacity-85">
+            <img src="assets/Gemini_Generated_Image_656d45656d45656d-removebg-preview.png" alt="Chimpancé Banana" class="w-full h-auto drop-shadow-md">
+        </div>
+        <!-- Elefante Cactus a la derecha -->
+        <div class="absolute -bottom-2 -right-3 sm:right-8 w-24 sm:w-36 pointer-events-none float-shark z-0 opacity-85">
+            <img src="assets/Gemini_Generated_Image_g5vagvg5vagvg5va-removebg-preview.png" alt="Elefante Cactus" class="w-full h-auto drop-shadow-md">
+        </div>
+
         <div class="max-w-md mx-auto text-center relative z-10" data-aos="zoom-in">
             
             <div class="inline-flex items-center gap-2 bg-amber-400 text-black px-4 py-1 rounded-full font-shout text-xs border-2 border-black shadow-[2px_2px_0px_#000] mb-3">
-                <i class="fa-solid fa-crown text-black"></i>
-                <span>EL CUMPLEAÑERO SIGMA</span>
+                <i class="fa-solid fa-cake-candles text-black"></i>
+                <span>EL CUMPLEAÑERO</span>
             </div>
 
             <h2 class="text-3xl sm:text-4xl font-shout text-white mb-2 text-pop">
                 MATÍAS EZEQUIEL
             </h2>
             <p class="font-comic text-slate-300 text-xs sm:text-sm mb-6">
-                ¡Listo con toda el aura para celebrar su gran fiesta junto a ti!
+                ¡Listo para celebrar su gran fiesta junto a ti!
             </p>
 
             <!-- Tarjeta con la foto proporcionada -->
-            <div class="bg-[#161F30] border-4 border-black p-3 rounded-3xl card-comic max-w-xs sm:max-w-sm mx-auto overflow-hidden aura-glow">
+            <div class="bg-[#161F30] border-4 border-black p-3 rounded-3xl card-comic max-w-xs sm:max-w-sm mx-auto overflow-hidden">
                 <div class="rounded-2xl overflow-hidden border-2 border-amber-400 bg-slate-900 shadow-inner">
                     <img src="assets/Gemini_Generated_Image_rmyujbrmyujbrmyu.jpg" 
                         alt="Matías Ezequiel Castro Molina" 
                         class="w-full h-auto object-cover object-top max-h-[460px] transform hover:scale-102 transition duration-300">
                 </div>
-                <div class="pt-3 pb-1 flex justify-between items-center px-2">
-                    <span class="font-shout text-emerald-400 text-xs sm:text-sm">AURA +10,000</span>
-                    <span class="font-shout text-amber-300 text-xs sm:text-sm">¡100% SIGMA!</span>
+                <div class="pt-3 pb-1 text-center">
+                    <p class="font-shout text-amber-300 text-base sm:text-lg">¡Festejemos juntos!</p>
                 </div>
             </div>
 
@@ -421,94 +458,15 @@
 
 
     <!-- ========================================== -->
-    <!-- 5. NUEVA SECCIÓN: ITALIAN BRAINROT SQUAD   -->
+    <!-- 5. CUENTA REGRESIVA                        -->
     <!-- ========================================== -->
-    <section class="py-16 px-4 bg-[#0B0F19] relative">
-        <div class="max-w-4xl mx-auto relative z-10" data-aos="fade-up">
-            
-            <div class="text-center mb-8">
-                <div class="inline-flex items-center gap-2 bg-red-600 text-white px-4 py-1 rounded-full font-shout text-xs border-2 border-black shadow-[2px_2px_0px_#000] mb-2">
-                    <i class="fa-solid fa-users"></i>
-                    <span>PERSONAJES CONFIRMADOS</span>
-                </div>
-                <h2 class="font-shout text-3xl sm:text-5xl text-white mb-2 text-pop">
-                    EL SQUAD BRAINROT
-                </h2>
-                <p class="font-comic text-slate-400 text-xs sm:text-sm">
-                    Los personajes más virales de Italian Brainrot invitados a la fiesta
-                </p>
-            </div>
-
-            <!-- Grid de Personajes Famosos -->
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
-                
-                <!-- 1. TUNG TUNG SAHUR -->
-                <div onclick="playCharacterSound('¡TUNG TUNG TUNG SAHUR!')" 
-                    class="bg-[#161F30] border-3 border-amber-400 rounded-2xl p-4 card-comic text-center cursor-pointer hover:border-emerald-400">
-                    <div class="w-14 h-14 mx-auto mb-2 bg-amber-400/20 rounded-2xl flex items-center justify-center border-2 border-amber-400">
-                        <i class="fa-solid fa-tree text-2xl text-amber-400"></i>
-                    </div>
-                    <span class="inline-block bg-amber-400/20 text-amber-300 font-shout text-[10px] px-2 py-0.5 rounded mb-1">EL LEÑO CON BATE</span>
-                    <h3 class="font-shout text-base sm:text-lg text-white mb-1">TUN TUN SAHUR</h3>
-                    <p class="font-comic text-slate-300 text-[11px] leading-tight">
-                        Guardián del beat legendario.
-                    </p>
-                    <span class="inline-block text-[9px] font-shout text-emerald-400 mt-2">Toca aquí</span>
-                </div>
-
-                <!-- 2. CAPPUCCINO ASSASSINO -->
-                <div onclick="playCharacterSound('¡CAPPUCCINO ASSASSINO!')"
-                    class="bg-[#161F30] border-3 border-red-500 rounded-2xl p-4 card-comic text-center cursor-pointer hover:border-amber-400">
-                    <div class="w-14 h-14 mx-auto mb-2 bg-red-500/20 rounded-2xl flex items-center justify-center border-2 border-red-500">
-                        <i class="fa-solid fa-mug-hot text-2xl text-red-400"></i>
-                    </div>
-                    <span class="inline-block bg-red-500/20 text-red-300 font-shout text-[10px] px-2 py-0.5 rounded mb-1">CON CAPA Y DAGA</span>
-                    <h3 class="font-shout text-base sm:text-lg text-white mb-1">CAPPUCCINO ASSASSINO</h3>
-                    <p class="font-comic text-slate-300 text-[11px] leading-tight">
-                        El espresso más sigiloso.
-                    </p>
-                    <span class="inline-block text-[9px] font-shout text-emerald-400 mt-2">Toca aquí</span>
-                </div>
-
-                <!-- 3. TRALLALLERO TRALLALLA -->
-                <div onclick="playCharacterSound('¡TRALLALLERO TRALLALLA!')"
-                    class="bg-[#161F30] border-3 border-emerald-500 rounded-2xl p-4 card-comic text-center cursor-pointer hover:border-red-400">
-                    <div class="w-14 h-14 mx-auto mb-2 bg-emerald-500/20 rounded-2xl flex items-center justify-center border-2 border-emerald-500">
-                        <i class="fa-solid fa-water text-2xl text-emerald-400"></i>
-                    </div>
-                    <span class="inline-block bg-emerald-500/20 text-emerald-300 font-shout text-[10px] px-2 py-0.5 rounded mb-1">CANTANTE OFICIAL</span>
-                    <h3 class="font-shout text-base sm:text-lg text-white mb-1">TRALLALLERO TRALLALLÀ</h3>
-                    <p class="font-comic text-slate-300 text-[11px] leading-tight">
-                        Pone a bailar a todos los panas.
-                    </p>
-                    <span class="inline-block text-[9px] font-shout text-emerald-400 mt-2">Toca aquí</span>
-                </div>
-
-                <!-- 4. STATUA ROMANA SIGMA -->
-                <div onclick="playCharacterSound('¡AURA SIGMA +10000!')"
-                    class="bg-[#161F30] border-3 border-purple-500 rounded-2xl p-4 card-comic text-center cursor-pointer hover:border-amber-400">
-                    <div class="w-14 h-14 mx-auto mb-2 bg-purple-500/20 rounded-2xl flex items-center justify-center border-2 border-purple-500">
-                        <i class="fa-solid fa-glasses text-2xl text-purple-400"></i>
-                    </div>
-                    <span class="inline-block bg-purple-500/20 text-purple-300 font-shout text-[10px] px-2 py-0.5 rounded mb-1">+10,000 DE AURA</span>
-                    <h3 class="font-shout text-base sm:text-lg text-white mb-1">STATUA SIGMA</h3>
-                    <p class="font-comic text-slate-300 text-[11px] leading-tight">
-                        El busto romano con gafas oscuras.
-                    </p>
-                    <span class="inline-block text-[9px] font-shout text-emerald-400 mt-2">Toca aquí</span>
-                </div>
-
-            </div>
-
-        </div>
-    </section>
-
-
-    <!-- ========================================== -->
-    <!-- 6. CUENTA REGRESIVA BRAINROT               -->
-    <!-- ========================================== -->
-    <section class="py-14 px-4 bg-[#111827] border-y-4 border-black relative overflow-hidden">
+    <section class="py-14 px-4 bg-[#0B0F19] relative overflow-hidden">
         
+        <!-- Vaca Saturno decorativa en la cuenta regresiva -->
+        <div class="absolute top-4 right-3 sm:right-16 w-20 sm:w-28 pointer-events-none float-shark opacity-85 z-0">
+            <img src="assets/Gemini_Generated_Image_9bgbg19bgbg19bgb-removebg-preview.png" alt="Vaca Saturno" class="w-full h-auto drop-shadow-md">
+        </div>
+
         <div class="max-w-3xl mx-auto text-center relative z-10" data-aos="zoom-in">
             
             <div class="inline-flex items-center gap-2 bg-red-600 text-white px-4 py-1 rounded-full font-shout text-xs border-2 border-black shadow-[2px_2px_0px_#000] mb-3">
@@ -562,9 +520,15 @@
 
 
     <!-- ========================================== -->
-    <!-- 7. UBICACIÓN & DETALLES (AVENTURA CLUB)    -->
+    <!-- 6. UBICACIÓN & DETALLES (AVENTURA CLUB)    -->
     <!-- ========================================== -->
-    <section id="ubicacion" class="py-16 px-4 bg-[#0B0F19] w-full relative">
+    <section id="ubicacion" class="py-16 px-4 bg-[#111827] border-y-4 border-black w-full relative overflow-hidden">
+        
+        <!-- Montaña Narizón observando la ubicación -->
+        <div class="absolute -bottom-4 right-2 sm:right-10 w-24 sm:w-36 pointer-events-none float-slow opacity-80 z-0">
+            <img src="assets/Gemini_Generated_Image_27rwyk27rwyk27rw-removebg-preview.png" alt="Montaña Narizón" class="w-full h-auto drop-shadow-md">
+        </div>
+
         <div class="max-w-4xl mx-auto relative z-10" data-aos="fade-up">
             
             <div class="text-center mb-8">
@@ -658,10 +622,11 @@
 
 
     <!-- ========================================== -->
-    <!-- 8. ITINERARIO (CON SNACKS Y LORE BRAINROT) -->
+    <!-- 7. CRONOGRAMA (SOLO LLEGADA Y AVENTURA)    -->
     <!-- ========================================== -->
-    <section class="py-16 px-4 bg-[#111827] border-y-4 border-black relative">
-        <div class="max-w-4xl mx-auto relative z-10" data-aos="fade-up">
+    <section class="py-16 px-4 bg-[#0B0F19] relative overflow-hidden">
+        
+        <div class="max-w-3xl mx-auto relative z-10" data-aos="fade-up">
             
             <div class="text-center mb-8">
                 <div class="inline-flex items-center gap-2 bg-amber-400 text-black px-4 py-1 rounded-full font-shout text-xs border-2 border-black shadow-[2px_2px_0px_#000] mb-2">
@@ -672,65 +637,45 @@
                     ACTIVIDADES
                 </h2>
                 <p class="font-comic text-slate-400 text-xs sm:text-sm">
-                    Todo lo que haremos en el cumpleaños
+                    Lo que haremos en la fiesta
                 </p>
             </div>
 
-            <!-- Timeline Cards -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
+            <!-- Timeline Cards: SOLO 2 ITEMS (LLEGADA Y AVENTURA EXTREMA) -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl mx-auto">
                 
-                <!-- 16:00 -->
-                <div class="bg-[#161F30] border-2 border-emerald-500 rounded-2xl p-4 card-comic flex flex-col justify-between" data-aos="zoom-in" data-aos-delay="100">
-                    <div>
-                        <div class="w-10 h-10 bg-emerald-500 text-black rounded-xl flex items-center justify-center text-lg mb-3 border-2 border-black shadow-[2px_2px_0px_#000]">
+                <!-- 1. LLEGADA -->
+                <div class="bg-[#161F30] border-3 border-emerald-500 rounded-3xl p-5 card-comic flex flex-col justify-between relative overflow-hidden" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="flex items-start justify-between">
+                        <div class="w-12 h-12 bg-emerald-500 text-black rounded-2xl flex items-center justify-center text-xl mb-4 border-2 border-black shadow-[2px_2px_0px_#000]">
                             <i class="fa-solid fa-door-open"></i>
                         </div>
-                        <span class="inline-block bg-emerald-500/20 text-emerald-300 font-shout text-[11px] px-2 py-0.5 rounded mb-1">16:00 HRS</span>
-                        <h3 class="font-shout text-lg text-white mb-1">LLEGADA DEL SQUAD</h3>
-                        <p class="font-comic text-slate-300 text-xs leading-relaxed">
-                            Bienvenida de todos los panas con +10,000 de aura.
+                        <!-- Mini Trallallero shark en la tarjeta -->
+                        <img src="assets/Gemini_Generated_Image_exn3jqexn3jqexn3-removebg-preview.png" alt="Trallallero" class="w-16 h-auto drop-shadow-sm">
+                    </div>
+                    <div>
+                        <span class="inline-block bg-emerald-500/20 text-emerald-300 font-shout text-xs px-2.5 py-1 rounded-md mb-2">16:00 HRS</span>
+                        <h3 class="font-shout text-xl text-white mb-1.5">LLEGADA DE LOS AMIGOS</h3>
+                        <p class="font-comic text-slate-300 text-xs sm:text-sm leading-relaxed">
+                            Bienvenida a todos los amigos y fotos del recuerdo para dar inicio a la fiesta.
                         </p>
                     </div>
                 </div>
 
-                <!-- 17:00 (SÓLO SNACKS según lo solicitado) -->
-                <div class="bg-[#161F30] border-2 border-amber-400 rounded-2xl p-4 card-comic flex flex-col justify-between" data-aos="zoom-in" data-aos-delay="200">
-                    <div>
-                        <div class="w-10 h-10 bg-amber-400 text-black rounded-xl flex items-center justify-center text-lg mb-3 border-2 border-black shadow-[2px_2px_0px_#000]">
-                            <i class="fa-solid fa-utensils"></i>
-                        </div>
-                        <span class="inline-block bg-amber-400/20 text-amber-300 font-shout text-[11px] px-2 py-0.5 rounded mb-1">17:00 HRS</span>
-                        <h3 class="font-shout text-lg text-white mb-1">HORA DE SNACKS</h3>
-                        <p class="font-comic text-slate-300 text-xs leading-relaxed">
-                            Recarga de energía con ricos snacks y bebidas.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- 18:00 -->
-                <div class="bg-[#161F30] border-2 border-red-500 rounded-2xl p-4 card-comic flex flex-col justify-between" data-aos="zoom-in" data-aos-delay="300">
-                    <div>
-                        <div class="w-10 h-10 bg-red-500 text-white rounded-xl flex items-center justify-center text-lg mb-3 border-2 border-black shadow-[2px_2px_0px_#000]">
+                <!-- 2. AVENTURA EXTREMA -->
+                <div class="bg-[#161F30] border-3 border-red-500 rounded-3xl p-5 card-comic flex flex-col justify-between relative overflow-hidden" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="flex items-start justify-between">
+                        <div class="w-12 h-12 bg-red-500 text-white rounded-2xl flex items-center justify-center text-xl mb-4 border-2 border-black shadow-[2px_2px_0px_#000]">
                             <i class="fa-solid fa-gamepad"></i>
                         </div>
-                        <span class="inline-block bg-red-500/20 text-red-300 font-shout text-[11px] px-2 py-0.5 rounded mb-1">18:00 HRS</span>
-                        <h3 class="font-shout text-lg text-white mb-1">AVENTURA EXTREMA</h3>
-                        <p class="font-comic text-slate-300 text-xs leading-relaxed">
-                            Juegos y dinámicas en Aventura Club Península.
-                        </p>
+                        <!-- Mini Bombardiro Crocodilo en la tarjeta -->
+                        <img src="assets/Gemini_Generated_Image_epu0eoepu0eoepu0-removebg-preview.png" alt="Bombardiro Crocodilo" class="w-16 h-auto drop-shadow-sm">
                     </div>
-                </div>
-
-                <!-- 19:30 -->
-                <div class="bg-[#161F30] border-2 border-purple-500 rounded-2xl p-4 card-comic flex flex-col justify-between" data-aos="zoom-in" data-aos-delay="400">
                     <div>
-                        <div class="w-10 h-10 bg-purple-500 text-white rounded-xl flex items-center justify-center text-lg mb-3 border-2 border-black shadow-[2px_2px_0px_#000]">
-                            <i class="fa-solid fa-cake-candles"></i>
-                        </div>
-                        <span class="inline-block bg-purple-500/20 text-purple-300 font-shout text-[11px] px-2 py-0.5 rounded mb-1">19:30 HRS</span>
-                        <h3 class="font-shout text-lg text-white mb-1">TORTA & TRALLALLÀ</h3>
-                        <p class="font-comic text-slate-300 text-xs leading-relaxed">
-                            Cantarle el feliz cumpleaños a Matías Ezequiel.
+                        <span class="inline-block bg-red-500/20 text-red-300 font-shout text-xs px-2.5 py-1 rounded-md mb-2">DURANTE LA TARDE</span>
+                        <h3 class="font-shout text-xl text-white mb-1.5">AVENTURA EXTREMA</h3>
+                        <p class="font-comic text-slate-300 text-xs sm:text-sm leading-relaxed">
+                            Juegos, dinámicas y diversión sin fin en todas las atracciones de Aventura Club Península.
                         </p>
                     </div>
                 </div>
@@ -742,9 +687,15 @@
 
 
     <!-- ========================================== -->
-    <!-- 9. DRESS CODE (SIN SECCIÓN DE REGALOS)     -->
+    <!-- 8. DRESS CODE                              -->
     <!-- ========================================== -->
-    <section class="py-12 px-4 bg-[#0B0F19] relative">
+    <section class="py-12 px-4 bg-[#111827] border-y-4 border-black relative overflow-hidden">
+        
+        <!-- Elefante con sandalia como referencia divertida al calzado -->
+        <div class="absolute -bottom-2 -left-3 sm:left-12 w-20 sm:w-28 pointer-events-none float-shark opacity-85 z-0">
+            <img src="assets/Gemini_Generated_Image_g5vagvg5vagvg5va-removebg-preview.png" alt="Elefante Cactus Sandalia" class="w-full h-auto drop-shadow-md">
+        </div>
+
         <div class="max-w-md mx-auto relative z-10" data-aos="fade-up">
             
             <div class="bg-[#161F30] border-4 border-black rounded-3xl p-6 card-comic text-center">
@@ -752,12 +703,12 @@
                     <i class="fa-solid fa-person-running"></i>
                 </div>
                 <span class="inline-block bg-amber-400/20 text-amber-300 font-shout text-xs px-3 py-0.5 rounded-full mb-2">CÓDIGO DE VESTIMENTA</span>
-                <h3 class="font-shout text-2xl text-white mb-2">CASUAL & FULL AURA</h3>
+                <h3 class="font-shout text-2xl text-white mb-2">CASUAL & CÓMODO</h3>
                 <p class="font-comic text-slate-300 text-xs sm:text-sm leading-relaxed mb-3">
-                    Ven con ropa y zapatillas cómodas para correr, jugar y disfrutar al máximo en el club sin perder el aura.
+                    Ven con ropa y zapatillas cómodas para correr, jugar y disfrutar al máximo en el club.
                 </p>
                 <div class="bg-[#0B0F19] p-2.5 rounded-xl border border-slate-700 text-xs font-comic text-emerald-400">
-                    <i class="fa-solid fa-check mr-1"></i> ¡Zapatillas listas para la aventura!
+                    <i class="fa-solid fa-check mr-1"></i> ¡Zapatillas listas para jugar!
                 </div>
             </div>
 
@@ -766,9 +717,15 @@
 
 
     <!-- ========================================== -->
-    <!-- 10. CONFIRMACIÓN DE ASISTENCIA (RSVP)      -->
+    <!-- 9. CONFIRMACIÓN DE ASISTENCIA (RSVP)       -->
     <!-- ========================================== -->
-    <section id="confirmacion" class="py-16 px-4 bg-[#111827] border-y-4 border-black relative">
+    <section id="confirmacion" class="py-16 px-4 bg-[#0B0F19] relative overflow-hidden">
+        
+        <!-- Cappuccino Assassino Ninja junto al formulario -->
+        <div class="absolute top-8 right-2 sm:right-16 w-20 sm:w-28 pointer-events-none float-slow opacity-85 z-0">
+            <img src="assets/Gemini_Generated_Image_rqw0kyrqw0kyrqw0-removebg-preview.png" alt="Cappuccino Assassino" class="w-full h-auto drop-shadow-md">
+        </div>
+
         <div class="max-w-md mx-auto relative z-10" data-aos="zoom-in">
             
             <div class="text-center mb-6">
@@ -776,7 +733,7 @@
                     <i class="fa-solid fa-clipboard-check"></i>
                     <span>CONFIRMACIÓN</span>
                 </div>
-                <!-- TÍTULO SIN EMOJIS (SOLO TEXTO SEGURO) -->
+                <!-- TÍTULO SIN EMOJIS -->
                 <h2 class="font-shout text-3xl sm:text-4xl text-white mb-1 text-pop">
                     ¿NOS ACOMPAÑAS?
                 </h2>
@@ -828,9 +785,9 @@
 
 
     <!-- ========================================== -->
-    <!-- 11. WHATSAPP & CONTACTO                    -->
+    <!-- 10. WHATSAPP & CONTACTO                    -->
     <!-- ========================================== -->
-    <section class="py-10 bg-[#0B0F19] text-center relative">
+    <section class="py-10 bg-[#111827] text-center border-t-4 border-black relative">
         <div class="max-w-md mx-auto px-4">
             <p class="font-comic text-slate-300 mb-3 text-xs sm:text-sm">¿Tienes alguna duda sobre la fiesta?</p>
             <a href="https://wa.me/59163764025?text=Hola,%20tengo%20una%20consulta%20sobre%20el%20cumplea%C3%B1os%20de%20Matias%20Ezequiel."
@@ -844,7 +801,7 @@
 
 
     <!-- ========================================== -->
-    <!-- 12. FOOTER SUTIL Y COMPACTO                -->
+    <!-- 11. FOOTER SUTIL Y COMPACTO                -->
     <!-- ========================================== -->
     <footer class="py-6 bg-[#080B12] text-center border-t border-slate-800 text-xs text-slate-400 font-comic">
         <div class="max-w-md mx-auto px-4 flex flex-col items-center gap-1">
@@ -925,15 +882,14 @@
             }
         }
 
-        // FRASES DE ITALIAN BRAINROT FAMOSAS (SIN EMOJIS, 100% COMPATIBLE CON MÓVILES)
+        // FRASES DIVERTIDAS DE LOS PERSONAJES BRAINROT (SIN EMOJIS, APTAS PARA NIÑOS)
         const bubblePhrases = [
             "¡TUNG TUNG TUNG SAHUR!",
-            "¡CAPPUCCINO ASSASSINO!",
             "¡TRALLALLERO TRALLALLA!",
-            "¡AURA SIGMA +10000!",
-            "¡BOMBASTIC SIDE EYE!",
+            "¡CAPPUCCINO ASSASSINO!",
+            "¡BOMBARDIRO CROCODILO!",
             "¡MAMMA MIA CHE BELLO!",
-            "¡VIVA MATIAS EZEQUIEL!"
+            "¡A CELEBRAR CON MATIAS!"
         ];
         let phraseIndex = 0;
 
@@ -954,19 +910,6 @@
                 particleCount: 30,
                 spread: 45,
                 origin: { y: 0.5 }
-            });
-        }
-
-        // Interacción al tocar personajes del Squad
-        function playCharacterSound(phrase) {
-            const bubble = document.getElementById('tuntun-bubble');
-            if (bubble) {
-                bubble.innerText = phrase;
-            }
-            confetti({
-                particleCount: 30,
-                spread: 55,
-                origin: { y: 0.7 }
             });
         }
 
