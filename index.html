@@ -353,7 +353,7 @@
                     <i class="fa-solid fa-location-dot text-xl text-red-400 shrink-0"></i>
                     <div class="text-left">
                         <p class="text-[9px] text-slate-400 uppercase font-comic font-bold">Lugar</p>
-                        <p class="font-shout text-sm sm:text-base text-white">Aventura Club</p>
+                        <p class="font-shout text-sm sm:text-base text-white">Aventura Club Península</p>
                     </div>
                 </div>
             </div>
@@ -782,7 +782,7 @@
     <section class="py-10 bg-[#111827] text-center border-t-4 border-black relative">
         <div class="max-w-md mx-auto px-4">
             <p class="font-comic text-slate-300 mb-3 text-xs sm:text-sm">¿Tienes alguna duda sobre la fiesta?</p>
-            <a href="https://wa.me/59163764025?text=Hola,%20tengo%20una%20consulta%20sobre%20el%20cumplea%C3%B1os%20de%20Matias%20Ezequiel."
+            <a href="https://wa.me/56975363137?text=Hola,%20tengo%20una%20consulta%20sobre%20el%20cumplea%C3%B1os%20de%20Matias%20Ezequiel."
                 target="_blank"
                 class="inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-black font-shout px-6 py-3 rounded-xl btn-comic text-sm">
                 <i class="fa-brands fa-whatsapp text-lg"></i>
@@ -935,22 +935,29 @@
         actualizarContador();
 
         // --- FORMULARIO DE ASISTENCIA (GOOGLE SHEETS) ---
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbyE27BoQdWa2515GJ9NwhxjL9XKq6wSZ9Hfylf3CIwZPH0F5_RkRntm72U9XsvSlB6n/exec';
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbwrCHHNxmBZEIr72hAN81FDYk_8qugzrqCf57ZFc-f56oyVVAVD-_T3JUUrecGWWshh/exec';
         const formRsvp = document.getElementById('rsvpForm');
         const btnText = document.getElementById('btnText');
         const spinner = document.getElementById('loadingSpinner');
 
         if (formRsvp) {
+            const submitBtn = formRsvp.querySelector('button[type="submit"]');
+
             formRsvp.addEventListener('submit', e => {
                 e.preventDefault();
                 btnText.innerText = "Registrando...";
                 spinner.style.display = "inline-block";
+                if (submitBtn) submitBtn.disabled = true;
 
                 const formData = new FormData(formRsvp);
-                formData.append("tipo", "asistencia");
 
                 fetch(scriptURL, { method: 'POST', body: formData })
                     .then(response => {
+                        confetti({
+                            particleCount: 90,
+                            spread: 70,
+                            origin: { y: 0.6 }
+                        });
                         Swal.fire({ 
                             title: '¡Confirmado!', 
                             text: '¡Tu asistencia ha sido registrada con éxito!', 
@@ -958,18 +965,19 @@
                             confirmButtonColor: '#10B981' 
                         });
                         formRsvp.reset();
-                        btnText.innerText = "REGISTRAR ASISTENCIA";
-                        spinner.style.display = "none";
                     })
                     .catch(error => {
                         Swal.fire({ 
                             title: 'Error', 
-                            text: 'Hubo un inconveniente, intenta de nuevo.', 
+                            text: 'Hubo un inconveniente al registrar, intenta de nuevo.', 
                             icon: 'error', 
                             confirmButtonColor: '#EF4444' 
                         });
+                    })
+                    .finally(() => {
                         btnText.innerText = "REGISTRAR ASISTENCIA";
                         spinner.style.display = "none";
+                        if (submitBtn) submitBtn.disabled = false;
                     });
             });
         }
